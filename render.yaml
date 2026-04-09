@@ -2,7 +2,7 @@ services:
   - type: web
     name: strata-app
     runtime: static
-    buildCommand: ""
+    buildCommand: echo "static site - no build needed"
     staticPublishPath: .
     pullRequestPreviewsEnabled: false
     headers:

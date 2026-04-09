@@ -214,6 +214,100 @@ hr{border:none;border-top:1px solid var(--b1);margin:14px 0}
 .pulsing{animation:pulse 1s ease-in-out infinite}
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn .2s ease forwards}
+
+/* ── Creative Studio ── */
+.studio-tabs{display:flex;gap:0;border-bottom:1px solid var(--b1);margin-bottom:18px}
+.studio-tab-btn{padding:9px 18px;font-size:12px;font-weight:500;cursor:pointer;color:var(--t2);border:none;background:transparent;font-family:var(--fb);letter-spacing:.3px;transition:all .12s;border-bottom:2px solid transparent;position:relative;bottom:-1px}
+.studio-tab-btn:hover{color:var(--t1)}
+.studio-tab-btn.on{color:var(--teal);border-bottom-color:var(--teal)}
+.studio-tab-cnt{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;border-radius:8px;font-size:9px;font-weight:700;background:var(--teal);color:#000;padding:0 4px;margin-left:5px;vertical-align:middle}
+
+.studio-layout{display:grid;grid-template-columns:340px 1fr;gap:16px;align-items:start}
+.studio-left{background:var(--s2);border:1px solid var(--b1);border-radius:var(--r3);padding:16px;position:sticky;top:0;max-height:calc(100vh - 120px);overflow-y:auto}
+.studio-left::-webkit-scrollbar{width:2px}
+.studio-left::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
+.studio-right{min-height:300px}
+.studio-section-title{font-size:9px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+
+/* Engine selector */
+.studio-engines{display:flex;flex-direction:column;gap:4px}
+.engine-btn{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--r1);border:1px solid var(--b1);background:transparent;cursor:pointer;transition:all .12s;width:100%;text-align:left;font-family:var(--fb)}
+.engine-btn:hover{border-color:var(--b2);background:var(--s3)}
+.engine-btn.on{border-color:rgba(0,212,176,.3);background:rgba(0,212,176,.06)}
+.engine-icon{font-size:16px;width:24px;text-align:center;flex-shrink:0;line-height:1}
+.engine-name{font-size:11px;font-weight:600;color:var(--t1)}
+.engine-desc{font-size:9px;color:var(--t3);margin-top:1px}
+.engine-type-bdg{margin-left:auto;flex-shrink:0}
+
+/* Prompt */
+.studio-prompt-wrap{position:relative}
+.studio-textarea{background:var(--s3);border:1px solid var(--b1);border-radius:var(--r1);padding:9px 11px;font-size:12px;color:var(--t1);font-family:var(--fb);outline:none;width:100%;resize:vertical;min-height:80px;line-height:1.6;transition:border-color .12s}
+.studio-textarea:focus{border-color:var(--teal)}
+.studio-textarea::placeholder{color:var(--t3)}
+.studio-enhance-btn{position:absolute;bottom:7px;right:7px;display:flex;align-items:center;gap:4px;padding:3px 8px;background:rgba(0,212,176,.1);border:1px solid rgba(0,212,176,.2);border-radius:4px;font-size:9px;font-weight:700;color:var(--teal);cursor:pointer;transition:all .12s;font-family:var(--fb)}
+.studio-enhance-btn:hover{background:rgba(0,212,176,.18)}
+.studio-hint{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--teal);background:rgba(0,212,176,.06);border:1px solid rgba(0,212,176,.15);border-radius:var(--r1);padding:6px 10px;margin-bottom:8px}
+
+/* Aspect ratio */
+.aspect-row{display:flex;gap:5px;flex-wrap:wrap}
+.aspect-btn{display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 8px;border-radius:var(--r1);border:1px solid var(--b1);background:transparent;cursor:pointer;color:var(--t2);font-size:9px;font-weight:600;letter-spacing:.5px;transition:all .12s;font-family:var(--fb)}
+.aspect-btn:hover{border-color:var(--b2);color:var(--t1)}
+.aspect-btn.on{border-color:rgba(0,212,176,.4);color:var(--teal);background:rgba(0,212,176,.06)}
+
+/* Style presets */
+.style-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.style-btn{display:flex;flex-direction:column;align-items:center;gap:4px;border:1px solid var(--b1);border-radius:var(--r1);background:transparent;cursor:pointer;overflow:hidden;padding:0 0 5px;transition:all .12s;font-family:var(--fb)}
+.style-btn:hover{border-color:var(--b2)}
+.style-btn.on{border-color:rgba(0,212,176,.4)}
+.style-thumb{width:100%;height:30px}
+.style-btn span{font-size:8px;color:var(--t2);letter-spacing:.3px;font-weight:500}
+.style-btn.on span{color:var(--teal)}
+
+/* Generate button */
+.studio-generate-area{margin-top:14px}
+.studio-gen-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:var(--teal);color:#000;border:none;border-radius:var(--r2);font-size:13px;font-weight:700;cursor:pointer;font-family:var(--fh);letter-spacing:.8px;transition:background .12s}
+.studio-gen-btn:hover{background:var(--teal2)}
+.studio-gen-btn:disabled{opacity:.5;cursor:default}
+
+/* Canvas / masonry */
+.studio-canvas{min-height:400px}
+.canvas-masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.canvas-col{display:flex;flex-direction:column;gap:8px}
+.asset-thumb-wrap{position:relative;border-radius:var(--r2);overflow:hidden;cursor:pointer;background:var(--s2);border:1px solid var(--b1);transition:all .15s}
+.asset-thumb-wrap:hover{border-color:var(--b2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.asset-thumb-img{position:relative;width:100%;overflow:hidden}
+.asset-thumb-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.asset-thumb-placeholder{opacity:.3}
+.asset-thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,8,10,.85) 0%,transparent 50%);opacity:0;transition:opacity .15s;display:flex;flex-direction:column;justify-content:flex-end;padding:8px}
+.asset-thumb-wrap:hover .asset-thumb-overlay{opacity:1}
+.asset-action-btn{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.12);border:none;cursor:pointer;color:#fff;transition:background .12s}
+.asset-action-btn:hover{background:rgba(255,255,255,.25)}
+.asset-comment-count{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);border-radius:10px;font-size:9px;color:#fff;padding:2px 6px;display:flex;align-items:center;gap:3px}
+.asset-video-icon{color:var(--pink);display:flex;align-items:center;justify-content:center}
+.is-video{border-color:rgba(240,80,140,.2)}
+
+/* Generating pulse */
+@keyframes genPulse{0%,100%{opacity:.4}50%{opacity:.8}}
+.generating-pulse{animation:genPulse 1.4s ease-in-out infinite}
+.generating-text{font-size:10px;color:var(--teal);position:absolute;bottom:8px;left:8px;right:8px;text-align:center}
+
+/* Review board */
+.review-board{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;overflow-x:auto}
+.review-col{background:var(--s2);border:1px solid var(--b1);border-radius:var(--r3);display:flex;flex-direction:column}
+.review-col-head{padding:10px 12px 8px;border-bottom:1px solid var(--b1);border-top:3px solid;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.review-col-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.review-col-count{font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;background:var(--s4);color:var(--t2)}
+.review-col-body{padding:8px;overflow-y:auto;max-height:60vh;display:flex;flex-direction:column;gap:6px}
+.review-col-body::-webkit-scrollbar{width:2px}
+.review-col-body::-webkit-scrollbar-thumb{background:var(--b2)}
+.review-card{background:var(--s3);border:1px solid var(--b1);border-radius:var(--r2);padding:10px;cursor:pointer;transition:all .12s}
+.review-card:hover{border-color:var(--b2);background:var(--s4)}
+
+/* Comments */
+.comment-item{display:flex;gap:9px;padding:9px 0;border-bottom:1px solid var(--b1)}
+.comment-item:last-child{border:none}
+.comment-av{width:28px;height:28px;border-radius:50%;background:var(--tl);border:1px solid rgba(0,212,176,.2);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--teal);font-family:var(--fh);flex-shrink:0}
+
 </style>
 
 <script>
@@ -261,6 +355,1848 @@ hr{border:none;border-top:1px solid var(--b1);margin:14px 0}
     document.body.appendChild(badge);
   });
 })();
+
+
+/* ═══════════════════════════════════════════════
+   SHARED HELPERS
+   ═══════════════════════════════════════════════ */
+var $ = function(id){ return document.getElementById(id); };
+var fmt = function(v){ return '€' + Number(v).toLocaleString('pt-PT',{minimumFractionDigits:2,maximumFractionDigits:2}); };
+var fmtK = function(v){ return v >= 1000 ? '€' + (v/1000).toFixed(1) + 'k' : fmt(v); };
+var fmtN = function(v){ return Number(v).toLocaleString('pt-PT'); };
+var fmtPct = function(v){ return (v*100).toFixed(1).replace('.',',') + '%'; };
+var today = '2026-04-08';
+var MESES = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+function strataIcon(s) {
+  s = s || 20;
+  var h = Math.round(s * .85);
+  return '<svg width="' + s + '" height="' + h + '" viewBox="0 0 26 22" fill="none">'
+    + '<path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/>'
+    + '<path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/>'
+    + '<path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg>';
+}
+
+function flashBtn(btn, msg, col) {
+  if (!btn) return;
+  var orig = btn.innerHTML; btn.disabled = true;
+  btn.innerHTML = '<span class="pulsing">' + msg + '</span>';
+  setTimeout(function(){
+    btn.innerHTML = '✓ ' + msg.replace('…','');
+    if (col) { btn.style.background = col; btn.style.color = '#000'; }
+    setTimeout(function(){ btn.innerHTML = orig; btn.disabled = false; btn.style.background = ''; btn.style.color = ''; }, 2000);
+  }, 1500);
+}
+
+/* ═══════════════════════════════════════════════
+   DATA
+   ═══════════════════════════════════════════════ */
+
+/* CAMPAIGNS */
+var CAMPAIGNS = [
+  { id:1, nome:'Spring Product Launch', canal:['Instagram','TikTok','Google Ads'], estado:'live',    leads:142, clicks:3840, impressoes:48200, cpl:18.50, cac:124, budget:2625, spent:2100, conv_rate:3.7, inicio:'2026-03-15', fim:'2026-04-30', cor:'#00D4B0' },
+  { id:2, nome:'Q2 Brand Awareness',    canal:['LinkedIn','Facebook'],             estado:'live',    leads:87,  clicks:2100, impressoes:31500, cpl:24.10, cac:198, budget:2096, spent:1743, conv_rate:4.1, inicio:'2026-04-01', fim:'2026-05-31', cor:'#4E9CF5' },
+  { id:3, nome:'Newsletter Re-engage',  canal:['Email'],                           estado:'paused',  leads:210, clicks:980,  impressoes:4200,  cpl:5.20,  cac:62,  budget:1092, spent:1092, conv_rate:21.4,inicio:'2026-02-01', fim:'2026-03-31', cor:'#F5A623' },
+  { id:4, nome:'Summer Collection',     canal:['Instagram','YouTube'],             estado:'draft',   leads:0,   clicks:0,    impressoes:0,     cpl:0,     cac:0,   budget:3500, spent:0,    conv_rate:0,   inicio:'2026-05-15', fim:'2026-07-15', cor:'#9B6BF2' },
+  { id:5, nome:'Lead Gen — SaaS',       canal:['Google Ads','LinkedIn'],           estado:'live',    leads:63,  clicks:1420, impressoes:22800, cpl:31.20, cac:215, budget:1966, spent:1560, conv_rate:4.4, inicio:'2026-03-20', fim:'2026-06-20', cor:'#28C87A' },
+];
+
+/* CONTACTS / LEADS */
+var CONTACTS = [
+  { id:1,  nome:'Sofia',  apelido:'Ribeiro',  empresa:'Nexus Digital Lda',   cargo:'CEO',             email:'sofia@nexus.pt',    tel:'+351 912 345 678', origem:'Google Ads',   score:92, stage:'proposta',    valor:4800,  ultima_int:'2026-04-06', notas:'Interessada no plano Pro. Decisão pendente CFO.', campanha_id:1, cor:'#00D4B0' },
+  { id:2,  nome:'Marco',  apelido:'Alves',    empresa:'Bluewave Studios',    cargo:'CMO',             email:'marco@bluewave.pt',  tel:'+351 961 234 567', origem:'LinkedIn',     score:78, stage:'negociacao',  valor:2400,  ultima_int:'2026-04-05', notas:'Quer integração com HubSpot.',                    campanha_id:2, cor:'#4E9CF5' },
+  { id:3,  nome:'Ana',    apelido:'Pereira',  empresa:'Porto Ventures SA',   cargo:'Founder',         email:'ana@portovent.pt',   tel:'+351 933 456 789', origem:'Email',        score:85, stage:'ganho',       valor:7200,  ultima_int:'2026-04-07', notas:'Contrato assinado. Onboarding em curso.',         campanha_id:3, cor:'#28C87A' },
+  { id:4,  nome:'Rui',    apelido:'Ferreira', empresa:'Tidal Tech',          cargo:'CTO',             email:'rui@tidaltech.pt',   tel:'+351 914 567 890', origem:'Referência',   score:65, stage:'qualificado', valor:3600,  ultima_int:'2026-04-03', notas:'Teste técnico agendado para 15 Abril.',           campanha_id:null,cor:'#9B6BF2' },
+  { id:5,  nome:'Inês',   apelido:'Martins',  empresa:'GreenPath Lda',       cargo:'Diretora Geral',  email:'ines@greenpath.pt',  tel:'+351 925 678 901', origem:'Google Ads',   score:71, stage:'lead',        valor:1800,  ultima_int:'2026-04-07', notas:'Primeiro contacto. Follow-up marcado.',           campanha_id:1, cor:'#F5A623' },
+  { id:6,  nome:'Carlos', apelido:'Santos',   empresa:'Arctiq Systems',      cargo:'VP Sales',        email:'carlos@arctiq.pt',   tel:'+351 916 789 012', origem:'LinkedIn',     score:88, stage:'proposta',    valor:9600,  ultima_int:'2026-04-04', notas:'Deal enterprise. Contrato 2 anos em discussão.',  campanha_id:2, cor:'#F04F5A' },
+  { id:7,  nome:'Beatriz',apelido:'Costa',    empresa:'Lumina Media',        cargo:'Head of Growth',  email:'bea@lumina.pt',      tel:'+351 937 890 123', origem:'TikTok',       score:55, stage:'lead',        valor:1200,  ultima_int:'2026-04-06', notas:'Viu anúncio. Preencheu formulário.',              campanha_id:1, cor:'#F0508C' },
+  { id:8,  nome:'João',   apelido:'Lopes',    empresa:'Element Partners',    cargo:'Partner',         email:'joao@element.pt',    tel:'+351 918 901 234', origem:'Referência',   score:94, stage:'ganho',       valor:14400, ultima_int:'2026-04-05', notas:'Plano Scale. Renovação anual. Alto LTV.',         campanha_id:null,cor:'#00D4B0' },
+];
+
+/* PROPOSTAS */
+var PROPOSTAS = [
+  { id:1, contact_id:1, numero:'PROP-2026-042', titulo:'Plano Pro — Acme Suite', valor:4800,  validade:'2026-04-20', estado:'enviada',  data:'2026-04-02', plano:'Pro',  meses:12 },
+  { id:2, contact_id:6, numero:'PROP-2026-043', titulo:'Plano Scale Enterprise', valor:9600,  validade:'2026-04-25', estado:'em_rev',   data:'2026-04-04', plano:'Scale',meses:24 },
+  { id:3, contact_id:2, numero:'PROP-2026-044', titulo:'Plano Pro — 12 meses',   valor:2400,  validade:'2026-04-18', estado:'enviada',  data:'2026-04-05', plano:'Pro',  meses:12 },
+  { id:4, contact_id:3, numero:'PROP-2026-038', titulo:'Plano Scale — 24 meses', valor:7200,  validade:'2026-03-31', estado:'aceite',   data:'2026-03-28', plano:'Scale',meses:24 },
+  { id:5, contact_id:8, numero:'PROP-2026-039', titulo:'Plano Scale Enterprise', valor:14400, validade:'2026-04-05', estado:'aceite',   data:'2026-04-01', plano:'Scale',meses:12 },
+];
+
+/* REVENUE / CONTRACTS */
+var CONTRACTS = [
+  { id:1,  empresa:'Porto Ventures SA',   contact_id:3,  plano:'Scale',  mrr:600,   inicio:'2026-04-01', renovacao:'2028-04-01', estado:'ativo',   pagamentos:'em_dia',    ltv_est:28800 },
+  { id:2,  empresa:'Element Partners',    contact_id:8,  plano:'Scale',  mrr:1200,  inicio:'2026-04-01', renovacao:'2027-04-01', estado:'ativo',   pagamentos:'em_dia',    ltv_est:57600 },
+  { id:3,  empresa:'Volterra Group',      contact_id:null,plano:'Pro',   mrr:249,   inicio:'2026-01-15', renovacao:'2027-01-15', estado:'ativo',   pagamentos:'em_dia',    ltv_est:5976 },
+  { id:4,  empresa:'Arctiq Systems',      contact_id:null,plano:'Pro',   mrr:249,   inicio:'2025-11-01', renovacao:'2026-11-01', estado:'ativo',   pagamentos:'em_dia',    ltv_est:5976 },
+  { id:5,  empresa:'Nexus Digital',       contact_id:1,  plano:'Starter',mrr:49,    inicio:'2025-09-01', renovacao:'2026-09-01', estado:'ativo',   pagamentos:'em_dia',    ltv_est:588 },
+  { id:6,  empresa:'Lumina Media',        contact_id:7,  plano:'Starter',mrr:49,    inicio:'2026-02-01', renovacao:'2027-02-01', estado:'ativo',   pagamentos:'atrasado',  ltv_est:588 },
+  { id:7,  empresa:'Cedar Labs',          contact_id:null,plano:'Pro',   mrr:249,   inicio:'2025-08-01', renovacao:'2026-08-01', estado:'churn',   pagamentos:'cancelado', ltv_est:1992 },
+  { id:8,  empresa:'Umbra Creative',      contact_id:null,plano:'Starter',mrr:49,   inicio:'2025-10-01', renovacao:'2026-10-01', estado:'ativo',   pagamentos:'em_dia',    ltv_est:588 },
+];
+
+/* MRR history — last 12 months */
+var MRR_HISTORY = [1274, 1372, 1470, 1519, 1568, 1666, 1715, 1912, 2012, 2161, 2410, 2694];
+var MRR_2025    = [860, 909, 958, 1007, 1056, 1105, 1203, 1274, 1323, 1421, 1470, 1568];
+
+/* Pipeline funnel data */
+var FUNNEL = [
+  { stage:'Lead',         n:247, pct:100, cor:'#00D4B0' },
+  { stage:'Qualificado',  n:142, pct:57,  cor:'#4E9CF5' },
+  { stage:'Proposta',     n:58,  pct:23,  cor:'#9B6BF2' },
+  { stage:'Negociação',   n:22,  pct:9,   cor:'#F5A623' },
+  { stage:'Ganho',        n:11,  pct:4.5, cor:'#28C87A' },
+];
+
+/* ACTIVITIES */
+var ACTIVITIES = [
+  { tipo:'email',  texto:'Email enviado para Sofia Ribeiro (Nexus Digital)',       ts:'Hoje, 14:32', cor:'#4E9CF5',  contact_id:1 },
+  { tipo:'call',   texto:'Chamada com Marco Alves — demonstração produto 45min',  ts:'Hoje, 11:00', cor:'#28C87A',  contact_id:2 },
+  { tipo:'deal',   texto:'Deal Element Partners marcado como Ganho — €14.400',    ts:'Hoje, 09:15', cor:'#00D4B0',  contact_id:8 },
+  { tipo:'prop',   texto:'Proposta PROP-2026-043 enviada a Arctiq Systems',        ts:'Ontem, 17:40',cor:'#9B6BF2', contact_id:6 },
+  { tipo:'lead',   texto:'3 novos leads via Google Ads — Campanha Spring Launch',  ts:'Ontem, 14:20',cor:'#F5A623', contact_id:null },
+  { tipo:'email',  texto:'Follow-up enviado para Rui Ferreira (Tidal Tech)',       ts:'Ontem, 10:05',cor:'#4E9CF5', contact_id:4 },
+  { tipo:'contrat',texto:'Contrato Porto Ventures SA activado — MRR +€600',       ts:'01 Abr, 09:00',cor:'#28C87A',contact_id:3 },
+];
+
+/* ═══════════════════════════════════════════════
+   ROUTING STATE
+   ═══════════════════════════════════════════════ */
+var pg = 'mkt-dash';
+var selectedContactId = null;
+var mktCreateStep = 0;
+var mktCreateData = {};
+var generatingCopy = false;
+var analyticsTab = 'funil';
+var revTab = 'monthly';
+var crmTab = 'kanban';
+
+var MOD_COLORS = {
+  'mkt':'tb-mkt', 'crm':'tb-crm', 'rev':'tb-rev'
+};
+var MOD_LABELS = {
+  'mkt':'Marketing','crm':'CRM','rev':'Revenue'
+};
+var PAGE_TITLES = {
+  'mkt-dash':'Dashboard','mkt-campanhas':'Campanhas','mkt-criar':'Criar Campanha IA',
+  'mkt-analytics':'Analytics & Funil',
+  'crm-pipeline':'Pipeline','crm-contactos':'Contactos','crm-propostas':'Propostas','crm-ficha':'Ficha',
+  'rev-dash':'Dashboard MRR','rev-deals':'Deals & Contratos','rev-recorrente':'Faturação Recorrente','rev-forecast':'Forecast',
+};
+var PAGE_BTN = {
+  'mkt-dash':'Nova Campanha','mkt-campanhas':'Nova Campanha','mkt-criar':'Gerar com IA',
+  'mkt-analytics':'Exportar',
+  'crm-pipeline':'+ Novo Contacto','crm-contactos':'+ Novo Contacto','crm-propostas':'Nova Proposta','crm-ficha':'Editar',
+  'rev-dash':'Ver Deals','rev-deals':'+ Novo Deal','rev-recorrente':'+ Contrato','rev-forecast':'Exportar',
+};
+var PAGE_INFO = {
+  'mkt-dash':'Abril 2026 · 5 campanhas activas',
+  'mkt-campanhas':'5 campanhas · 3 activas',
+  'mkt-analytics':'Funil completo · YTD 2026',
+  'crm-pipeline':'8 deals · €45.000 pipeline',
+  'crm-contactos':'8 contactos · 4 qualificados',
+  'crm-propostas':'5 propostas · €38.400 valor',
+  'rev-dash':'MRR €2.694 · ARR €32.328',
+  'rev-deals':'8 contratos · 7 activos',
+  'rev-recorrente':'Ciclo mensal · Próx. emissão 1 Mai',
+  'rev-forecast':'Projeção 12 meses · AI forecast',
+};
+
+function goto(page) {
+  pg = page;
+  document.querySelectorAll('.sb-item').forEach(function(x){ x.classList.remove('on'); });
+  var si = $('si-' + page); if (si) si.classList.add('on');
+
+  var mod = page.split('-')[0];
+  var modEl = $('tb-mod');
+  if (modEl) { modEl.textContent = MOD_LABELS[mod] || mod; modEl.className = 'tb-mod ' + (MOD_COLORS[mod] || 'tb-mkt'); }
+  var titleEl = $('tb-title'); if (titleEl) titleEl.textContent = PAGE_TITLES[page] || '';
+  var infoEl  = $('tb-info');  if (infoEl)  infoEl.textContent  = PAGE_INFO[page]  || '';
+  var mainBtn = $('tb-main-btn');
+  if (mainBtn) mainBtn.textContent = PAGE_BTN[page] || '';
+
+  render();
+}
+
+function handleMainBtn() {
+  if      (pg === 'mkt-criar')     generateCopy();
+  else if (pg === 'mkt-campanhas') goto('mkt-criar');
+  else if (pg === 'mkt-dash')      goto('mkt-criar');
+  else if (pg === 'rev-dash')      goto('rev-deals');
+  else goto(pg);
+}
+
+var PAGE_RENDERS = {
+  'mkt-dash':      renderMktDash,
+  'mkt-campanhas': renderMktCampanhas,
+  'mkt-criar':     renderMktCriar,
+  'mkt-analytics': renderMktAnalytics,
+  'crm-pipeline':  renderCrmPipeline,
+  'crm-contactos': renderCrmContactos,
+  'crm-ficha':     renderCrmFicha,
+  'crm-propostas': renderCrmPropostas,
+  'rev-dash':      renderRevDash,
+  'rev-deals':     renderRevDeals,
+  'rev-recorrente':renderRevRecorrente,
+  'rev-forecast':  renderRevForecast,
+};
+
+function render() {
+  var el = $('content');
+  el.classList.remove('fade-in');
+  void el.offsetWidth;
+  el.classList.add('fade-in');
+  var fn = PAGE_RENDERS[pg] || renderMktDash;
+  fn(el);
+}
+
+/* ═══════════════════════════════════════════════
+   SVG CHART HELPERS
+   ═══════════════════════════════════════════════ */
+function svgLineChart(opts) {
+  /* opts: { width, height, series:[{data,color,label,dashed}], labels, padL, padR, padT, padB, showArea, noGrid } */
+  var W = opts.width || 480, H = opts.height || 160;
+  var PL = opts.padL || 42, PR = opts.padR || 12, PT = opts.padT || 10, PB = opts.padB || 28;
+  var cW = W - PL - PR, cH = H - PT - PB;
+  var series = opts.series || [];
+  var labels = opts.labels || [];
+  var n = labels.length;
+  var allVals = [];
+  series.forEach(function(s){ s.data.forEach(function(v){ if (v !== null) allVals.push(v); }); });
+  var maxV = Math.max.apply(null, allVals) * 1.12;
+  var minV = opts.minZero ? 0 : (Math.min.apply(null, allVals) * 0.9);
+  if (maxV === minV) maxV = minV + 1;
+  var range = maxV - minV;
+  var xStep = n > 1 ? cW / (n - 1) : cW;
+  var yScale = function(v){ return PT + cH - ((v - minV) / range) * cH; };
+
+  var html = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block;overflow:visible" xmlns="http://www.w3.org/2000/svg">';
+
+  /* Grid */
+  if (!opts.noGrid) {
+    var ticks = 4;
+    for (var i = 0; i <= ticks; i++) {
+      var val = minV + range * (i / ticks);
+      var y = yScale(val);
+      html += '<line x1="' + PL + '" y1="' + y + '" x2="' + (W - PR) + '" y2="' + y + '" stroke="#22262C" stroke-width="1"/>';
+      var lbl = val >= 1000 ? (val/1000).toFixed(0) + 'k' : val.toFixed(0);
+      html += '<text x="' + (PL - 4) + '" y="' + (y + 3.5) + '" text-anchor="end" fill="#3E4652" font-size="9" font-family="Barlow,sans-serif">' + lbl + '</text>';
+    }
+  }
+
+  /* X labels */
+  var lStep = Math.max(1, Math.floor(n / 7));
+  for (var j = 0; j < n; j += lStep) {
+    var xPos = PL + j * xStep;
+    html += '<text x="' + xPos + '" y="' + (H - PB + 14) + '" text-anchor="middle" fill="#3E4652" font-size="9" font-family="Barlow,sans-serif">' + (labels[j] || '') + '</text>';
+  }
+
+  /* Series */
+  series.forEach(function(s) {
+    if (!s.data || s.data.length === 0) return;
+    var pts = s.data.map(function(v, i){ return [PL + i * xStep, yScale(v)]; });
+    var col = s.color || '#00D4B0';
+    var pathD = pts.map(function(p, i){ return (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ');
+
+    if (opts.showArea && !s.dashed) {
+      var areaD = pathD + ' L' + pts[pts.length-1][0].toFixed(1) + ',' + (PT + cH) + ' L' + pts[0][0].toFixed(1) + ',' + (PT + cH) + ' Z';
+      html += '<path d="' + areaD + '" fill="' + col + '" opacity="0.07"/>';
+    }
+    html += '<path d="' + pathD + '" fill="none" stroke="' + col + '" stroke-width="' + (s.dashed ? 1.5 : 2) + '"' + (s.dashed ? ' stroke-dasharray="4,3"' : '') + '/>';
+
+    if (!s.dashed) {
+      pts.forEach(function(p, i) {
+        html += '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + col + '" stroke="var(--s2)" stroke-width="1.5"><title>' + (labels[i] || '') + ': €' + (s.data[i] || 0).toLocaleString('pt-PT') + '</title></circle>';
+      });
+    }
+  });
+
+  /* Axes */
+  html += '<line x1="' + PL + '" y1="' + PT + '" x2="' + PL + '" y2="' + (PT + cH) + '" stroke="#2E343C" stroke-width="1"/>';
+  html += '<line x1="' + PL + '" y1="' + (PT + cH) + '" x2="' + (W - PR) + '" y2="' + (PT + cH) + '" stroke="#2E343C" stroke-width="1"/>';
+  html += '</svg>';
+  return html;
+}
+
+function svgBarChart(opts) {
+  /* opts: { data:[{label,value,color}], width, height, horizontal } */
+  var W = opts.width || 320, H = opts.height || 140;
+  var PL = 42, PR = 12, PT = 10, PB = 26;
+  var cW = W - PL - PR, cH = H - PT - PB;
+  var data = opts.data || [];
+  var n = data.length;
+  var maxV = Math.max.apply(null, data.map(function(d){ return d.value; })) * 1.12;
+  var barW = (cW / n) * 0.55;
+  var gap  = cW / n;
+
+  var html = '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:auto;display:block" xmlns="http://www.w3.org/2000/svg">';
+
+  /* Grid */
+  for (var i = 0; i <= 3; i++) {
+    var val = maxV * (i / 3);
+    var y = PT + cH - (val / maxV) * cH;
+    html += '<line x1="' + PL + '" y1="' + y + '" x2="' + (W - PR) + '" y2="' + y + '" stroke="#22262C" stroke-width="1"/>';
+    html += '<text x="' + (PL - 4) + '" y="' + (y + 3.5) + '" text-anchor="end" fill="#3E4652" font-size="9" font-family="Barlow,sans-serif">' + (val >= 1000 ? (val/1000).toFixed(0)+'k' : val.toFixed(0)) + '</text>';
+  }
+
+  data.forEach(function(d, i) {
+    var x = PL + i * gap + (gap - barW) / 2;
+    var bH = (d.value / maxV) * cH;
+    var y = PT + cH - bH;
+    var col = d.color || '#00D4B0';
+    html += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + bH.toFixed(1) + '" fill="' + col + '" opacity="' + (d.active ? 1 : 0.45) + '" rx="2"><title>' + d.label + ': €' + d.value.toLocaleString('pt-PT') + '</title></rect>';
+    html += '<text x="' + (x + barW/2).toFixed(1) + '" y="' + (H - PB + 13) + '" text-anchor="middle" fill="' + (d.active ? col : '#3E4652') + '" font-size="9" font-family="Barlow,sans-serif" font-weight="' + (d.active ? '600' : '400') + '">' + d.label + '</text>';
+  });
+
+  html += '<line x1="' + PL + '" y1="' + PT + '" x2="' + PL + '" y2="' + (PT + cH) + '" stroke="#2E343C" stroke-width="1"/>';
+  html += '<line x1="' + PL + '" y1="' + (PT + cH) + '" x2="' + (W - PR) + '" y2="' + (PT + cH) + '" stroke="#2E343C" stroke-width="1"/>';
+  html += '</svg>';
+  return html;
+}
+
+/* ═══════════════════════════════════════════════
+   REUSABLE HTML COMPONENTS
+   ═══════════════════════════════════════════════ */
+function kpi(lbl, val, chg, updn, valCol, barPct, barCol) {
+  var v = valCol ? ' style="color:' + valCol + '"' : '';
+  var chgCls = updn || 'neu';
+  var bar = barPct !== undefined ? '<div class="kpi-bar"><div class="kpi-bar-fill" style="width:' + barPct + '%;background:' + (barCol || 'var(--teal)') + '"></div></div>' : '';
+  return '<div class="kpi"><div class="kpi-lbl">' + lbl + '</div><div class="kpi-val"' + v + '>' + val + '</div>'
+    + '<div class="kpi-chg ' + chgCls + '">' + chg + '</div>' + bar + '</div>';
+}
+
+function campBdg(estado) {
+  var m = { live:'bdg-g', paused:'bdg-a', draft:'bdg-gr', ended:'bdg-r' };
+  var l = { live:'Live', paused:'Pausada', draft:'Rascunho', ended:'Terminada' };
+  return '<span class="bdg ' + (m[estado]||'bdg-gr') + '"><span class="bdot"></span>' + (l[estado]||estado) + '</span>';
+}
+
+function stageBdg(stage) {
+  var m = { lead:'bdg-gr', qualificado:'bdg-b', proposta:'bdg-p', negociacao:'bdg-a', ganho:'bdg-g', perdido:'bdg-r' };
+  var l = { lead:'Lead', qualificado:'Qualificado', proposta:'Proposta', negociacao:'Negociação', ganho:'Ganho', perdido:'Perdido' };
+  return '<span class="bdg ' + (m[stage]||'bdg-gr') + '">' + (l[stage]||stage) + '</span>';
+}
+
+function actIcon(tipo) {
+  var icons = {
+    email:'<path d="M1 3h11v7H1z"/><path d="M1 3l5.5 4L12 3"/>',
+    call:'<path d="M3 1c0 0 0 2 2 4s4 2 4 2l1.5-1.5c.5-.5 1-.3 1 .2L13 8.5c.1.5-.2.7-.7.9C11 10 8 10 5.5 7.5S2 2 2.6 .8C2.8.3 3 0 3.5 0S5 0 5 0"/>',
+    deal:'<path d="M2 7l4 4 6-6"/>',
+    prop:'<rect x="2" y="1" width="9" height="11" rx="1.5"/><path d="M4 4h5M4 6.5h5M4 9h3"/>',
+    lead:'<circle cx="6.5" cy="4" r="2.5"/><path d="M1.5 11c0-2.5 2.2-4.5 5-4.5M9.5 8v4M7.5 10h4"/>',
+    contrat:'<rect x="1" y="1" width="11" height="11" rx="2"/><path d="M4 6.5l2 2 3-3"/>',
+  };
+  return '<svg width="12" height="12" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5">' + (icons[tipo]||icons.email) + '</svg>';
+}
+
+/* ═══════════════════════════════════════════════
+   MARKETING — DASHBOARD
+   ═══════════════════════════════════════════════ */
+function renderMktDash(el) {
+  var totalLeads   = CAMPAIGNS.reduce(function(s,x){ return s + x.leads; }, 0);
+  var totalSpent   = CAMPAIGNS.reduce(function(s,x){ return s + x.spent; }, 0);
+  var avgCpl       = totalLeads > 0 ? totalSpent / totalLeads : 0;
+  var totalClicks  = CAMPAIGNS.reduce(function(s,x){ return s + x.clicks; }, 0);
+  var totalImpr    = CAMPAIGNS.reduce(function(s,x){ return s + x.impressoes; }, 0);
+  var ctr          = totalImpr > 0 ? totalClicks / totalImpr : 0;
+
+  /* Monthly leads data */
+  var leadsM  = [28, 34, 41, 52, 60, 68, 75, 84, 96, 112, 128, 142];
+  var leadsM25 = [18, 22, 28, 33, 38, 44, 52, 61, 70, 82, 95, 108];
+
+  var html = '<div class="sec-hd"><div><div class="sec-title">Marketing Overview</div><div class="sec-sub">Abril 2026 · ' + CAMPAIGNS.filter(function(x){return x.estado==='live';}).length + ' campanhas activas</div></div>'
+    + '<div style="display:flex;gap:7px">'
+    + '<button class="btn btn-ghost btn-sm" onclick="goto(\'mkt-analytics\')">Ver funil</button>'
+    + '<button class="btn btn-teal btn-sm" onclick="goto(\'mkt-criar\')">+ Campanha IA</button>'
+    + '</div></div>'
+    + '<div class="g4 mb16">'
+    + kpi('Leads Gerados (YTD)', fmtN(totalLeads), '+38% vs 2025', 'up', null, totalLeads/600*100)
+    + kpi('Custo por Lead (Médio)', fmtK(avgCpl), '−12% vs trimestre ant.', 'up', null, 60, '#28C87A')
+    + kpi('Total Investido', fmtK(totalSpent), 'de €11.279 budget', 'neu', null, totalSpent/11279*100, '#4E9CF5')
+    + kpi('CTR Médio', fmtPct(ctr), 'Acima benchmark 2,8%', 'up', '#00D4B0')
+    + '</div>';
+
+  /* Leads trend chart */
+  html += '<div class="g2 mb16">';
+  html += '<div class="card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
+    + '<div class="card-title" style="margin-bottom:0">Leads Gerados — Tendência</div>'
+    + '<div class="mrr-legend">'
+    + '<div class="mrr-legend-item"><div class="mrr-dot" style="background:#00D4B0"></div>2026</div>'
+    + '<div class="mrr-legend-item"><div class="mrr-dot" style="background:#00D4B040;border:1px dashed #00D4B0"></div>2025</div>'
+    + '</div></div>'
+    + svgLineChart({ labels:MESES, height:150, showArea:true, minZero:true, series:[
+      { data:leadsM,   color:'#00D4B0', label:'Leads 2026' },
+      { data:leadsM25, color:'#00D4B0', label:'Leads 2025', dashed:true },
+    ]})
+    + '<div style="display:flex;gap:16px;margin-top:8px;padding-top:8px;border-top:1px solid var(--b1)">'
+    + '<div><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Total 2026 YTD</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--teal)">' + fmtN(totalLeads) + '</div></div>'
+    + '<div><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">vs 2025 YTD</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--green)">+38%</div></div>'
+    + '<div><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Melhor canal</div><div style="font-family:var(--fh);font-size:16px;font-weight:700">Google Ads</div></div>'
+    + '</div></div>';
+
+  /* CPL by campaign */
+  html += '<div class="card"><div class="card-title">CPL por Campanha</div>';
+  html += svgBarChart({
+    height:150,
+    data: CAMPAIGNS.filter(function(x){ return x.leads > 0; }).map(function(x, i) {
+      return { label: x.nome.split(' ').slice(0,2).join(' '), value: x.cpl, color: x.cor, active: i < 3 };
+    })
+  });
+  html += '<div style="margin-top:10px">';
+  CAMPAIGNS.filter(function(x){ return x.leads > 0; }).forEach(function(x) {
+    html += '<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--b1)">'
+      + '<div style="display:flex;align-items:center;gap:7px"><div style="width:7px;height:7px;border-radius:2px;background:' + x.cor + '"></div><span style="font-size:11px;color:var(--t2)">' + x.nome + '</span></div>'
+      + '<div style="display:flex;gap:14px"><span style="font-size:11px;color:var(--t1);font-weight:500">' + fmtK(x.cpl) + ' CPL</span><span style="font-size:11px;color:var(--t3)">' + x.leads + ' leads</span></div></div>';
+  });
+  html += '</div></div>';
+  html += '</div>'; /* close g2 */
+
+  /* Recent activity + top channels */
+  html += '<div class="g2">';
+
+  /* Activities */
+  html += '<div class="card"><div class="card-title">Actividade Recente</div>';
+  ACTIVITIES.slice(0,5).forEach(function(a) {
+    html += '<div class="act-item">'
+      + '<div class="act-dot" style="background:' + a.cor + ';box-shadow:0 0 0 3px ' + a.cor + '15"></div>'
+      + '<div style="flex:1"><div style="font-size:12px;color:var(--t1);line-height:1.4">' + a.texto + '</div>'
+      + '<div style="font-size:10px;color:var(--t3);margin-top:2px">' + a.ts + '</div></div>'
+      + '</div>';
+  });
+  html += '</div>';
+
+  /* Channel breakdown */
+  var channels = [
+    { name:'Google Ads', leads:98,  pct:39, cor:'#4E9CF5' },
+    { name:'LinkedIn',   leads:74,  pct:29, cor:'#00D4B0' },
+    { name:'Instagram',  leads:52,  pct:21, cor:'#9B6BF2' },
+    { name:'Email',      leads:18,  pct:7,  cor:'#F5A623' },
+    { name:'Referências',leads:12,  pct:4,  cor:'#28C87A' },
+  ];
+  html += '<div class="card"><div class="card-title">Leads por Canal</div>';
+  channels.forEach(function(ch) {
+    html += '<div style="margin-bottom:10px">'
+      + '<div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:4px">'
+      + '<span style="color:var(--t1)">' + ch.name + '</span>'
+      + '<span style="color:var(--t2)">' + ch.leads + ' leads · ' + ch.pct + '%</span></div>'
+      + '<div class="prog"><div class="prog-fill" style="width:' + ch.pct + '%;background:' + ch.cor + '"></div></div>'
+      + '</div>';
+  });
+  html += '</div>';
+
+  html += '</div>'; /* close g2 */
+  el.innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════════
+   MARKETING — CAMPANHAS
+   ═══════════════════════════════════════════════ */
+function renderMktCampanhas(el) {
+  var html = '<div class="sec-hd"><div><div class="sec-title">Campanhas</div><div class="sec-sub">Todas as campanhas activas e programadas</div></div>'
+    + '<div style="display:flex;gap:7px">'
+    + '<input class="inp" style="width:200px" placeholder="Pesquisar campanha…">'
+    + '<button class="btn btn-teal btn-sm" onclick="goto(\'mkt-criar\')">+ Criar com IA</button>'
+    + '</div></div>'
+    + '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px">';
+
+  CAMPAIGNS.forEach(function(camp) {
+    var budgetPct = camp.budget > 0 ? Math.round(camp.spent / camp.budget * 100) : 0;
+    html += '<div class="camp-card">'
+      + '<div class="camp-thumb" style="background:' + camp.cor + '10;border-bottom:1px solid ' + camp.cor + '18">'
+      + '<div style="text-align:center">'
+      + strataIcon(28)
+      + '<div style="font-size:9px;color:' + camp.cor + ';font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:5px">' + camp.canal.join(' · ') + '</div>'
+      + '</div></div>'
+      + '<div class="camp-info">'
+      + '<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">'
+      + '<div style="font-size:13px;font-weight:500;color:var(--t1);flex:1;padding-right:8px">' + camp.nome + '</div>'
+      + campBdg(camp.estado) + '</div>'
+      + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;margin-bottom:10px">'
+      + '<div><span style="color:var(--t3)">Leads</span><br><span style="font-family:var(--fh);font-size:15px;font-weight:700;color:' + camp.cor + '">' + camp.leads + '</span></div>'
+      + '<div><span style="color:var(--t3)">CPL</span><br><span style="font-family:var(--fh);font-size:15px;font-weight:700">' + (camp.cpl > 0 ? fmtK(camp.cpl) : '—') + '</span></div>'
+      + '<div><span style="color:var(--t3)">Budget usado</span><br><span style="color:var(--t1);font-weight:500">' + fmtK(camp.spent) + ' / ' + fmtK(camp.budget) + '</span></div>'
+      + '<div><span style="color:var(--t3)">Conv. rate</span><br><span style="color:var(--t1);font-weight:500">' + (camp.conv_rate > 0 ? camp.conv_rate.toFixed(1) + '%' : '—') + '</span></div>'
+      + '</div>'
+      + '<div class="prog" style="margin-bottom:10px"><div class="prog-fill" style="width:' + budgetPct + '%;background:' + camp.cor + '"></div></div>'
+      + '<div style="display:flex;gap:6px">'
+      + '<button class="btn btn-ghost btn-xs" style="flex:1;justify-content:center">Ver relatório</button>'
+      + (camp.estado === 'live' ? '<button class="btn btn-warn btn-xs">Pausar</button>' : '')
+      + (camp.estado === 'draft' ? '<button class="btn btn-teal btn-xs">Activar</button>' : '')
+      + '</div></div></div>';
+  });
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════════
+   MARKETING — CRIAR CAMPANHA IA
+   ═══════════════════════════════════════════════ */
+/* ── Studio state ── */
+var studioEngine    = 'flux';
+var studioTab       = 'generate';
+var studioAspect    = '1:1';
+var studioStyle     = 'photographic';
+var studioQuality   = 'high';
+var studioPrompt    = '';
+var studioNegPrompt = '';
+var studioGenerating= false;
+
+/* Generated asset store */
+var STUDIO_ASSETS = [
+  { id:1,  engine:'flux',    prompt:'Modern SaaS dashboard on laptop, dark UI, teal accents, professional office background, ultra realistic',  aspect:'16:9', style:'photographic', status:'approved',  comments:[{user:'Ana',text:'Perfeito para o hero!',ts:'Hoje 10:15'}],         created:'2026-04-07', liked:true,  idx:0 },
+  { id:2,  engine:'dalle3',  prompt:'Abstract geometric data flow, neon green and dark blue, professional B2B tech aesthetic',                  aspect:'1:1',  style:'digital_art',  status:'in_review', comments:[{user:'Marco',text:'Muito brilhante, reduzir saturação?',ts:'Hoje 09:40'}], created:'2026-04-07', liked:false, idx:1 },
+  { id:3,  engine:'midj',    prompt:'Entrepreneur reviewing revenue charts, cinematic lighting, warm tones, optimistic mood',                   aspect:'4:5',  style:'cinematic',    status:'approved',  comments:[], created:'2026-04-06', liked:true,  idx:2 },
+  { id:4,  engine:'sdxl',    prompt:'Futuristic CRM interface holographic projection, hands interacting, blue purple palette',                  aspect:'16:9', style:'sci_fi',       status:'draft',     comments:[], created:'2026-04-06', liked:false, idx:3 },
+  { id:5,  engine:'ideogram',prompt:'Clean typography: GROW YOUR REVENUE, bold sans-serif, dark background, teal gradient text',               aspect:'1:1',  style:'typography',   status:'published', comments:[{user:'João',text:'Usando na campanha Spring!',ts:'2026-04-05'}], created:'2026-04-05', liked:true,  idx:4 },
+  { id:6,  engine:'runway',  prompt:'Time-lapse of data flowing through a city grid at night, neon trails, 6 seconds',                        aspect:'16:9', style:'video',        status:'in_review', comments:[], created:'2026-04-05', liked:false, idx:5, isVideo:true },
+  { id:7,  engine:'flux',    prompt:'Happy team celebrating sales milestone, modern office, confetti, diverse group, authentic',               aspect:'4:5',  style:'photographic', status:'draft',     comments:[], created:'2026-04-04', liked:false, idx:6 },
+  { id:8,  engine:'dalle3',  prompt:'Product mockup STRATA app on iPhone 15 Pro, floating, studio lighting, white background',                aspect:'1:1',  style:'product',      status:'approved',  comments:[{user:'Sofia',text:'Para o email campaign!',ts:'2026-04-04'}], created:'2026-04-04', liked:true,  idx:7 },
+];
+
+var studioReviewAsset = null;
+var studioViewMode = 'grid';
+
+/* SVG placeholder images with gradient fills */
+var ASSET_GRADIENTS = [
+  'linear-gradient(135deg,#00D4B015,#4E9CF530)',
+  'linear-gradient(135deg,#9B6BF220,#F04F5A15)',
+  'linear-gradient(135deg,#28C87A15,#00D4B020)',
+  'linear-gradient(135deg,#4E9CF520,#9B6BF215)',
+  'linear-gradient(135deg,#F5A62315,#F04F5A20)',
+  'linear-gradient(135deg,#00D4B020,#28C87A15)',
+  'linear-gradient(135deg,#9B6BF215,#4E9CF520)',
+  'linear-gradient(135deg,#F04F5A15,#F5A62320)',
+];
+
+var ENGINE_META = {
+  flux:    { label:'Flux 1.1 Pro',         icon:'⚡', tag:'bdg-t',  desc:'Realismo fotográfico · FLUX.1',  type:'image' },
+  dalle3:  { label:'DALL-E 3',             icon:'◈',  tag:'bdg-p',  desc:'OpenAI · Alta qualidade',        type:'image' },
+  midj:    { label:'Midjourney v6',         icon:'◎',  tag:'bdg-b',  desc:'Artístico · Cinematic',          type:'image' },
+  sdxl:    { label:'Stable Diffusion XL',  icon:'⊛',  tag:'bdg-gr', desc:'Open source · Rápido',           type:'image' },
+  ideogram: { label:'Ideogram 2.0',        icon:'Aa', tag:'bdg-a',  desc:'Tipografia · Text in image',     type:'image' },
+  runway:  { label:'Runway Gen-3 Alpha',   icon:'▷',  tag:'bdg-k',  desc:'Video · 5–10 segundos',          type:'video' },
+  sora:    { label:'Sora (OpenAI)',         icon:'◉',  tag:'bdg-r',  desc:'Video · HD · 20 segundos',       type:'video' },
+};
+
+var STYLE_PRESETS = [
+  { id:'photographic', label:'Fotográfico',   cols:'#00D4B0,#0a8a78' },
+  { id:'cinematic',    label:'Cinematic',     cols:'#F5A623,#8B4A00' },
+  { id:'digital_art',  label:'Digital Art',  cols:'#9B6BF2,#4E1BA8' },
+  { id:'typography',   label:'Tipografia',   cols:'#EEF0F4,#3E4652' },
+  { id:'product',      label:'Produto',      cols:'#4E9CF5,#0A3A7A' },
+  { id:'sci_fi',       label:'Sci-Fi',       cols:'#28C87A,#0A3A1F' },
+  { id:'minimalist',   label:'Minimalista',  cols:'#7A8494,#2E343C' },
+  { id:'abstract',     label:'Abstrato',     cols:'#F04F5A,#7B0A12' },
+];
+
+var ASPECT_PRESETS = [
+  { id:'1:1',  label:'1:1',  w:1, h:1,  use:'Instagram Feed' },
+  { id:'16:9', label:'16:9', w:16,h:9,  use:'YouTube / Banner' },
+  { id:'4:5',  label:'4:5',  w:4, h:5,  use:'Instagram Portrait' },
+  { id:'9:16', label:'9:16', w:9, h:16, use:'Stories / TikTok' },
+  { id:'3:2',  label:'3:2',  w:3, h:2,  use:'Blog / LinkedIn' },
+  { id:'2:3',  label:'2:3',  w:2, h:3,  use:'Pinterest' },
+];
+
+function statusLabel(s) {
+  var m = { draft:'Rascunho', in_review:'Em revisão', approved:'Aprovado', published:'Publicado', rejected:'Rejeitado' };
+  return m[s] || s;
+}
+function statusBdg(s) {
+  var m = { draft:'bdg-gr', in_review:'bdg-a', approved:'bdg-g', published:'bdg-t', rejected:'bdg-r' };
+  return '<span class="bdg ' + (m[s]||'bdg-gr') + '">' + statusLabel(s) + '</span>';
+}
+
+function renderMktCriar(el) {
+  var tabHtml = '<div class="studio-tabs">'
+    + studioTabBtn('generate', 'Geração')
+    + studioTabBtn('review',   'Revisão & Aprovação <span class="studio-tab-cnt">' + STUDIO_ASSETS.filter(function(a){return a.status==='in_review';}).length + '</span>')
+    + studioTabBtn('library',  'Biblioteca <span class="studio-tab-cnt">' + STUDIO_ASSETS.length + '</span>')
+    + '</div>';
+
+  var bodyHtml;
+  if (studioTab === 'generate') {
+    bodyHtml = renderStudioGenerate();
+  } else if (studioTab === 'review') {
+    bodyHtml = renderStudioReview();
+  } else {
+    bodyHtml = renderStudioLibrary();
+  }
+
+  el.innerHTML = '<div class="sec-hd"><div><div class="sec-title">Creative Studio</div>'
+    + '<div class="sec-sub">Geração de imagem e vídeo com IA · Revisão · Aprovação</div></div>'
+    + '<div style="display:flex;gap:7px" id="studio-hd-actions"></div></div>'
+    + tabHtml
+    + bodyHtml;
+
+  updateStudioHeader();
+}
+
+function studioTabBtn(id, lbl) {
+  var on = studioTab === id;
+  return '<button class="studio-tab-btn' + (on ? ' on' : '') + '" onclick="studioTab=\'' + id + '\';renderMktCriar($(\'content\'))">' + lbl + '</button>';
+}
+
+function updateStudioHeader() {
+  var el = document.getElementById('studio-hd-actions');
+  if (!el) return;
+  if (studioTab === 'generate') {
+    el.innerHTML = '<button class="btn btn-ghost btn-sm" onclick="studioTab=\'library\';renderMktCriar($(\'content\'))">Ver biblioteca</button>'
+      + '<button class="btn btn-teal btn-sm" id="gen-btn" onclick="generateCopy()">Gerar com Claude</button>';
+  } else if (studioTab === 'review') {
+    el.innerHTML = '<button class="btn btn-ok btn-sm" onclick="approveAll()">Aprovar seleccionados</button>';
+  } else {
+    el.innerHTML = '<button class="btn btn-ghost btn-sm" onclick="studioViewMode=studioViewMode===\'grid\'?\'list\':\'grid\';renderMktCriar($(\'content\'))">Toggle view</button>'
+      + '<button class="btn btn-teal btn-sm" onclick="studioTab=\'generate\';renderMktCriar($(\'content\'))">+ Gerar assets</button>';
+  }
+}
+
+/* ─── GENERATE TAB ─── */
+function renderStudioGenerate() {
+  /* engine selector */
+  var enginesHtml = '<div class="studio-engines">';
+  Object.keys(ENGINE_META).forEach(function(k) {
+    var e = ENGINE_META[k];
+    var on = studioEngine === k;
+    enginesHtml += '<button class="engine-btn' + (on ? ' on' : '') + '" onclick="studioEngine=\'' + k + '\';renderMktCriar($(\'content\'))">'
+      + '<span class="engine-icon">' + e.icon + '</span>'
+      + '<div><div class="engine-name">' + e.label + '</div>'
+      + '<div class="engine-desc">' + e.desc + '</div></div>'
+      + '<span class="bdg ' + e.tag + ' engine-type-bdg">' + e.type + '</span>'
+      + '</button>';
+  });
+  enginesHtml += '</div>';
+
+  /* aspect ratios */
+  var aspectHtml = '<div class="aspect-row">';
+  ASPECT_PRESETS.forEach(function(a) {
+    var on = studioAspect === a.id;
+    var boxW = Math.round(26 * a.w / Math.max(a.w, a.h));
+    var boxH = Math.round(26 * a.h / Math.max(a.w, a.h));
+    aspectHtml += '<button class="aspect-btn' + (on ? ' on' : '') + '" onclick="studioAspect=\'' + a.id + '\';renderMktCriar($(\'content\'))" title="' + a.use + '">'
+      + '<div style="width:' + boxW + 'px;height:' + boxH + 'px;border:1.5px solid currentColor;border-radius:2px"></div>'
+      + '<span>' + a.label + '</span>'
+      + '</button>';
+  });
+  aspectHtml += '</div>';
+
+  /* style presets */
+  var styleHtml = '<div class="style-grid">';
+  STYLE_PRESETS.forEach(function(s) {
+    var on = studioStyle === s.id;
+    var cols = s.cols.split(',');
+    styleHtml += '<button class="style-btn' + (on ? ' on' : '') + '" onclick="studioStyle=\'' + s.id + '\';renderMktCriar($(\'content\'))">'
+      + '<div class="style-thumb" style="background:linear-gradient(135deg,' + cols[0] + ',' + cols[1] + ')"></div>'
+      + '<span>' + s.label + '</span></button>';
+  });
+  styleHtml += '</div>';
+
+  /* ai copy suggestion */
+  var copyHint = mktCreateData.generated
+    ? '<div class="studio-hint"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5.5,1 10,4 10,8 5.5,10.5 1,8 1,4"/><circle cx="5.5" cy="5.5" r="1.5"/></svg>Sugestão de prompt da IA activa — <button onclick="applyAiPrompt()" style="background:none;border:none;color:var(--teal);cursor:pointer;font-size:10px;font-weight:600;padding:0">Aplicar ao gerador →</button></div>'
+    : '';
+
+  /* main layout */
+  return '<div class="studio-layout">'
+    /* ── LEFT PANEL ── */
+    + '<div class="studio-left">'
+    + '<div class="studio-section-title">Motor de Geração</div>'
+    + enginesHtml
+    + '<div class="studio-section-title" style="margin-top:16px">Prompt</div>'
+    + copyHint
+    + '<div class="studio-prompt-wrap">'
+    + '<textarea id="studio-prompt" class="studio-textarea" placeholder="Descreve a imagem que queres gerar… quanto mais detalhe, melhor o resultado." oninput="studioPrompt=this.value">' + studioPrompt + '</textarea>'
+    + '<button class="studio-enhance-btn" onclick="enhancePrompt()" title="Melhorar prompt com Claude">'
+    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5.5,1 10,4 10,8 5.5,10.5 1,4"/><circle cx="5.5" cy="5.5" r="1.5"/></svg> Melhorar com IA</button>'
+    + '</div>'
+    + '<div class="studio-section-title" style="margin-top:14px">Prompt negativo</div>'
+    + '<textarea id="studio-neg-prompt" class="studio-textarea" style="min-height:52px" placeholder="O que não queres na imagem… (ex: texto, blur, distorção)" oninput="studioNegPrompt=this.value">' + studioNegPrompt + '</textarea>'
+    + '<div class="studio-section-title" style="margin-top:14px">Aspect Ratio</div>'
+    + aspectHtml
+    + '<div class="studio-section-title" style="margin-top:14px">Estilo</div>'
+    + styleHtml
+    + '<div class="studio-section-title" style="margin-top:14px">Qualidade & Quantidade</div>'
+    + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
+    + '<div class="fld"><label>Qualidade</label>'
+    + '<select class="inp" style="font-size:11px" onchange="studioQuality=this.value">'
+    + ['draft','standard','high','ultra'].map(function(q){ return '<option value="' + q + '"' + (studioQuality===q?' selected':'') + '>' + {draft:'Draft (rápido)',standard:'Standard',high:'High Quality',ultra:'Ultra HD'}[q] + '</option>'; }).join('')
+    + '</select></div>'
+    + '<div class="fld"><label>Quantidade</label>'
+    + '<select class="inp" style="font-size:11px"><option>1 imagem</option><option>2 imagens</option><option selected>4 imagens</option></select></div>'
+    + '</div>'
+    + '<div class="studio-generate-area">'
+    + '<button class="studio-gen-btn" id="studio-gen-btn" onclick="simulateGenerate()">'
+    + '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7,1 13,4.5 13,9.5 7,13 1,9.5 1,4.5"/><circle cx="7" cy="7" r="2.5"/></svg>'
+    + ' Gerar com ' + ENGINE_META[studioEngine].label
+    + '</button>'
+    + '<div style="font-size:9px;color:var(--t3);text-align:center;margin-top:6px">~' + {flux:'8s',dalle3:'12s',midj:'25s',sdxl:'6s',ideogram:'10s',runway:'45s',sora:'90s'}[studioEngine] + ' por geração</div>'
+    + '</div>'
+    + '</div>'
+    /* ── RIGHT PANEL ── */
+    + '<div class="studio-right">'
+    + renderStudioCanvas()
+    + '</div>'
+    + '</div>';
+}
+
+function renderStudioCanvas() {
+  var recent = STUDIO_ASSETS.slice().reverse().slice(0, 8);
+
+  var html = '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
+    + '<div style="font-size:11px;font-weight:600;color:var(--t1)">Resultados recentes</div>'
+    + '<div style="display:flex;gap:5px">'
+    + '<button class="btn btn-ghost btn-xs" onclick="studioTab=\'library\';renderMktCriar($(\'content\'))">Ver tudo (' + STUDIO_ASSETS.length + ')</button>'
+    + '</div></div>'
+    + '<div class="studio-canvas" id="studio-canvas">';
+
+  if (studioGenerating) {
+    html += renderGeneratingPlaceholders();
+  } else {
+    var cols = [[], [], []];
+    recent.forEach(function(a, i) { cols[i % 3].push(a); });
+    html += '<div class="canvas-masonry">';
+    cols.forEach(function(col) {
+      html += '<div class="canvas-col">';
+      col.forEach(function(a) { html += renderAssetThumb(a, true); });
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderAssetThumb(a, inCanvas) {
+  var aspect = a.aspect || '1:1';
+  var parts = aspect.split(':');
+  var ratio = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
+  var bg = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+  var eng = ENGINE_META[a.engine] || {};
+
+  return '<div class="asset-thumb-wrap ' + (a.isVideo ? 'is-video' : '') + '" onclick="openAssetReview(' + a.id + ')">'
+    + '<div class="asset-thumb-img" style="padding-bottom:' + ratio + '%;background:' + bg + '">'
+    + '<div class="asset-thumb-inner">'
+    + (a.isVideo
+        ? '<div class="asset-video-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polygon points="8,6 16,10 8,14" fill="currentColor"/><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div>'
+        : '<div class="asset-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 26 22" fill="none" opacity=".3"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg></div>')
+    + '</div>'
+    + '<div class="asset-thumb-overlay">'
+    + '<div style="display:flex;gap:5px;flex-wrap:wrap">'
+    + statusBdg(a.status)
+    + '<span class="bdg ' + (eng.tag||'bdg-gr') + '" style="font-size:8px">' + (eng.label||a.engine) + '</span>'
+    + '</div>'
+    + '<div style="display:flex;gap:4px;margin-top:6px">'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();toggleLike(' + a.id + ')" title="Like">'
+    + (a.liked ? '<svg width="11" height="11" viewBox="0 0 11 11" fill="#F04F5A" stroke="#F04F5A" stroke-width="1"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>'
+    : '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>')
+    + '</button>'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();openAssetReview(' + a.id + ')" title="Rever">'
+    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4.5"/><path d="M5.5 3.5v2.5l2 1"/></svg>'
+    + '</button>'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'approved\')" title="Aprovar">'
+    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1.5 5.5l3 3 5-5"/></svg>'
+    + '</button>'
+    + '</div></div>'
+    + '</div>'
+    + (a.comments && a.comments.length ? '<div class="asset-comment-count"><svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h7v5H3.5L1 7.5V6H1V1z"/></svg>' + a.comments.length + '</div>' : '')
+    + '</div>';
+}
+
+function renderGeneratingPlaceholders() {
+  var html = '<div class="canvas-masonry"><div class="canvas-col">';
+  for (var i = 0; i < 4; i++) {
+    html += '<div class="asset-thumb-wrap">'
+      + '<div class="asset-thumb-img generating-pulse" style="padding-bottom:' + [100,133,75,100][i] + '%">'
+      + '<div class="asset-thumb-inner"><div class="generating-text">Gerando com ' + ENGINE_META[studioEngine].label + '…</div></div></div></div>';
+    if (i === 1) html += '</div><div class="canvas-col">';
+    if (i === 2) html += '</div><div class="canvas-col">';
+  }
+  return html + '</div></div>';
+}
+
+/* ─── REVIEW TAB ─── */
+function renderStudioReview() {
+  var inReview   = STUDIO_ASSETS.filter(function(a){ return a.status === 'in_review'; });
+  var drafts     = STUDIO_ASSETS.filter(function(a){ return a.status === 'draft'; });
+  var approved   = STUDIO_ASSETS.filter(function(a){ return a.status === 'approved'; });
+  var published  = STUDIO_ASSETS.filter(function(a){ return a.status === 'published'; });
+
+  /* if reviewing a single asset */
+  if (studioReviewAsset !== null) {
+    var a = STUDIO_ASSETS.filter(function(x){ return x.id === studioReviewAsset; })[0];
+    if (a) return renderAssetDetailReview(a);
+  }
+
+  var html = '<div class="review-board">';
+
+  var columns = [
+    { id:'draft',     label:'Rascunho',   color:'var(--t3)', assets: drafts },
+    { id:'in_review', label:'Em Revisão', color:'var(--amber)', assets: inReview },
+    { id:'approved',  label:'Aprovado',   color:'var(--green)', assets: approved },
+    { id:'published', label:'Publicado',  color:'var(--teal)',  assets: published },
+  ];
+
+  columns.forEach(function(col) {
+    html += '<div class="review-col">'
+      + '<div class="review-col-head" style="border-top-color:' + col.color + '">'
+      + '<span class="review-col-title" style="color:' + col.color + '">' + col.label + '</span>'
+      + '<span class="review-col-count">' + col.assets.length + '</span>'
+      + '</div>'
+      + '<div class="review-col-body">';
+
+    if (col.assets.length === 0) {
+      html += '<div style="padding:20px 12px;text-align:center;color:var(--t3);font-size:11px">Sem assets</div>';
+    }
+
+    col.assets.forEach(function(a) {
+      var bg = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+      var eng = ENGINE_META[a.engine] || {};
+      html += '<div class="review-card" onclick="studioReviewAsset=' + a.id + ';renderMktCriar($(\'content\'))">'
+        + '<div style="height:90px;background:' + bg + ';border-radius:var(--r1);margin-bottom:8px;position:relative;display:flex;align-items:center;justify-content:center">'
+        + (a.isVideo ? '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><polygon points="10,8 18,12 10,16" fill="var(--pink)"/><circle cx="12" cy="12" r="11" stroke="var(--pink)" stroke-width="1.5" fill="none"/></svg>'
+                     : '<svg width="24" height="24" viewBox="0 0 26 22" fill="none" opacity=".4"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/></svg>')
+        + (a.liked ? '<div style="position:absolute;top:5px;right:5px;color:var(--red);font-size:10px">♥</div>' : '')
+        + '</div>'
+        + '<div style="font-size:10px;color:var(--t2);line-height:1.4;margin-bottom:6px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">' + a.prompt + '</div>'
+        + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
+        + '<span class="bdg ' + (eng.tag||'bdg-gr') + '" style="font-size:8px">' + (eng.label||a.engine) + '</span>'
+        + '<span style="font-size:9px;color:var(--t3)">' + a.aspect + '</span>'
+        + '</div>'
+        + (a.comments.length > 0 ? '<div style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--t2);padding:5px 0;border-top:1px solid var(--b1)"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h8v6H3.5L1 9V7H1V1z"/></svg>' + a.comments.length + ' comentário(s)</div>' : '')
+        + '<div style="display:flex;gap:4px;margin-top:6px">'
+        + (col.id === 'in_review' ? '<button class="btn btn-ok btn-xs" style="flex:1;justify-content:center" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'approved\')">Aprovar</button><button class="btn btn-danger btn-xs" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'draft\')">Rejeitar</button>' : '')
+        + (col.id === 'draft' ? '<button class="btn btn-warn btn-xs" style="flex:1;justify-content:center" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'in_review\')">Enviar para revisão</button>' : '')
+        + (col.id === 'approved' ? '<button class="btn btn-teal btn-xs" style="flex:1;justify-content:center" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'published\')">Publicar</button>' : '')
+        + '</div></div>';
+    });
+
+    html += '</div></div>';
+  });
+
+  html += '</div>';
+  return html;
+}
+
+function renderAssetDetailReview(a) {
+  var bg  = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+  var eng = ENGINE_META[a.engine] || {};
+  var aspect = a.aspect || '1:1';
+  var parts = aspect.split(':');
+  var ratio = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
+
+  return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">'
+    + '<button class="btn btn-ghost btn-xs" onclick="studioReviewAsset=null;renderMktCriar($(\'content\'))">← Revisão</button>'
+    + '<div style="font-family:var(--fh);font-size:16px;font-weight:700;letter-spacing:.5px">Revisão de Asset</div>'
+    + '<div style="margin-left:auto;display:flex;gap:6px">'
+    + '<button class="btn btn-danger btn-sm" onclick="changeAssetStatus(' + a.id + ',\'draft\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Rejeitar</button>'
+    + '<button class="btn btn-warn btn-sm" onclick="changeAssetStatus(' + a.id + ',\'in_review\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Em revisão</button>'
+    + '<button class="btn btn-ok btn-sm" onclick="changeAssetStatus(' + a.id + ',\'approved\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Aprovar</button>'
+    + '<button class="btn btn-teal btn-sm" onclick="changeAssetStatus(' + a.id + ',\'published\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Publicar</button>'
+    + '</div></div>'
+    + '<div class="g2" style="align-items:start">'
+    /* Asset preview */
+    + '<div>'
+    + '<div style="background:' + bg + ';border-radius:var(--r3);overflow:hidden;position:relative;padding-bottom:' + ratio + '%">'
+    + '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">'
+    + (a.isVideo
+      ? '<div style="text-align:center"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><polygon points="19,15 35,24 19,33" fill="var(--pink)"/><circle cx="24" cy="24" r="22" stroke="var(--pink)" stroke-width="2" fill="none"/></svg><div style="font-size:11px;color:var(--pink);margin-top:8px">Video Preview</div></div>'
+      : '<svg width="48" height="48" viewBox="0 0 26 22" fill="none" opacity=".25"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg>')
+    + '</div></div>'
+    + '<div class="card" style="margin-top:12px">'
+    + '<div class="card-title">Metadata</div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Motor</span><span class="bdg ' + eng.tag + '">' + eng.label + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Tipo</span><span style="font-size:11px;color:var(--t1)">' + (a.isVideo ? 'Vídeo' : 'Imagem') + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Aspect Ratio</span><span style="font-size:11px;color:var(--t1)">' + a.aspect + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estilo</span><span style="font-size:11px;color:var(--t1)">' + (STYLE_PRESETS.filter(function(s){return s.id===a.style;})[0]||{label:a.style}).label + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estado</span>' + statusBdg(a.status) + '</div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Criado</span><span style="font-size:11px;color:var(--t1)">' + a.created + '</span></div>'
+    + '<div style="padding:8px 0"><span style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px">Prompt</span>'
+    + '<div style="font-size:11px;color:var(--t2);line-height:1.6;margin-top:4px">' + a.prompt + '</div></div>'
+    + '<div style="display:flex;gap:6px;margin-top:10px">'
+    + '<button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center">Descarregar</button>'
+    + '<button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center">Usar em campanha</button>'
+    + '</div></div></div>'
+    /* Comments panel */
+    + '<div>'
+    + '<div class="card">'
+    + '<div class="card-title">Comentários &amp; Feedback (' + a.comments.length + ')</div>'
+    + (a.comments.length === 0
+      ? '<div style="padding:16px 0;text-align:center;color:var(--t3);font-size:12px">Sem comentários ainda</div>'
+      : a.comments.map(function(cm) {
+          var initials = cm.user.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
+          return '<div class="comment-item">'
+            + '<div class="comment-av">' + initials + '</div>'
+            + '<div style="flex:1"><div style="display:flex;align-items:baseline;gap:7px;margin-bottom:3px">'
+            + '<span style="font-size:12px;font-weight:500;color:var(--t1)">' + cm.user + '</span>'
+            + '<span style="font-size:10px;color:var(--t3)">' + cm.ts + '</span></div>'
+            + '<div style="font-size:12px;color:var(--t2);line-height:1.5">' + cm.text + '</div>'
+            + '</div></div>';
+        }).join(''))
+    + '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--b1)">'
+    + '<textarea class="inp" id="new-comment" rows="2" placeholder="Adicionar comentário, feedback ou anotação…" style="margin-bottom:8px"></textarea>'
+    + '<div style="display:flex;gap:6px">'
+    + '<button class="btn btn-teal btn-sm" onclick="addComment(' + a.id + ')">Comentar</button>'
+    + '<button class="btn btn-ghost btn-sm">Adicionar anotação</button>'
+    + '</div></div></div>'
+    /* Versions / history */
+    + '<div class="card" style="margin-top:12px"><div class="card-title">Variações &amp; Histórico</div>'
+    + '<div style="display:flex;flex-direction:column;gap:6px">'
+    + ['Variação A — prompt original','Variação B — estilo ajustado','Variação C — aspect ratio diferente'].map(function(v, i) {
+        return '<div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--s3);border-radius:var(--r1)">'
+          + '<div style="width:36px;height:36px;border-radius:var(--r1);background:' + ASSET_GRADIENTS[(a.idx+i+1)%ASSET_GRADIENTS.length] + ';flex-shrink:0"></div>'
+          + '<div style="flex:1"><div style="font-size:11px;color:var(--t1)">' + v + '</div><div style="font-size:10px;color:var(--t3)">' + a.engine + ' · ' + a.aspect + '</div></div>'
+          + (i === 0 ? '<span class="bdg bdg-t" style="font-size:8px">Actual</span>' : '<button class="btn btn-ghost btn-xs">Restaurar</button>')
+          + '</div>';
+      }).join('')
+    + '</div></div></div></div>';
+}
+
+/* ─── LIBRARY TAB ─── */
+function renderStudioLibrary() {
+  var filterStatus = 'all';
+  var byStatus = {};
+  STUDIO_ASSETS.forEach(function(a){ if (!byStatus[a.status]) byStatus[a.status] = 0; byStatus[a.status]++; });
+
+  var html = '<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap">'
+    + '<div class="tab-bar" style="margin-bottom:0">'
+    + ['all','draft','in_review','approved','published'].map(function(s){
+        var cnt = s === 'all' ? STUDIO_ASSETS.length : (byStatus[s]||0);
+        return '<button class="tab-btn' + (s==='all'?' on':'') + '" onclick="filterLibrary(\'' + s + '\')">' + {all:'Todos',draft:'Rascunho',in_review:'Em revisão',approved:'Aprovados',published:'Publicados'}[s] + (cnt > 0 ? ' (' + cnt + ')' : '') + '</button>';
+      }).join('')
+    + '</div>'
+    + '<div style="margin-left:auto;display:flex;gap:6px">'
+    + '<select class="inp" style="width:130px;font-size:11px"><option>Todos os motores</option>' + Object.keys(ENGINE_META).map(function(k){return '<option>' + ENGINE_META[k].label + '</option>';}).join('') + '</select>'
+    + '<select class="inp" style="width:120px;font-size:11px"><option>Todos os tipos</option><option>Imagens</option><option>Vídeos</option></select>'
+    + '</div></div>';
+
+  /* masonry grid */
+  if (studioViewMode === 'grid') {
+    var cols = [[], [], [], []];
+    STUDIO_ASSETS.forEach(function(a, i){ cols[i % 4].push(a); });
+    html += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">';
+    cols.forEach(function(col){
+      html += '<div style="display:flex;flex-direction:column;gap:8px">';
+      col.forEach(function(a){ html += renderAssetThumb(a, false); });
+      html += '</div>';
+    });
+    html += '</div>';
+  } else {
+    /* list view */
+    html += '<div class="card"><div class="tbl-wrap"><table><thead><tr><th>Preview</th><th>Motor</th><th>Prompt</th><th>Aspecto</th><th>Estado</th><th>Data</th><th>Comentários</th><th></th></tr></thead><tbody>';
+    STUDIO_ASSETS.forEach(function(a) {
+      var eng = ENGINE_META[a.engine] || {};
+      var bg = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+      html += '<tr onclick="openAssetReview(' + a.id + ')" style="cursor:pointer">'
+        + '<td><div style="width:48px;height:36px;border-radius:4px;background:' + bg + '"></div></td>'
+        + '<td><span class="bdg ' + (eng.tag||'bdg-gr') + '" style="font-size:8px">' + (eng.label||a.engine) + '</span></td>'
+        + '<td style="max-width:200px"><div style="font-size:11px;color:var(--t2);overflow:hidden;white-space:nowrap;text-overflow:ellipsis">' + a.prompt + '</div></td>'
+        + '<td style="font-size:11px">' + a.aspect + '</td>'
+        + '<td>' + statusBdg(a.status) + '</td>'
+        + '<td style="font-size:11px;color:var(--t2)">' + a.created + '</td>'
+        + '<td style="font-size:11px">' + (a.comments.length || '—') + '</td>'
+        + '<td><button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();studioReviewAsset=' + a.id + ';studioTab=\'review\';renderMktCriar($(\'content\'))">Rever</button></td>'
+        + '</tr>';
+    });
+    html += '</tbody></table></div></div>';
+  }
+  return html;
+}
+
+/* ─── ACTIONS ─── */
+function simulateGenerate() {
+  var btn = document.getElementById('studio-gen-btn');
+  if (!btn || studioGenerating) return;
+  studioGenerating = true;
+  var canvas = document.getElementById('studio-canvas');
+  if (canvas) canvas.innerHTML = renderGeneratingPlaceholders();
+  btn.disabled = true;
+  btn.innerHTML = '<span class="pulsing">Gerando com ' + ENGINE_META[studioEngine].label + '…</span>';
+
+  var duration = { flux:2000, dalle3:2500, midj:3000, sdxl:1800, ideogram:2200, runway:4000, sora:5000 }[studioEngine] || 2500;
+
+  setTimeout(function() {
+    var newIds = [STUDIO_ASSETS.length+1, STUDIO_ASSETS.length+2, STUDIO_ASSETS.length+3, STUDIO_ASSETS.length+4];
+    var stylePreset = STYLE_PRESETS.filter(function(s){return s.id===studioStyle;})[0] || STYLE_PRESETS[0];
+    var prompt = studioPrompt || ('STRATA Revenue OS — ' + stylePreset.label + ' · Professional B2B');
+    newIds.slice(0, studioEngine === 'runway' || studioEngine === 'sora' ? 1 : 4).forEach(function(newId, i) {
+      STUDIO_ASSETS.push({
+        id:newId, engine:studioEngine, prompt:prompt, aspect:studioAspect, style:studioStyle,
+        status:'draft', comments:[], created:today, liked:false, idx:newId, isVideo:studioEngine==='runway'||studioEngine==='sora'
+      });
+    });
+    studioGenerating = false;
+    studioTab = 'review';
+    renderMktCriar(document.getElementById('content'));
+  }, duration);
+}
+
+function toggleLike(id) {
+  var a = STUDIO_ASSETS.filter(function(x){return x.id===id;})[0];
+  if (a) { a.liked = !a.liked; renderMktCriar(document.getElementById('content')); }
+}
+
+function openAssetReview(id) {
+  studioReviewAsset = id;
+  studioTab = 'review';
+  renderMktCriar(document.getElementById('content'));
+}
+
+function changeAssetStatus(id, newStatus) {
+  var a = STUDIO_ASSETS.filter(function(x){return x.id===id;})[0];
+  if (a) { a.status = newStatus; renderMktCriar(document.getElementById('content')); }
+}
+
+function addComment(id) {
+  var a = STUDIO_ASSETS.filter(function(x){return x.id===id;})[0];
+  var inp = document.getElementById('new-comment');
+  if (!a || !inp || !inp.value.trim()) return;
+  a.comments.push({ user:'Ana Costa', text:inp.value.trim(), ts:'Agora' });
+  renderMktCriar(document.getElementById('content'));
+}
+
+function approveAll() {
+  STUDIO_ASSETS.filter(function(a){return a.status==='in_review';}).forEach(function(a){a.status='approved';});
+  renderMktCriar(document.getElementById('content'));
+}
+
+function filterLibrary(status) {
+  renderMktCriar(document.getElementById('content'));
+}
+
+function applyAiPrompt() {
+  if (mktCreateData.generated) {
+    studioPrompt = mktCreateData.generated.headline + '. ' + (mktCreateData.generated.hook || '') + ' Professional B2B marketing visual.';
+  }
+  studioTab = 'generate';
+  renderMktCriar(document.getElementById('content'));
+}
+
+async function enhancePrompt() {
+  var inp = document.getElementById('studio-prompt');
+  if (!inp || !inp.value.trim()) return;
+  var btn = document.querySelector('.studio-enhance-btn');
+  if (btn) { btn.disabled = true; btn.innerHTML = '<span class="pulsing">Melhorando…</span>'; }
+
+  try {
+    var res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-6', max_tokens:300,
+        messages:[{ role:'user', content:'You are an expert AI image prompt engineer. Improve this prompt for ' + ENGINE_META[studioEngine].label + '. Make it more detailed, vivid, and optimized for the ' + studioStyle + ' style. Return ONLY the improved prompt, nothing else.\n\nOriginal: ' + inp.value }]
+      })
+    });
+    var data = await res.json();
+    var improved = ((data.content||[])[0]||{}).text || '';
+    if (improved) { inp.value = improved; studioPrompt = improved; }
+  } catch(e) {
+    console.error('Enhance prompt error:', e);
+  }
+
+  if (btn) { btn.disabled = false; btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5.5,1 10,4 10,8 5.5,10.5 1,4"/><circle cx="5.5" cy="5.5" r="1.5"/></svg> Melhorar com IA'; }
+}
+function renderMktAnalytics(el) {
+  /* ── helpers ── */
+  function tabBtn(id, lbl) {
+    var on = (analyticsTab === id);
+    return '<button class="tab-btn' + (on ? ' on' : '') + '" onclick="analyticsTab=\'' + id + '\';renderMktAnalytics($(\'content\'))">' + lbl + '</button>';
+  }
+
+  var totalLeadsAll = CAMPAIGNS.reduce(function(s,x){return s+x.leads;},0);
+  var won           = CONTACTS.filter(function(x){return x.stage==='ganho';}).length;
+  var cplData       = [32, 29, 27, 24, 22, 20, 19, 21, 18.5, 17, 16, 15.8];
+
+  /* ── channel data ── */
+  var channelRows = [
+    { canal:'Google Ads',  leads:98, cpl:15.9, spend:1556, conv:4.4, cor:'#4E9CF5' },
+    { canal:'LinkedIn',    leads:74, cpl:23.6, spend:1748, conv:3.1, cor:'#00D4B0' },
+    { canal:'Instagram',   leads:52, cpl:20.2, spend:1050, conv:2.8, cor:'#9B6BF2' },
+    { canal:'Email',       leads:18, cpl:5.2,  spend:93,   conv:21.4,cor:'#F5A623' },
+    { canal:'Referências', leads:12, cpl:0,    spend:0,    conv:0,   cor:'#28C87A' },
+  ];
+
+  /* ── YoY data per month ── */
+  var yoyData = {
+    labels: MESES,
+    leads26: [14, 17, 21, 26, 30, 34, 37, 42, 48, 56, 64, 71],
+    leads25: [9, 11, 14, 17, 19, 22, 26, 31, 35, 41, 48, 54],
+    cpl26:   [32, 29, 27, 24, 22, 20, 19, 21, 18.5, 17, 16, 15.8],
+    cpl25:   [44, 42, 39, 37, 35, 33, 31, 30, 29, 28, 27, 26],
+    spend26: [448, 493, 567, 624, 660, 680, 703, 882, 888, 952, 1024, 1121],
+    spend25: [396, 462, 546, 629, 665, 726, 806, 930, 1015, 1148, 1296, 1404],
+  };
+
+  /* ── header ── */
+  var html = '<div class="sec-hd"><div><div class="sec-title">Analytics &amp; Funil</div>'
+    + '<div class="sec-sub">YTD 2026 · Funil de conversão completo</div></div>'
+    + '<div class="tab-bar" style="margin-bottom:0">'
+    + tabBtn('funil',  'Funil')
+    + tabBtn('canais', 'Canais')
+    + tabBtn('yoy',    'YoY 2025 vs 2026')
+    + '</div></div>';
+
+  /* ════════════════════ TAB: FUNIL ════════════════════ */
+  if (analyticsTab === 'funil') {
+    html += '<div class="g2 mb16">';
+
+    /* Funnel bars */
+    html += '<div class="card"><div class="card-title">Funil de Conversão — YTD 2026</div>';
+    FUNNEL.forEach(function(f, i) {
+      var width = 100 - i * 8;
+      html += '<div class="funnel-bar">'
+        + '<div style="width:88px;font-size:11px;color:var(--t2);text-align:right;flex-shrink:0">' + f.stage + '</div>'
+        + '<div class="funnel-track" style="max-width:' + width + '%">'
+        + '<div class="funnel-fill" style="width:' + f.pct + '%;background:' + f.cor + '20;color:' + f.cor + ';padding-left:8px">' + f.n + '</div>'
+        + '</div>'
+        + '<div style="font-size:10px;color:var(--t3);flex-shrink:0;width:36px;padding-left:6px">' + f.pct + '%</div>'
+        + '</div>';
+    });
+    html += '<div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--b1);display:flex;gap:20px">'
+      + '<div><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Lead → Win rate</div><div style="font-family:var(--fh);font-size:20px;font-weight:800;color:var(--green)">'
+      + (totalLeadsAll > 0 ? (won/totalLeadsAll*100).toFixed(1) : '0') + '%</div></div>'
+      + '<div><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Ciclo médio</div><div style="font-family:var(--fh);font-size:20px;font-weight:800">24 dias</div></div>'
+      + '<div><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Deals ganhos</div><div style="font-family:var(--fh);font-size:20px;font-weight:800;color:var(--teal)">' + won + '</div></div>'
+      + '<div><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Pipeline total</div><div style="font-family:var(--fh);font-size:20px;font-weight:800">€'
+      + CONTACTS.filter(function(x){return x.stage!=='ganho'&&x.stage!=='perdido';}).reduce(function(s,x){return s+x.valor;},0).toLocaleString('pt-PT')
+      + '</div></div>'
+      + '</div></div>';
+
+    /* CPL trend */
+    html += '<div class="card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
+      + '<div class="card-title" style="margin-bottom:0">Evolução CPL Médio (€)</div>'
+      + '<div style="display:flex;align-items:center;gap:6px"><div style="width:10px;height:2px;background:#28C87A;border-radius:1px"></div><span style="font-size:10px;color:var(--t2)">2026</span></div>'
+      + '</div>'
+      + svgLineChart({ labels:MESES, height:160, showArea:true, minZero:true, series:[{ data:cplData, color:'#28C87A', label:'CPL Médio 2026' }] })
+      + '<div style="display:flex;gap:20px;margin-top:10px;padding-top:10px;border-top:1px solid var(--b1)">'
+      + '<div><div style="font-size:9px;color:var(--t3)">CPL Jan 2026</div><div style="font-family:var(--fh);font-size:16px;font-weight:700">€32</div></div>'
+      + '<div><div style="font-size:9px;color:var(--t3)">CPL Abr 2026</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--green)">€' + cplData[3].toFixed(1) + '</div></div>'
+      + '<div><div style="font-size:9px;color:var(--t3)">Redução</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--green)">−25%</div></div>'
+      + '<div><div style="font-size:9px;color:var(--t3)">Meta Q2</div><div style="font-family:var(--fh);font-size:16px;font-weight:700">€15</div></div>'
+      + '</div></div>';
+
+    html += '</div>'; /* g2 */
+
+  /* ════════════════════ TAB: CANAIS ════════════════════ */
+  } else if (analyticsTab === 'canais') {
+
+    /* KPIs row */
+    var totalLeads  = channelRows.reduce(function(s,r){return s+r.leads;},0);
+    var totalSpend  = channelRows.reduce(function(s,r){return s+r.spend;},0);
+    var bestCPL     = channelRows.filter(function(r){return r.cpl>0;}).sort(function(a,b){return a.cpl-b.cpl;})[0];
+    var bestConv    = channelRows.filter(function(r){return r.conv>0;}).sort(function(a,b){return b.conv-a.conv;})[0];
+
+    html += '<div class="g4 mb16">'
+      + kpi('Total Leads', String(totalLeads), 'Todos os canais YTD', 'neu', '#00D4B0')
+      + kpi('Investimento Total', fmtK(totalSpend), 'Canais pagos', 'neu')
+      + kpi('Melhor CPL', '€' + bestCPL.cpl, bestCPL.canal, 'up', '#28C87A')
+      + kpi('Melhor Conv. Rate', bestConv.conv.toFixed(1) + '%', bestConv.canal, 'up', '#00D4B0')
+      + '</div>';
+
+    /* Leads by channel bar chart */
+    html += '<div class="g2 mb16">';
+    html += '<div class="card"><div class="card-title">Leads por Canal</div>'
+      + svgBarChart({ height:160, data: channelRows.map(function(r){ return { label:r.canal.split(' ')[0], value:r.leads, color:r.cor, active:true }; }) })
+      + '<div style="margin-top:12px">';
+    channelRows.forEach(function(r) {
+      var pct = totalLeads > 0 ? Math.round(r.leads / totalLeads * 100) : 0;
+      html += '<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--b1)">'
+        + '<div style="width:8px;height:8px;border-radius:2px;background:' + r.cor + ';flex-shrink:0"></div>'
+        + '<span style="font-size:12px;color:var(--t1);flex:1">' + r.canal + '</span>'
+        + '<div style="width:100px"><div class="prog"><div class="prog-fill" style="width:' + pct + '%;background:' + r.cor + '"></div></div></div>'
+        + '<span style="font-size:11px;font-weight:600;color:var(--t2);min-width:28px;text-align:right">' + pct + '%</span>'
+        + '<span style="font-family:var(--fh);font-size:13px;font-weight:700;color:var(--t1);min-width:24px;text-align:right">' + r.leads + '</span>'
+        + '</div>';
+    });
+    html += '</div></div>';
+
+    /* CPL comparison chart */
+    html += '<div class="card"><div class="card-title">CPL por Canal (€)</div>'
+      + svgBarChart({ height:160, data: channelRows.filter(function(r){return r.cpl>0;}).map(function(r){ return { label:r.canal.split(' ')[0], value:r.cpl, color:r.cor, active:true }; }) })
+      + '<div style="margin-top:12px">';
+    channelRows.filter(function(r){return r.cpl>0;}).forEach(function(r) {
+      html += '<div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--b1)">'
+        + '<div style="width:8px;height:8px;border-radius:2px;background:' + r.cor + ';flex-shrink:0"></div>'
+        + '<span style="font-size:12px;color:var(--t1);flex:1">' + r.canal + '</span>'
+        + '<div style="width:80px"><div class="prog"><div class="prog-fill" style="width:' + Math.round(r.cpl/40*100) + '%;background:' + r.cor + '"></div></div></div>'
+        + '<span style="font-family:var(--fh);font-size:13px;font-weight:700;color:' + r.cor + ';min-width:40px;text-align:right">€' + r.cpl + '</span>'
+        + '</div>';
+    });
+    html += '</div></div>';
+    html += '</div>'; /* g2 */
+
+    /* Full channel table */
+    html += '<div class="card"><div class="card-title">Tabela Detalhada por Canal</div>'
+      + '<div class="tbl-wrap"><table>'
+      + '<thead><tr><th>Canal</th><th>Leads</th><th>Quota</th><th>CPL</th><th>Investimento</th><th>Conv. Rate</th><th>CAC est.</th><th>Score eficiência</th></tr></thead>'
+      + '<tbody>';
+    channelRows.forEach(function(r) {
+      var quota = totalLeads > 0 ? (r.leads / totalLeads * 100).toFixed(0) : 0;
+      var cac = r.cpl > 0 ? (r.cpl / (r.conv / 100)).toFixed(0) : '—';
+      var efficiency = r.spend > 0 ? (r.leads / r.spend * 100).toFixed(1) : '∞';
+      var effNum = r.spend > 0 ? r.leads / r.spend * 100 : 99;
+      var maxEff = 12; /* normalise bar */
+      html += '<tr>'
+        + '<td><div style="display:flex;align-items:center;gap:7px"><div style="width:8px;height:8px;border-radius:2px;background:' + r.cor + '"></div><span class="hi">' + r.canal + '</span></div></td>'
+        + '<td class="hi">' + r.leads + '</td>'
+        + '<td><span class="bdg bdg-gr">' + quota + '%</span></td>'
+        + '<td>' + (r.cpl > 0 ? '<span style="color:var(--green);font-weight:600">€' + r.cpl + '</span>' : '<span style="color:var(--teal)">Orgânico</span>') + '</td>'
+        + '<td>' + (r.spend > 0 ? fmtK(r.spend) : '—') + '</td>'
+        + '<td class="hi">' + (r.conv > 0 ? r.conv.toFixed(1) + '%' : '—') + '</td>'
+        + '<td>' + (typeof cac === 'string' ? cac : '€' + cac) + '</td>'
+        + '<td><div style="display:flex;align-items:center;gap:7px"><div class="prog" style="width:70px;height:5px"><div class="prog-fill" style="width:' + Math.min(100, effNum/maxEff*100).toFixed(0) + '%;background:' + r.cor + '"></div></div><span style="font-size:10px;color:' + r.cor + ';font-weight:600">' + efficiency + '</span></div></td>'
+        + '</tr>';
+    });
+    html += '</tbody></table></div></div>';
+
+  /* ════════════════════ TAB: YoY ════════════════════ */
+  } else if (analyticsTab === 'yoy') {
+
+    /* YoY KPIs */
+    var leads26sum  = yoyData.leads26.slice(0,4).reduce(function(s,v){return s+v;},0);
+    var leads25sum  = yoyData.leads25.slice(0,4).reduce(function(s,v){return s+v;},0);
+    var spend26sum  = yoyData.spend26.slice(0,4).reduce(function(s,v){return s+v;},0);
+    var spend25sum  = yoyData.spend25.slice(0,4).reduce(function(s,v){return s+v;},0);
+    var cpl26avg    = spend26sum / leads26sum;
+    var cpl25avg    = spend25sum / leads25sum;
+    var leadsGrowth = leads25sum > 0 ? (leads26sum - leads25sum) / leads25sum : 0;
+    var cplImprove  = cpl25avg  > 0 ? (cpl25avg  - cpl26avg)  / cpl25avg  : 0;
+
+    html += '<div class="g4 mb16">'
+      + kpi('Leads YTD 2026', String(leads26sum), '+' + fmtPct(leadsGrowth) + ' vs 2025', 'up', '#00D4B0')
+      + kpi('Leads YTD 2025', String(leads25sum), 'Período equivalente', 'neu', '#00D4B040')
+      + kpi('CPL Médio 2026', '€' + cpl26avg.toFixed(1), '−' + fmtPct(cplImprove) + ' vs 2025', 'up', '#28C87A')
+      + kpi('Investimento 2026', fmtK(spend26sum), fmtK(spend26sum - spend25sum) + ' vs 2025', spend26sum > spend25sum ? 'down' : 'up')
+      + '</div>';
+
+    /* Leads YoY chart */
+    html += '<div class="g2 mb16">';
+    html += '<div class="card">'
+      + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
+      + '<div class="card-title" style="margin-bottom:0">Leads Mensais — 2025 vs 2026</div>'
+      + '<div style="display:flex;gap:12px">'
+      + '<div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t2)"><div style="width:12px;height:2px;background:#00D4B0;border-radius:1px"></div>2026</div>'
+      + '<div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t2)"><div style="width:12px;height:2px;background:#00D4B0;opacity:.4;border-radius:1px;border:1px dashed #00D4B0"></div>2025</div>'
+      + '</div></div>'
+      + svgLineChart({ labels:MESES, height:160, showArea:true, minZero:true, series:[
+          { data:yoyData.leads26, color:'#00D4B0', label:'Leads 2026' },
+          { data:yoyData.leads25, color:'#00D4B0', label:'Leads 2025', dashed:true },
+        ]})
+      + '<div style="display:flex;gap:16px;margin-top:10px;padding-top:10px;border-top:1px solid var(--b1)">'
+      + '<div><div style="font-size:9px;color:var(--t3)">Total 2026 YTD</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--teal)">' + leads26sum + '</div></div>'
+      + '<div><div style="font-size:9px;color:var(--t3)">Total 2025 YTD</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--t2)">' + leads25sum + '</div></div>'
+      + '<div><div style="font-size:9px;color:var(--t3)">Crescimento YoY</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--green)">+' + fmtPct(leadsGrowth) + '</div></div>'
+      + '</div></div>';
+
+    /* CPL YoY chart */
+    html += '<div class="card">'
+      + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
+      + '<div class="card-title" style="margin-bottom:0">CPL Médio — 2025 vs 2026 (€)</div>'
+      + '<div style="display:flex;gap:12px">'
+      + '<div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t2)"><div style="width:12px;height:2px;background:#28C87A;border-radius:1px"></div>2026</div>'
+      + '<div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t2)"><div style="width:12px;height:2px;background:#F5A623;opacity:.6;border-radius:1px;border:1px dashed #F5A623"></div>2025</div>'
+      + '</div></div>'
+      + svgLineChart({ labels:MESES, height:160, showArea:false, minZero:true, series:[
+          { data:yoyData.cpl26, color:'#28C87A', label:'CPL 2026' },
+          { data:yoyData.cpl25, color:'#F5A623', label:'CPL 2025', dashed:true },
+        ]})
+      + '<div style="display:flex;gap:16px;margin-top:10px;padding-top:10px;border-top:1px solid var(--b1)">'
+      + '<div><div style="font-size:9px;color:var(--t3)">CPL médio 2026</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--green)">€' + cpl26avg.toFixed(1) + '</div></div>'
+      + '<div><div style="font-size:9px;color:var(--t3)">CPL médio 2025</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--amber)">€' + cpl25avg.toFixed(1) + '</div></div>'
+      + '<div><div style="font-size:9px;color:var(--t3)">Melhoria</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--green)">−' + fmtPct(cplImprove) + '</div></div>'
+      + '</div></div>';
+
+    html += '</div>'; /* g2 */
+
+    /* Month-by-month YoY table */
+    html += '<div class="card"><div class="card-title">Comparação Mês a Mês — 2025 vs 2026</div>'
+      + '<div class="tbl-wrap"><table>'
+      + '<thead><tr><th>Mês</th><th>Leads 2026</th><th>Leads 2025</th><th>Δ Leads</th><th>CPL 2026</th><th>CPL 2025</th><th>Δ CPL</th><th>Invest. 2026</th><th>Invest. 2025</th></tr></thead>'
+      + '<tbody>';
+
+    MESES.forEach(function(mes, i) {
+      var l26 = yoyData.leads26[i], l25 = yoyData.leads25[i];
+      var c26 = yoyData.cpl26[i],   c25 = yoyData.cpl25[i];
+      var s26 = yoyData.spend26[i], s25 = yoyData.spend25[i];
+      var dL = l25 > 0 ? ((l26 - l25) / l25 * 100).toFixed(0) : '—';
+      var dC = c25 > 0 ? ((c26 - c25) / c25 * 100).toFixed(0) : '—';
+      var isCur = i === 3; /* Abril */
+      html += '<tr' + (isCur ? ' style="background:var(--s3)"' : '') + '>'
+        + '<td class="hi">' + mes + (isCur ? ' <span class="bdg bdg-t" style="margin-left:4px">Actual</span>' : '') + '</td>'
+        + '<td style="color:var(--teal);font-weight:600">' + l26 + '</td>'
+        + '<td style="color:var(--t2)">' + l25 + '</td>'
+        + '<td style="color:' + (Number(dL) >= 0 ? 'var(--green)' : 'var(--red)') + ';font-weight:600">' + (Number(dL) >= 0 ? '+' : '') + dL + '%</td>'
+        + '<td style="color:var(--green);font-weight:600">€' + c26 + '</td>'
+        + '<td style="color:var(--t2)">€' + c25 + '</td>'
+        + '<td style="color:' + (Number(dC) <= 0 ? 'var(--green)' : 'var(--red)') + ';font-weight:600">' + (Number(dC) <= 0 ? '' : '+') + dC + '%</td>'
+        + '<td style="font-size:11px">' + fmtK(s26) + '</td>'
+        + '<td style="font-size:11px;color:var(--t2)">' + fmtK(s25) + '</td>'
+        + '</tr>';
+    });
+
+    html += '</tbody></table></div></div>';
+  }
+
+  el.innerHTML = html;
+}
+
+
+/* ═══════════════════════════════════════════════
+   CRM — PIPELINE
+   ═══════════════════════════════════════════════ */
+function renderCrmPipeline(el) {
+  var stages = [
+    { id:'lead',       label:'Lead',        cor:'#7A8494', contacts: CONTACTS.filter(function(x){return x.stage==='lead';}) },
+    { id:'qualificado',label:'Qualificado', cor:'#4E9CF5', contacts: CONTACTS.filter(function(x){return x.stage==='qualificado';}) },
+    { id:'proposta',   label:'Proposta',    cor:'#9B6BF2', contacts: CONTACTS.filter(function(x){return x.stage==='proposta';}) },
+    { id:'negociacao', label:'Negociação',  cor:'#F5A623', contacts: CONTACTS.filter(function(x){return x.stage==='negociacao';}) },
+    { id:'ganho',      label:'Ganho',       cor:'#28C87A', contacts: CONTACTS.filter(function(x){return x.stage==='ganho';}) },
+  ];
+
+  var totalPipeline = CONTACTS.filter(function(x){return x.stage !== 'ganho' && x.stage !== 'perdido';}).reduce(function(s,x){return s+x.valor;},0);
+
+  var html = '<div class="sec-hd"><div><div class="sec-title">Pipeline de Vendas</div><div class="sec-sub">€' + fmtN(totalPipeline) + ' em pipeline · 8 deals activos</div></div>'
+    + '<div style="display:flex;gap:7px">'
+    + '<button class="btn btn-ghost btn-sm" onclick="goto(\'crm-contactos\')">Ver contactos</button>'
+    + '<button class="btn btn-blue btn-sm" onclick="goto(\'crm-propostas\')">Propostas</button>'
+    + '<button class="btn btn-teal btn-sm">+ Novo Deal</button>'
+    + '</div></div>'
+    + '<div class="pipeline">';
+
+  stages.forEach(function(s) {
+    var stageVal = s.contacts.reduce(function(sum,x){return sum+x.valor;},0);
+    html += '<div class="pipe-col">'
+      + '<div class="pipe-head" style="border-top:2px solid ' + s.cor + '">'
+      + '<div><div class="pipe-name" style="color:' + s.cor + '">' + s.label + '</div>'
+      + '<div style="font-size:10px;color:var(--t3);margin-top:1px">' + (stageVal > 0 ? fmtK(stageVal) : '') + '</div></div>'
+      + '<span class="pipe-count">' + s.contacts.length + '</span>'
+      + '</div>'
+      + '<div class="pipe-body">';
+
+    if (s.contacts.length === 0) {
+      html += '<div style="padding:20px;text-align:center;color:var(--t3);font-size:11px">Sem deals nesta fase</div>';
+    }
+    s.contacts.forEach(function(contact) {
+      var daysAgo = Math.floor(Math.random() * 14) + 1;
+      html += '<div class="deal-card ' + (contact.score >= 85 ? 'hot' : '') + '" onclick="selectedContactId=' + contact.id + ';goto(\'crm-ficha\')">'
+        + '<div class="deal-age">' + daysAgo + 'd</div>'
+        + '<div class="deal-co">' + contact.empresa + '</div>'
+        + '<div class="deal-val" style="color:' + s.cor + '">' + fmtK(contact.valor) + '</div>'
+        + '<div class="deal-meta">' + contact.nome + ' ' + contact.apelido + ' · ' + contact.cargo + '</div>'
+        + '<div style="display:flex;align-items:center;justify-content:space-between;margin-top:7px">'
+        + '<div style="font-size:9px;color:var(--t3)">' + contact.origem + '</div>'
+        + '<div style="display:flex;align-items:center;gap:4px">'
+        + '<div style="width:' + (contact.score > 70 ? 22 : 16) + 'px;height:4px;border-radius:2px;background:' + (contact.score >= 85 ? 'var(--teal)' : contact.score >= 65 ? 'var(--amber)' : 'var(--red)') + '"></div>'
+        + '<span style="font-size:9px;color:var(--t3)">' + contact.score + '</span></div>'
+        + '</div></div>';
+    });
+
+    html += '</div></div>'; /* pipe-body + pipe-col */
+  });
+
+  html += '</div>'; /* pipeline */
+
+  /* Mini funnel summary */
+  html += '<div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">';
+  stages.forEach(function(s) {
+    var val = s.contacts.reduce(function(sm,x){return sm+x.valor;},0);
+    html += '<div style="flex:1;min-width:120px;background:var(--s2);border:1px solid var(--b1);border-radius:var(--r2);padding:12px;border-top:2px solid ' + s.cor + '">'
+      + '<div style="font-size:9px;font-weight:700;color:' + s.cor + ';text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">' + s.label + '</div>'
+      + '<div style="font-family:var(--fh);font-size:18px;font-weight:700">' + s.contacts.length + '</div>'
+      + (val > 0 ? '<div style="font-size:10px;color:var(--t3)">' + fmtK(val) + '</div>' : '')
+      + '</div>';
+  });
+  html += '</div>';
+
+  el.innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════════
+   CRM — CONTACTOS
+   ═══════════════════════════════════════════════ */
+function renderCrmContactos(el) {
+  var html = '<div class="sec-hd"><div><div class="sec-title">Contactos</div><div class="sec-sub">' + CONTACTS.length + ' contactos · Ordenados por score</div></div>'
+    + '<div style="display:flex;gap:7px">'
+    + '<input class="inp" style="width:220px" placeholder="Pesquisar nome, empresa, email…">'
+    + '<select class="inp" style="width:140px"><option>Todos os stages</option><option>Lead</option><option>Qualificado</option><option>Proposta</option><option>Ganho</option></select>'
+    + '<button class="btn btn-teal btn-sm">+ Novo Contacto</button>'
+    + '</div></div>';
+
+  /* Score bar header */
+  html += '<div class="card mb14">'
+    + '<div style="display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--b1);margin-bottom:10px">'
+    + '<div style="font-size:9px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:1px;flex:1">Score</div>'
+    + '<div style="font-size:9px;color:var(--t3);display:grid;grid-template-columns:3fr 2fr 2fr 1.5fr 1.5fr 1.5fr 80px;gap:12px;width:75%">'
+    + '<span>Contacto</span><span>Empresa</span><span>Cargo</span><span>Stage</span><span>Valor</span><span>Origem</span><span>Ação</span>'
+    + '</div></div>';
+
+  var sorted = CONTACTS.slice().sort(function(a,b){ return b.score - a.score; });
+  sorted.forEach(function(c) {
+    var scoreCol = c.score >= 85 ? 'var(--teal)' : c.score >= 65 ? 'var(--amber)' : 'var(--red)';
+    var initials = c.nome[0] + c.apelido[0];
+    html += '<div class="hrow" style="padding:9px 4px;cursor:pointer" onclick="selectedContactId=' + c.id + ';goto(\'crm-ficha\')">'
+      + '<div style="display:flex;align-items:center;gap:10px;width:25%">'
+      + '<div style="width:20px;text-align:right;flex-shrink:0"><span style="font-family:var(--fh);font-size:13px;font-weight:700;color:' + scoreCol + '">' + c.score + '</span></div>'
+      + '<div style="width:24px;height:3px;border-radius:2px;background:var(--s4);overflow:hidden;flex-shrink:0"><div style="height:100%;width:' + c.score + '%;background:' + scoreCol + '"></div></div>'
+      + '</div>'
+      + '<div style="display:grid;grid-template-columns:3fr 2fr 2fr 1.5fr 1.5fr 1.5fr 80px;gap:12px;flex:1;align-items:center">'
+      + '<div style="display:flex;align-items:center;gap:8px"><div class="contact-av" style="width:28px;height:28px;font-size:10px;background:' + c.cor + '18;border:1px solid ' + c.cor + '30;color:' + c.cor + '">' + initials + '</div><div><div style="font-size:12px;font-weight:500;color:var(--t1)">' + c.nome + ' ' + c.apelido + '</div><div style="font-size:10px;color:var(--t3)">' + c.email + '</div></div></div>'
+      + '<div style="font-size:12px">' + c.empresa + '</div>'
+      + '<div style="font-size:11px;color:var(--t2)">' + c.cargo + '</div>'
+      + '<div>' + stageBdg(c.stage) + '</div>'
+      + '<div style="font-family:var(--fh);font-size:13px;font-weight:600">' + fmtK(c.valor) + '</div>'
+      + '<div style="font-size:11px;color:var(--t2)">' + c.origem + '</div>'
+      + '<div style="display:flex;gap:4px"><button class="btn btn-ghost btn-xs" onclick="event.stopPropagation()">Email</button><button class="btn btn-ghost btn-xs" onclick="event.stopPropagation()">Call</button></div>'
+      + '</div></div>';
+  });
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════════
+   CRM — FICHA DE CONTACTO
+   ═══════════════════════════════════════════════ */
+function renderCrmFicha(el) {
+  var contact = CONTACTS.filter(function(x){ return x.id === selectedContactId; })[0];
+  if (!contact) { renderCrmContactos(el); return; }
+
+  var initials = contact.nome[0] + contact.apelido[0];
+  var scoreCol = contact.score >= 85 ? 'var(--teal)' : contact.score >= 65 ? 'var(--amber)' : 'var(--red)';
+  var campanha = CAMPAIGNS.filter(function(x){ return x.id === contact.campanha_id; })[0];
+  var proposta = PROPOSTAS.filter(function(x){ return x.contact_id === contact.id; });
+  var contrato = CONTRACTS.filter(function(x){ return x.contact_id === contact.id; })[0];
+
+  var stageOptions = ['lead','qualificado','proposta','negociacao','ganho','perdido'];
+  var stageLabels  = ['Lead','Qualificado','Proposta','Negociação','Ganho','Perdido'];
+  var stageBar = '<div style="display:flex;gap:3px;margin-top:12px">';
+  stageOptions.forEach(function(s, i) {
+    var isCur = s === contact.stage;
+    var isPast= stageOptions.indexOf(contact.stage) > i;
+    var col = isCur ? '#00D4B0' : isPast ? '#00D4B040' : 'transparent';
+    stageBar += '<div style="flex:1;height:4px;border-radius:2px;background:' + (isCur ? 'var(--teal)' : isPast ? 'var(--teal)' : 'var(--s4)') + '"></div>';
+  });
+  stageBar += '</div><div style="display:flex;justify-content:space-between;margin-top:4px">'
+    + stageOptions.map(function(s,i){
+        var isCur = s === contact.stage;
+        return '<span style="font-size:8px;color:' + (isCur?'var(--teal)':'var(--t3)') + ';font-weight:' + (isCur?'700':'400') + '">' + stageLabels[i] + '</span>';
+      }).join('') + '</div>';
+
+  var html = '<div class="sec-hd">'
+    + '<button class="btn btn-ghost btn-xs" onclick="selectedContactId=null;goto(\'crm-contactos\')" style="margin-top:3px">← Contactos</button>'
+    + '<div style="flex:1"></div>'
+    + '<div style="display:flex;gap:7px">'
+    + '<button class="btn btn-ghost btn-sm">Enviar email</button>'
+    + '<button class="btn btn-blue btn-sm">Nova proposta</button>'
+    + '<button class="btn btn-teal btn-sm" onclick="goto(\'crm-pipeline\')">Ver pipeline</button>'
+    + '</div></div>'
+    + '<div class="g2">'
+    /* LEFT */
+    + '<div>'
+    + '<div class="card mb12">'
+    + '<div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">'
+    + '<div class="contact-av" style="width:52px;height:52px;font-size:17px;background:' + contact.cor + '18;border:2px solid ' + contact.cor + '40;color:' + contact.cor + '">' + initials + '</div>'
+    + '<div><div style="font-family:var(--fh);font-size:20px;font-weight:800">' + contact.nome + ' ' + contact.apelido + '</div>'
+    + '<div style="font-size:12px;color:var(--t2)">' + contact.cargo + ' · ' + contact.empresa + '</div>'
+    + '<div style="display:flex;align-items:center;gap:8px;margin-top:4px">' + stageBdg(contact.stage)
+    + '<span style="font-size:10px;color:' + scoreCol + ';font-weight:700">Score ' + contact.score + '</span>'
+    + '</div></div>'
+    + '<div style="margin-left:auto;text-align:right"><div style="font-family:var(--fh);font-size:22px;font-weight:800;color:var(--teal)">' + fmtK(contact.valor) + '</div><div style="font-size:10px;color:var(--t3)">Valor deal</div></div>'
+    + '</div>'
+    + stageBar
+    + '<hr>'
+    + '<div class="g2">'
+    + '<div><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Email</div><div style="font-size:12px;color:var(--teal)">' + contact.email + '</div></div>'
+    + '<div><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Telefone</div><div style="font-size:12px">' + contact.tel + '</div></div>'
+    + '<div><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Origem</div><div style="font-size:12px">' + contact.origem + '</div></div>'
+    + '<div><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Última interacção</div><div style="font-size:12px">' + contact.ultima_int + '</div></div>'
+    + '</div>'
+    + (campanha ? '<div style="margin-top:12px;padding:10px;background:var(--s3);border-radius:var(--r1)"><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Campanha de origem</div><div style="display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:2px;background:' + campanha.cor + '"></div><span style="font-size:12px;font-weight:500;color:var(--t1)">' + campanha.nome + '</span>' + campBdg(campanha.estado) + '</div></div>' : '')
+    + '<div style="margin-top:12px;padding:10px;background:var(--s3);border-radius:var(--r1)"><div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Notas</div><div style="font-size:12px;color:var(--t2);line-height:1.6">' + contact.notas + '</div></div>'
+    + '</div>'
+    /* Propostas */
+    + (proposta.length > 0 ? '<div class="card mb12"><div class="card-title">Propostas</div>'
+      + proposta.map(function(p) {
+          var stCls = {enviada:'bdg-b',em_rev:'bdg-a',aceite:'bdg-g',recusada:'bdg-r',expirada:'bdg-gr'};
+          var stLbl = {enviada:'Enviada',em_rev:'Em revisão',aceite:'Aceite ✓',recusada:'Recusada',expirada:'Expirada'};
+          return '<div class="hrow" style="padding:9px 0"><div><div style="font-size:12px;font-weight:500;color:var(--t1)">' + p.numero + ' — ' + p.titulo + '</div><div style="font-size:10px;color:var(--t3)">' + p.data + ' · Válida até ' + p.validade + '</div></div><div style="text-align:right"><div style="font-family:var(--fh);font-size:15px;font-weight:700">' + fmtK(p.valor) + '</div><span class="bdg ' + (stCls[p.estado]||'bdg-gr') + '">' + (stLbl[p.estado]||p.estado) + '</span></div></div>';
+        }).join('')
+      + '</div>' : '')
+    + (contrato ? '<div class="card"><div class="card-title">Contrato Activo</div><div style="padding:12px;background:var(--gb);border-radius:var(--r1);border:1px solid rgba(40,200,122,.2)"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px"><div style="font-size:13px;font-weight:500;color:var(--t1)">' + contrato.plano + ' · ' + fmtK(contrato.mrr) + '/mês</div><span class="bdg bdg-g">Activo</span></div><div style="font-size:11px;color:var(--t2)">Desde ' + contrato.inicio + ' · Renovação ' + contrato.renovacao + '</div><div style="font-size:11px;color:var(--green);margin-top:4px">LTV estimado: ' + fmtK(contrato.ltv_est) + '</div></div></div>' : '')
+    + '</div>'
+    /* RIGHT */
+    + '<div>'
+    + '<div class="card mb12"><div class="card-title">Actividade &amp; Histórico</div>';
+
+  ACTIVITIES.filter(function(x){return x.contact_id === contact.id;}).forEach(function(a) {
+    html += '<div class="act-item"><div class="act-dot" style="background:' + a.cor + ';box-shadow:0 0 0 3px ' + a.cor + '15"></div><div style="flex:1"><div style="font-size:12px;color:var(--t1)">' + a.texto + '</div><div style="font-size:10px;color:var(--t3);margin-top:2px">' + a.ts + '</div></div></div>';
+  });
+  html += '<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--b1)">'
+    + '<div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Registar actividade</div>'
+    + '<textarea class="inp" rows="2" placeholder="Nota, chamada, email…" style="margin-bottom:8px"></textarea>'
+    + '<div style="display:flex;gap:6px">'
+    + '<button class="btn btn-teal btn-xs">Guardar nota</button>'
+    + '<button class="btn btn-ghost btn-xs">Agendar follow-up</button>'
+    + '</div></div></div>'
+    + '<div class="card mb12"><div class="card-title">Lead Score — ' + contact.score + ' / 100</div>'
+    + '<div style="display:flex;gap:10px;align-items:center;margin-bottom:14px"><div style="width:56px;height:56px;border-radius:50%;background:' + scoreCol + '18;border:2px solid ' + scoreCol + '40;display:flex;align-items:center;justify-content:center"><span style="font-family:var(--fh);font-size:20px;font-weight:800;color:' + scoreCol + '">' + contact.score + '</span></div>'
+    + '<div style="flex:1"><div class="prog" style="height:6px"><div class="prog-fill" style="width:' + contact.score + '%;background:' + scoreCol + '"></div></div><div style="font-size:11px;color:var(--t2);margin-top:5px">' + (contact.score >= 85 ? 'Alta prioridade — contactar hoje' : contact.score >= 65 ? 'Boa oportunidade — follow-up agendado' : 'Qualificação adicional necessária') + '</div></div></div>'
+    + [['Engajamento emails','85%'],['Visitas à landing','92%'],['Fit com ICP','78%'],['Actividade recente','70%']].map(function(row){
+        return '<div style="display:flex;justify-content:space-between;font-size:11px;padding:5px 0;border-bottom:1px solid var(--b1)"><span style="color:var(--t2)">' + row[0] + '</span><span style="font-weight:600;color:var(--t1)">' + row[1] + '</span></div>';
+      }).join('')
+    + '</div>'
+    + '<div class="card"><div class="card-title">Próximas Acções</div>'
+    + [['Enviar proposta actualizada','Hoje'],['Follow-up por email','Amanhã'],['Demo agendada','15 Abr, 15h'],].map(function(a){
+        return '<div class="hrow" style="padding:8px 4px"><div style="display:flex;align-items:center;gap:8px"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal)"></div><span style="font-size:12px;color:var(--t1)">' + a[0] + '</span></div><span style="font-size:10px;color:var(--t3)">' + a[1] + '</span></div>';
+      }).join('')
+    + '<button class="btn btn-ghost btn-sm mt8" style="margin-top:8px">+ Adicionar acção</button></div>'
+    + '</div>'
+    + '</div>'; /* close g2 */
+
+  el.innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════════
+   CRM — PROPOSTAS
+   ═══════════════════════════════════════════════ */
+function renderCrmPropostas(el) {
+  var totalVal = PROPOSTAS.reduce(function(s,x){return s+x.valor;},0);
+  var aceites  = PROPOSTAS.filter(function(x){return x.estado==='aceite';});
+  var winRate  = aceites.length / PROPOSTAS.length;
+
+  var html = '<div class="sec-hd"><div><div class="sec-title">Propostas</div><div class="sec-sub">' + PROPOSTAS.length + ' propostas · ' + fmtK(totalVal) + ' valor total</div></div>'
+    + '<div style="display:flex;gap:7px"><button class="btn btn-teal btn-sm">+ Nova Proposta</button></div></div>'
+    + '<div class="g4 mb16">'
+    + kpi('Total Propostas', String(PROPOSTAS.length), 'Este trimestre', 'neu')
+    + kpi('Valor Total', fmtK(totalVal), '+22% vs Q1', 'up', '#00D4B0')
+    + kpi('Taxa de Fecho', fmtPct(winRate), aceites.length + ' aceites', 'up', '#28C87A')
+    + kpi('Proposta Média', fmtK(totalVal / PROPOSTAS.length), 'Ticket médio', 'neu')
+    + '</div>'
+    + '<div class="card"><div class="tbl-wrap"><table>'
+    + '<thead><tr><th>N.º Proposta</th><th>Contacto</th><th>Empresa</th><th>Plano</th><th>Valor</th><th>Data</th><th>Validade</th><th>Estado</th><th></th></tr></thead>'
+    + '<tbody>';
+
+  var stCls = {enviada:'bdg-b',em_rev:'bdg-a',aceite:'bdg-g',recusada:'bdg-r',expirada:'bdg-gr'};
+  var stLbl = {enviada:'Enviada',em_rev:'Em revisão',aceite:'Aceite ✓',recusada:'Recusada',expirada:'Expirada'};
+  PROPOSTAS.forEach(function(p) {
+    var c = CONTACTS.filter(function(x){return x.id===p.contact_id;})[0];
+    html += '<tr>'
+      + '<td class="hi">' + p.numero + '</td>'
+      + '<td class="hi">' + (c ? c.nome + ' ' + c.apelido : '—') + '</td>'
+      + '<td>' + (c ? c.empresa : '—') + '</td>'
+      + '<td><span class="bdg bdg-t">' + p.plano + ' · ' + p.meses + 'm</span></td>'
+      + '<td style="font-family:var(--fh);font-weight:700;color:var(--t1)">' + fmtK(p.valor) + '</td>'
+      + '<td style="font-size:11px">' + p.data + '</td>'
+      + '<td style="font-size:11px;color:' + (p.estado==='aceite'?'var(--green)':'var(--t2)') + '">' + p.validade + '</td>'
+      + '<td><span class="bdg ' + (stCls[p.estado]||'bdg-gr') + '">' + (stLbl[p.estado]||p.estado) + '</span></td>'
+      + '<td><div style="display:flex;gap:4px"><button class="btn btn-ghost btn-xs" onclick="selectedContactId=' + (p.contact_id||0) + ';goto(\'crm-ficha\')">Ver deal</button><button class="btn btn-ghost btn-xs">PDF</button></div></td>'
+      + '</tr>';
+  });
+
+  html += '</tbody></table></div></div>';
+  el.innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════════
+   REVENUE — DASHBOARD MRR
+   ═══════════════════════════════════════════════ */
+function renderRevDash(el) {
+  var activeContracts = CONTRACTS.filter(function(x){return x.estado==='ativo';});
+  var mrr  = activeContracts.reduce(function(s,x){return s+x.mrr;},0);
+  var arr  = mrr * 12;
+  var churnContracts = CONTRACTS.filter(function(x){return x.estado==='churn';});
+  var churnMRR = churnContracts.reduce(function(s,x){return s+x.mrr;},0);
+  var churnRate = mrr > 0 ? churnMRR / (mrr + churnMRR) : 0;
+  var avgLTV = activeContracts.reduce(function(s,x){return s+x.ltv_est;},0) / (activeContracts.length || 1);
+  var atrasado = CONTRACTS.filter(function(x){return x.pagamentos==='atrasado';});
+
+  var html = '<div class="sec-hd"><div><div class="sec-title">Revenue Dashboard</div><div class="sec-sub">MRR · ARR · Churn · LTV · CAC</div></div>'
+    + '<div style="display:flex;gap:7px">'
+    + '<button class="btn btn-ghost btn-sm" onclick="goto(\'rev-forecast\')">Forecast →</button>'
+    + '<button class="btn btn-teal btn-sm" onclick="goto(\'rev-deals\')">Ver contratos</button>'
+    + '</div></div>'
+    + '<div class="g4 mb16">'
+    + kpi('MRR', fmtK(mrr), '+' + fmtK(mrr - MRR_HISTORY[MRR_HISTORY.length-2]) + ' vs Março', 'up', '#00D4B0', mrr/3500*100)
+    + kpi('ARR', fmtK(arr), 'Projecção anual', 'up', null, arr/42000*100)
+    + kpi('Churn Rate', fmtPct(churnRate), churnContracts.length + ' contrato(s) perdido(s)', churnRate < 0.05 ? 'up' : 'down', churnRate < 0.05 ? '#28C87A' : '#F04F5A')
+    + kpi('LTV Médio', fmtK(avgLTV), 'Activos estimados', 'up', null, 70)
+    + '</div>'
+
+  /* MRR Waterfall */
+  var html2 = '<div class="g2 mb16">';
+  html2 += '<div class="card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
+    + '<div class="card-title" style="margin-bottom:0">Evolução MRR</div>'
+    + '<div class="mrr-legend">'
+    + '<div class="mrr-legend-item"><div class="mrr-dot" style="background:#00D4B0"></div>2026</div>'
+    + '<div class="mrr-legend-item"><div class="mrr-dot" style="background:#00D4B040;border:1px dashed #00D4B0"></div>2025</div>'
+    + '</div></div>'
+    + svgLineChart({ labels:MESES, height:160, showArea:true, minZero:true, series:[
+        { data:MRR_HISTORY, color:'#00D4B0', label:'MRR 2026' },
+        { data:MRR_2025,    color:'#00D4B0', label:'MRR 2025', dashed:true },
+      ]})
+    + '<div style="display:flex;gap:16px;margin-top:8px;padding-top:8px;border-top:1px solid var(--b1)">'
+    + '<div><div style="font-size:9px;color:var(--t3)">MRR Actual</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--teal)">' + fmtK(mrr) + '</div></div>'
+    + '<div><div style="font-size:9px;color:var(--t3)">YoY Growth</div><div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--green)">+72%</div></div>'
+    + '<div><div style="font-size:9px;color:var(--t3)">ARPU</div><div style="font-family:var(--fh);font-size:16px;font-weight:700">' + fmtK(mrr / activeContracts.length) + '</div></div>'
+    + '</div></div>';
+
+  /* MRR Waterfall chart this month */
+  var newMRR = 1849; /* Porto Ventures + Element */
+  var expanMRR = 0;
+  var churnMRRAct = churnMRR;
+  var waterfall = [
+    { label:'MRR Mar', value: MRR_HISTORY[MRR_HISTORY.length-2], color:'#4E9CF5', active:false },
+    { label:'Novo',    value: newMRR,   color:'#28C87A', active:true },
+    { label:'Expansão',value: expanMRR, color:'#00D4B0', active:false },
+    { label:'Churn',   value: churnMRRAct, color:'#F04F5A', active:false },
+    { label:'MRR Abr', value: mrr,      color:'#00D4B0', active:true },
+  ];
+  html2 += '<div class="card"><div class="card-title">Waterfall MRR — Abril 2026</div>'
+    + svgBarChart({ height:160, data:waterfall })
+    + '<div style="display:flex;gap:12px;margin-top:10px;flex-wrap:wrap">'
+    + '<div><div style="font-size:9px;color:var(--t3)">New MRR</div><div style="font-family:var(--fh);font-size:14px;font-weight:700;color:var(--green)">+' + fmtK(newMRR) + '</div></div>'
+    + '<div><div style="font-size:9px;color:var(--t3)">Churn MRR</div><div style="font-family:var(--fh);font-size:14px;font-weight:700;color:var(--red)">−' + fmtK(churnMRRAct) + '</div></div>'
+    + '<div><div style="font-size:9px;color:var(--t3)">Net New MRR</div><div style="font-family:var(--fh);font-size:14px;font-weight:700;color:var(--teal)">+' + fmtK(newMRR - churnMRRAct) + '</div></div>'
+    + '</div></div>';
+  html2 += '</div>'; /* g2 */
+  html += html2;
+
+  /* Contracts + KPIs */
+  html += '<div class="g2">';
+
+  /* Contracts by plan */
+  var planBreakdown = {};
+  activeContracts.forEach(function(c){
+    if (!planBreakdown[c.plano]) planBreakdown[c.plano] = {n:0,mrr:0};
+    planBreakdown[c.plano].n++;
+    planBreakdown[c.plano].mrr += c.mrr;
+  });
+  html += '<div class="card"><div class="card-title">MRR por Plano</div>';
+  var planCors = { Scale:'#00D4B0', Pro:'#4E9CF5', Starter:'#9B6BF2' };
+  Object.keys(planBreakdown).forEach(function(plan) {
+    var p = planBreakdown[plan];
+    var pct = mrr > 0 ? Math.round(p.mrr / mrr * 100) : 0;
+    html += '<div style="margin-bottom:12px">'
+      + '<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px">'
+      + '<span style="color:var(--t1);font-weight:500">' + plan + ' (' + p.n + ' clientes)</span>'
+      + '<span style="font-family:var(--fh);font-weight:700;color:' + (planCors[plan]||'var(--teal)') + '">' + fmtK(p.mrr) + ' · ' + pct + '%</span>'
+      + '</div><div class="prog" style="height:6px"><div class="prog-fill" style="width:' + pct + '%;background:' + (planCors[plan]||'var(--teal)') + '"></div></div>'
+      + '</div>';
+  });
+  if (atrasado.length > 0) {
+    html += '<div class="alert alert-warn" style="margin-top:10px"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 1l5.5 10H1L6.5 1z"/></svg><div style="font-size:11px">' + atrasado.length + ' pagamento(s) em atraso — <button class="btn btn-warn btn-xs" style="margin-left:4px" onclick="goto(\'rev-recorrente\')">Ver cobranças</button></div></div>';
+  }
+  html += '</div>';
+
+  /* Health indicators */
+  html += '<div class="card"><div class="card-title">Indicadores de Saúde</div>';
+  var indics = [
+    { lbl:'CAC (Marketing spend / novos clientes)', val:'€' + Math.round(CAMPAIGNS.reduce(function(s,x){return s+x.spent;},0)/activeContracts.length), updn:'up' },
+    { lbl:'LTV/CAC ratio', val:'4.2×', updn:'up' },
+    { lbl:'Payback period', val:'8 meses', updn:'up' },
+    { lbl:'NPS estimado', val:'62', updn:'up' },
+    { lbl:'Clientes em expansão', val:'0', updn:'neu' },
+    { lbl:'Taxa renovação', val:'88%', updn:'up' },
+  ];
+  indics.forEach(function(ind) {
+    html += '<div class="srow"><span style="font-size:11px;color:var(--t2)">' + ind.lbl + '</span><span style="font-weight:600;color:var(--t1)">' + ind.val + '</span></div>';
+  });
+  html += '</div></div>'; /* g2 */
+
+  el.innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════════
+   REVENUE — DEALS & CONTRATOS
+   ═══════════════════════════════════════════════ */
+function renderRevDeals(el) {
+  var html = '<div class="sec-hd"><div><div class="sec-title">Deals &amp; Contratos</div><div class="sec-sub">' + CONTRACTS.length + ' contratos · ' + CONTRACTS.filter(function(x){return x.estado==='ativo';}).length + ' activos</div></div>'
+    + '<div style="display:flex;gap:7px"><button class="btn btn-teal btn-sm">+ Novo Contrato</button></div></div>'
+    + '<div class="card"><div class="tbl-wrap"><table>'
+    + '<thead><tr><th>Empresa</th><th>Plano</th><th>MRR</th><th>Início</th><th>Renovação</th><th>Estado</th><th>Pagamentos</th><th>LTV Est.</th><th></th></tr></thead>'
+    + '<tbody>';
+
+  var estadoCls = { ativo:'bdg-g', churn:'bdg-r', trial:'bdg-a' };
+  var pagCls = { em_dia:'bdg-g', atrasado:'bdg-r', cancelado:'bdg-gr' };
+  var pagLbl = { em_dia:'Em dia', atrasado:'Atrasado ⚠', cancelado:'Cancelado' };
+
+  CONTRACTS.forEach(function(c) {
+    var contact = CONTACTS.filter(function(x){return x.id===c.contact_id;})[0];
+    html += '<tr>'
+      + '<td><div class="hi">' + c.empresa + '</div>' + (contact ? '<div style="font-size:10px;color:var(--t3)">' + contact.nome + ' ' + contact.apelido + '</div>' : '') + '</td>'
+      + '<td><span class="bdg bdg-t">' + c.plano + '</span></td>'
+      + '<td style="font-family:var(--fh);font-weight:700;color:var(--teal)">' + fmtK(c.mrr) + '</td>'
+      + '<td style="font-size:11px">' + c.inicio + '</td>'
+      + '<td style="font-size:11px">' + c.renovacao + '</td>'
+      + '<td><span class="bdg ' + (estadoCls[c.estado]||'bdg-gr') + '">' + c.estado + '</span></td>'
+      + '<td><span class="bdg ' + (pagCls[c.pagamentos]||'bdg-gr') + '">' + (pagLbl[c.pagamentos]||c.pagamentos) + '</span></td>'
+      + '<td style="font-size:11px;color:var(--t2)">' + fmtK(c.ltv_est) + '</td>'
+      + '<td><button class="btn btn-ghost btn-xs">Gerir</button></td>'
+      + '</tr>';
+  });
+
+  html += '</tbody></table></div></div>';
+  el.innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════════
+   REVENUE — FATURAÇÃO RECORRENTE
+   ═══════════════════════════════════════════════ */
+function renderRevRecorrente(el) {
+  var activeC = CONTRACTS.filter(function(x){return x.estado==='ativo';});
+  var totalMRR = activeC.reduce(function(s,x){return s+x.mrr;},0);
+  var atrasado = CONTRACTS.filter(function(x){return x.pagamentos==='atrasado';});
+
+  var html = '<div class="sec-hd"><div><div class="sec-title">Faturação Recorrente</div><div class="sec-sub">Ciclo mensal · Próxima emissão: 1 Maio 2026</div></div></div>'
+    + '<div class="g4 mb16">'
+    + kpi('A faturar (1 Mai)', fmtK(totalMRR), activeC.length + ' contratos', 'neu', '#00D4B0')
+    + kpi('Faturado (Abr)', fmtK(totalMRR), '100% cobrado', 'up', '#28C87A')
+    + kpi('Em atraso', fmtK(atrasado.reduce(function(s,x){return s+x.mrr;},0)), atrasado.length + ' cliente(s)', atrasado.length > 0 ? 'down' : 'neu', atrasado.length > 0 ? '#F04F5A' : null)
+    + kpi('Taxa de Cobrança', '94%', 'YTD 2026', 'up', '#00D4B0', 94)
+    + '</div>';
+
+  /* Invoice schedule */
+  html += '<div class="g2">';
+  html += '<div class="card"><div class="card-title">Próximas Faturas — Maio 2026</div>'
+    + '<div class="tbl-wrap"><table><thead><tr><th>Empresa</th><th>Plano</th><th>Valor</th><th>Data Emissão</th><th>Estado</th></tr></thead><tbody>';
+
+  activeC.forEach(function(c) {
+    html += '<tr>'
+      + '<td class="hi">' + c.empresa + '</td>'
+      + '<td><span class="bdg bdg-t">' + c.plano + '</span></td>'
+      + '<td style="font-family:var(--fh);font-weight:600">' + fmtK(c.mrr) + '</td>'
+      + '<td style="font-size:11px">1 Mai 2026</td>'
+      + '<td><span class="bdg bdg-gr">Programada</span></td>'
+      + '</tr>';
+  });
+  html += '</tbody></table></div>'
+    + '<div style="margin-top:12px;display:flex;gap:7px">'
+    + '<button class="btn btn-teal btn-sm" onclick="emitirFaturas(this)">Emitir todas (1 Mai)</button>'
+    + '<button class="btn btn-ghost btn-sm">Exportar</button>'
+    + '</div></div>';
+
+  /* Dunning / collections */
+  html += '<div><div class="card mb12"><div class="card-title">Cobranças em Atraso</div>';
+  if (atrasado.length === 0) {
+    html += '<div style="text-align:center;padding:24px;color:var(--t3);font-size:12px">✓ Sem cobranças em atraso</div>';
+  } else {
+    atrasado.forEach(function(c) {
+      html += '<div style="padding:10px;background:var(--rb);border-radius:var(--r1);margin-bottom:8px;border:1px solid rgba(240,79,90,.2)">'
+        + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">'
+        + '<div><div style="font-size:12px;font-weight:500;color:var(--t1)">' + c.empresa + '</div><div style="font-size:10px;color:var(--red)">Em atraso desde 1 Mar 2026</div></div>'
+        + '<div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--red)">' + fmtK(c.mrr) + '</div></div>'
+        + '<div style="display:flex;gap:6px"><button class="btn btn-danger btn-xs">Enviar reminder</button><button class="btn btn-ghost btn-xs">Contactar</button></div>'
+        + '</div>';
+    });
+  }
+  html += '</div>';
+
+  /* Dunning timeline */
+  html += '<div class="card"><div class="card-title">Política de Dunning</div>'
+    + [['Dia 1','Fatura emitida automaticamente','var(--teal)'],['Dia 3','Email de confirmação de pagamento','var(--blue)'],['Dia 10','Lembrete amigável — email + SMS','var(--amber)'],['Dia 20','Segundo aviso — suspensão iminente','var(--red)'],['Dia 30','Suspensão da conta · Email final','var(--red)']].map(function(d){
+        return '<div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--b1)">'
+          + '<div style="font-size:10px;font-weight:700;color:' + d[2] + ';min-width:44px">Dia ' + d[0].replace('Dia ','') + '</div>'
+          + '<div style="font-size:11px;color:var(--t2)">' + d[1] + '</div></div>';
+      }).join('')
+    + '</div></div>';
+  html += '</div></div>'; /* g2 */
+  el.innerHTML = html;
+}
+
+function emitirFaturas(btn) {
+  flashBtn(btn, 'Faturas emitidas!', 'var(--green)');
+}
+
+/* ═══════════════════════════════════════════════
+   REVENUE — FORECAST
+   ═══════════════════════════════════════════════ */
+function renderRevForecast(el) {
+  var activeMRR = CONTRACTS.filter(function(x){return x.estado==='ativo';}).reduce(function(s,x){return s+x.mrr;},0);
+
+  /* Generate 12-month forecast */
+  var growth = 0.12; /* 12% MoM target */
+  var conserv = 0.07, optimist = 0.18;
+  var forecastBase = [], forecastCons = [], forecastOpt = [];
+  var base = activeMRR;
+  for (var i = 0; i < 12; i++) {
+    forecastBase.push(Math.round(base * Math.pow(1 + growth,   i)));
+    forecastCons.push(Math.round(base * Math.pow(1 + conserv,  i)));
+    forecastOpt.push( Math.round(base * Math.pow(1 + optimist, i)));
+  }
+
+  var forecastLabels = ['Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez','Jan','Fev','Mar'];
+
+  var html = '<div class="sec-hd"><div><div class="sec-title">Revenue Forecast</div><div class="sec-sub">Projecção 12 meses · Cenários conservador / base / optimista</div></div>'
+    + '<div style="display:flex;gap:7px">'
+    + '<button class="btn btn-ghost btn-sm">Exportar</button>'
+    + '<button class="btn btn-teal btn-sm" onclick="goto(\'rev-deals\')">Ver contratos</button>'
+    + '</div></div>'
+    + '<div class="g4 mb16">'
+    + kpi('MRR actual', fmtK(activeMRR), 'Base do forecast', 'neu', '#00D4B0')
+    + kpi('MRR Mar 2027 (base)', fmtK(forecastBase[11]), '+' + fmtPct((forecastBase[11]-activeMRR)/activeMRR), 'up', '#28C87A')
+    + kpi('ARR Mar 2027', fmtK(forecastBase[11]*12), 'Projecção anual', 'up')
+    + kpi('Break-even target', '€5.000 MRR', 'Jun 2026 (estimado)', 'up', '#00D4B0')
+    + '</div>'
+
+  /* Forecast chart */
+  + '<div class="card mb16">'
+  + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
+  + '<div class="card-title" style="margin-bottom:0">Projecção MRR — 12 meses</div>'
+  + '<div class="mrr-legend">'
+  + '<div class="mrr-legend-item"><div class="mrr-dot" style="background:#28C87A"></div>Optimista (+18%/mês)</div>'
+  + '<div class="mrr-legend-item"><div class="mrr-dot" style="background:#00D4B0"></div>Base (+12%/mês)</div>'
+  + '<div class="mrr-legend-item"><div class="mrr-dot" style="background:#4E9CF5"></div>Conservador (+7%/mês)</div>'
+  + '</div></div>'
+  + svgLineChart({ labels:forecastLabels, height:200, showArea:false, minZero:true, series:[
+      { data:forecastOpt,  color:'#28C87A', label:'Optimista', dashed:true },
+      { data:forecastBase, color:'#00D4B0', label:'Base' },
+      { data:forecastCons, color:'#4E9CF5', label:'Conservador', dashed:true },
+    ]})
+  + '</div>';
+
+  /* Forecast table */
+  html += '<div class="g2">';
+  html += '<div class="card"><div class="card-title">Tabela de Projecção</div>'
+    + '<div class="tbl-wrap"><table><thead><tr><th>Mês</th><th>Conservador</th><th>Base</th><th>Optimista</th><th>ARR Base</th></tr></thead><tbody>';
+  forecastLabels.forEach(function(lbl, i) {
+    var isCur = i === 0;
+    html += '<tr' + (isCur?' style="background:var(--s3)"':'') + '>'
+      + '<td class="hi">' + lbl + ' ' + (i < 9 ? '2026' : '2027') + (isCur?' <span class="bdg bdg-t" style="margin-left:4px">Actual</span>':'') + '</td>'
+      + '<td style="color:var(--blue)">' + fmtK(forecastCons[i]) + '</td>'
+      + '<td style="font-weight:' + (isCur?'700':'400') + ';color:var(--teal)">' + fmtK(forecastBase[i]) + '</td>'
+      + '<td style="color:var(--green)">' + fmtK(forecastOpt[i]) + '</td>'
+      + '<td style="font-size:11px;color:var(--t2)">' + fmtK(forecastBase[i]*12) + '</td>'
+      + '</tr>';
+  });
+  html += '</tbody></table></div></div>';
+
+  /* Key assumptions */
+  html += '<div class="card"><div class="card-title">Premissas do Modelo</div>'
+    + [
+        ['Crescimento MRR (base)','12% mês · Modelo +expansão'],
+        ['Churn mensal estimado','2–3% dos contratos'],
+        ['ARPU evolução','+15% anual por upsell'],
+        ['Novo negócio (leads)','15–20 leads/mês → 4 deals/mês'],
+        ['Ciclo de venda médio','24 dias lead-to-close'],
+        ['CAC target','< €250 por cliente'],
+        ['LTV/CAC target','> 3×'],
+      ].map(function(row){
+        return '<div class="srow"><span style="font-size:11px;color:var(--t2)">' + row[0] + '</span><span style="font-size:11px;font-weight:500;color:var(--t1)">' + row[1] + '</span></div>';
+      }).join('')
+    + '<div style="margin-top:12px;padding:10px;background:var(--tl);border-radius:var(--r1);border:1px solid rgba(0,212,176,.15)">'
+    + '<div style="font-size:10px;font-weight:700;color:var(--teal);margin-bottom:4px">MILESTONE TRACKING</div>'
+    + [['€3.000 MRR','Alcançado — Fev 2026','bdg-g'],['€5.000 MRR','Jun 2026 (estimado)','bdg-t'],['€10.000 MRR','Nov 2026 (base)','bdg-gr'],['€50.000 MRR','Q3 2027 (base)','bdg-gr']].map(function(m){
+        return '<div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0"><span style="font-size:11px;font-weight:500;color:var(--t1)">' + m[0] + '</span><div style="display:flex;align-items:center;gap:7px"><span style="font-size:10px;color:var(--t2)">' + m[1] + '</span><span class="bdg ' + m[2] + '">' + (m[2]==='bdg-g'?'Atingido':'Em curso') + '</span></div></div>';
+      }).join('')
+    + '</div></div>';
+
+  html += '</div></div>'; /* g2 */
+  el.innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════════ */
+goto('mkt-dash');
 </script>
 
 </head>
@@ -840,194 +2776,570 @@ function renderMktCampanhas(el) {
 /* ═══════════════════════════════════════════════
    MARKETING — CRIAR CAMPANHA IA
    ═══════════════════════════════════════════════ */
+/* ── Studio state ── */
+var studioEngine    = 'flux';
+var studioTab       = 'generate';
+var studioAspect    = '1:1';
+var studioStyle     = 'photographic';
+var studioQuality   = 'high';
+var studioPrompt    = '';
+var studioNegPrompt = '';
+var studioGenerating= false;
+
+/* Generated asset store */
+var STUDIO_ASSETS = [
+  { id:1,  engine:'flux',    prompt:'Modern SaaS dashboard on laptop, dark UI, teal accents, professional office background, ultra realistic',  aspect:'16:9', style:'photographic', status:'approved',  comments:[{user:'Ana',text:'Perfeito para o hero!',ts:'Hoje 10:15'}],         created:'2026-04-07', liked:true,  idx:0 },
+  { id:2,  engine:'dalle3',  prompt:'Abstract geometric data flow, neon green and dark blue, professional B2B tech aesthetic',                  aspect:'1:1',  style:'digital_art',  status:'in_review', comments:[{user:'Marco',text:'Muito brilhante, reduzir saturação?',ts:'Hoje 09:40'}], created:'2026-04-07', liked:false, idx:1 },
+  { id:3,  engine:'midj',    prompt:'Entrepreneur reviewing revenue charts, cinematic lighting, warm tones, optimistic mood',                   aspect:'4:5',  style:'cinematic',    status:'approved',  comments:[], created:'2026-04-06', liked:true,  idx:2 },
+  { id:4,  engine:'sdxl',    prompt:'Futuristic CRM interface holographic projection, hands interacting, blue purple palette',                  aspect:'16:9', style:'sci_fi',       status:'draft',     comments:[], created:'2026-04-06', liked:false, idx:3 },
+  { id:5,  engine:'ideogram',prompt:'Clean typography: GROW YOUR REVENUE, bold sans-serif, dark background, teal gradient text',               aspect:'1:1',  style:'typography',   status:'published', comments:[{user:'João',text:'Usando na campanha Spring!',ts:'2026-04-05'}], created:'2026-04-05', liked:true,  idx:4 },
+  { id:6,  engine:'runway',  prompt:'Time-lapse of data flowing through a city grid at night, neon trails, 6 seconds',                        aspect:'16:9', style:'video',        status:'in_review', comments:[], created:'2026-04-05', liked:false, idx:5, isVideo:true },
+  { id:7,  engine:'flux',    prompt:'Happy team celebrating sales milestone, modern office, confetti, diverse group, authentic',               aspect:'4:5',  style:'photographic', status:'draft',     comments:[], created:'2026-04-04', liked:false, idx:6 },
+  { id:8,  engine:'dalle3',  prompt:'Product mockup STRATA app on iPhone 15 Pro, floating, studio lighting, white background',                aspect:'1:1',  style:'product',      status:'approved',  comments:[{user:'Sofia',text:'Para o email campaign!',ts:'2026-04-04'}], created:'2026-04-04', liked:true,  idx:7 },
+];
+
+var studioReviewAsset = null;
+var studioViewMode = 'grid';
+
+/* SVG placeholder images with gradient fills */
+var ASSET_GRADIENTS = [
+  'linear-gradient(135deg,#00D4B015,#4E9CF530)',
+  'linear-gradient(135deg,#9B6BF220,#F04F5A15)',
+  'linear-gradient(135deg,#28C87A15,#00D4B020)',
+  'linear-gradient(135deg,#4E9CF520,#9B6BF215)',
+  'linear-gradient(135deg,#F5A62315,#F04F5A20)',
+  'linear-gradient(135deg,#00D4B020,#28C87A15)',
+  'linear-gradient(135deg,#9B6BF215,#4E9CF520)',
+  'linear-gradient(135deg,#F04F5A15,#F5A62320)',
+];
+
+var ENGINE_META = {
+  flux:    { label:'Flux 1.1 Pro',         icon:'⚡', tag:'bdg-t',  desc:'Realismo fotográfico · FLUX.1',  type:'image' },
+  dalle3:  { label:'DALL-E 3',             icon:'◈',  tag:'bdg-p',  desc:'OpenAI · Alta qualidade',        type:'image' },
+  midj:    { label:'Midjourney v6',         icon:'◎',  tag:'bdg-b',  desc:'Artístico · Cinematic',          type:'image' },
+  sdxl:    { label:'Stable Diffusion XL',  icon:'⊛',  tag:'bdg-gr', desc:'Open source · Rápido',           type:'image' },
+  ideogram: { label:'Ideogram 2.0',        icon:'Aa', tag:'bdg-a',  desc:'Tipografia · Text in image',     type:'image' },
+  runway:  { label:'Runway Gen-3 Alpha',   icon:'▷',  tag:'bdg-k',  desc:'Video · 5–10 segundos',          type:'video' },
+  sora:    { label:'Sora (OpenAI)',         icon:'◉',  tag:'bdg-r',  desc:'Video · HD · 20 segundos',       type:'video' },
+};
+
+var STYLE_PRESETS = [
+  { id:'photographic', label:'Fotográfico',   cols:'#00D4B0,#0a8a78' },
+  { id:'cinematic',    label:'Cinematic',     cols:'#F5A623,#8B4A00' },
+  { id:'digital_art',  label:'Digital Art',  cols:'#9B6BF2,#4E1BA8' },
+  { id:'typography',   label:'Tipografia',   cols:'#EEF0F4,#3E4652' },
+  { id:'product',      label:'Produto',      cols:'#4E9CF5,#0A3A7A' },
+  { id:'sci_fi',       label:'Sci-Fi',       cols:'#28C87A,#0A3A1F' },
+  { id:'minimalist',   label:'Minimalista',  cols:'#7A8494,#2E343C' },
+  { id:'abstract',     label:'Abstrato',     cols:'#F04F5A,#7B0A12' },
+];
+
+var ASPECT_PRESETS = [
+  { id:'1:1',  label:'1:1',  w:1, h:1,  use:'Instagram Feed' },
+  { id:'16:9', label:'16:9', w:16,h:9,  use:'YouTube / Banner' },
+  { id:'4:5',  label:'4:5',  w:4, h:5,  use:'Instagram Portrait' },
+  { id:'9:16', label:'9:16', w:9, h:16, use:'Stories / TikTok' },
+  { id:'3:2',  label:'3:2',  w:3, h:2,  use:'Blog / LinkedIn' },
+  { id:'2:3',  label:'2:3',  w:2, h:3,  use:'Pinterest' },
+];
+
+function statusLabel(s) {
+  var m = { draft:'Rascunho', in_review:'Em revisão', approved:'Aprovado', published:'Publicado', rejected:'Rejeitado' };
+  return m[s] || s;
+}
+function statusBdg(s) {
+  var m = { draft:'bdg-gr', in_review:'bdg-a', approved:'bdg-g', published:'bdg-t', rejected:'bdg-r' };
+  return '<span class="bdg ' + (m[s]||'bdg-gr') + '">' + statusLabel(s) + '</span>';
+}
+
 function renderMktCriar(el) {
-  var genHtml = '';
-  if (mktCreateData.generated) {
-    var g = mktCreateData.generated;
-    genHtml = '<div class="card" style="margin-top:14px"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
-      + '<div class="card-title" style="margin-bottom:0">Conteúdo Gerado pela IA</div>'
-      + '<div class="at-status" style="background:var(--tl);color:var(--teal);border:1px solid rgba(0,212,176,.15);font-size:10px;padding:4px 10px;border-radius:4px;display:flex;align-items:center;gap:5px">'
-      + '<svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 5l3 3 5-5"/></svg>Gerado com Claude</div>'
-      + '</div>'
-      + '<div class="g2">'
-      + '<div><div style="font-size:9px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Headline Principal</div>'
-      + '<div style="font-family:var(--fh);font-size:20px;font-weight:800;color:var(--t1);line-height:1.2;margin-bottom:12px" id="gen-headline">' + (g.headline || '') + '</div>'
-      + '<div style="font-size:9px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Caption / Corpo</div>'
-      + '<div class="ai-gen-area" id="gen-caption">' + (g.caption || '').replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>') + '</div></div>'
-      + '<div>'
-      + '<div style="font-size:9px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">CTA Button</div>'
-      + '<div style="margin-bottom:14px"><button class="btn btn-teal" style="pointer-events:none">' + (g.cta || '') + '</button></div>'
-      + '<div style="font-size:9px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Hook (primeiras palavras)</div>'
-      + '<div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--amber);margin-bottom:14px">"' + (g.hook || '') + '"</div>'
-      + '<div style="font-size:9px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Plataformas sugeridas</div>'
-      + '<div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px">'
-      + (g.plataformas || []).map(function(p){ return '<span class="bdg bdg-t">' + p + '</span>'; }).join('')
-      + '</div>'
-      + '<div style="font-size:9px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Hashtags</div>'
-      + '<div style="font-size:11px;color:var(--purple);line-height:1.7">' + (g.hashtags || '') + '</div>'
-      + '</div></div>'
-      + '<div style="display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--b1)">'
-      + '<button class="btn btn-teal" onclick="criarCampanhaFromGen()">Criar campanha com este conteúdo →</button>'
-      + '<button class="btn btn-ghost btn-sm" onclick="mktCreateData.generated=null;renderMktCriar($(\'content\'))">Regenerar</button>'
-      + '<button class="btn btn-ghost btn-sm" onclick="goto(\'crm-pipeline\')">Ver pipeline CRM</button>'
-      + '</div></div>';
+  var tabHtml = '<div class="studio-tabs">'
+    + studioTabBtn('generate', 'Geração')
+    + studioTabBtn('review',   'Revisão & Aprovação <span class="studio-tab-cnt">' + STUDIO_ASSETS.filter(function(a){return a.status==='in_review';}).length + '</span>')
+    + studioTabBtn('library',  'Biblioteca <span class="studio-tab-cnt">' + STUDIO_ASSETS.length + '</span>')
+    + '</div>';
+
+  var bodyHtml;
+  if (studioTab === 'generate') {
+    bodyHtml = renderStudioGenerate();
+  } else if (studioTab === 'review') {
+    bodyHtml = renderStudioReview();
+  } else {
+    bodyHtml = renderStudioLibrary();
   }
 
-  html = '<div class="sec-hd"><div><div class="sec-title">Criar Campanha com IA</div>'
-    + '<div class="sec-sub">Gera copy, CTAs e estratégia em segundos com Claude</div></div></div>'
-    + '<div class="g2" style="align-items:start">'
-    /* FORM */
-    + '<div>'
-    + '<div class="card mb12">'
-    + '<div class="card-title">Brief da Campanha</div>'
-    + '<div class="fld"><label>Nome da campanha</label><input class="inp" id="c-nome" value="' + (mktCreateData.nome||'') + '" placeholder="ex: Spring Product Launch" oninput="mktCreateData.nome=this.value"></div>'
-    + '<div class="fld"><label>Produto / Serviço</label><input class="inp" id="c-prod" value="' + (mktCreateData.produto||'STRATA Revenue OS') + '" placeholder="Descreve o que estás a promover" oninput="mktCreateData.produto=this.value"></div>'
-    + '<div class="fld"><label>Audiência alvo</label><input class="inp" id="c-aud" value="' + (mktCreateData.audiencia||'PMEs portuguesas 5-50 colaboradores') + '" placeholder="ex: Founders e CFOs de PMEs" oninput="mktCreateData.audiencia=this.value"></div>'
-    + '<div class="fld"><label>Brief / Mensagem chave</label><textarea class="inp" id="c-brief" rows="3" oninput="mktCreateData.brief=this.value">' + (mktCreateData.brief||'Ferramenta tudo-em-um que unifica marketing, CRM e receita. Simplifica operações e aumenta revenue.') + '</textarea></div>'
-    + '</div>'
-    + '<div class="card mb12">'
-    + '<div class="card-title">Parâmetros Criativos</div>'
-    + '<div class="fld"><label>Tom</label>'
-    + '<div style="display:flex;flex-wrap:wrap;gap:5px" id="tom-grp">'
-    + ['Audacioso','Profissional','Urgente','Empático','Minimalista','Witty'].map(function(t,i){
-        return '<button class="btn btn-ghost btn-xs' + (i===0?' on" style="background:var(--s4);color:var(--t1)':'"') + '" onclick="setTomBtn(this)">' + t + '</button>';
-      }).join('')
-    + '</div></div>'
-    + '<div class="fld"><label>Plataformas alvo</label>'
-    + '<div style="display:flex;flex-wrap:wrap;gap:5px">'
-    + ['Instagram','LinkedIn','TikTok','Facebook','Google Ads','Email'].map(function(p,i){
-        var on = i < 3;
-        return '<button class="btn btn-ghost btn-xs' + (on?' on" style="background:var(--s4);color:var(--t1)':'"') + '" onclick="this.classList.toggle(\'on\');this.style.background=this.classList.contains(\'on\')?\'var(--s4)\':\'\';this.style.color=this.classList.contains(\'on\')?\'var(--t1)\':\'\';">' + p + '</button>';
-      }).join('')
-    + '</div></div>'
-    + '<div class="fld"><label>Formato principal</label>'
-    + '<select class="inp" id="c-fmt"><option>Feed Post</option><option>Story / Reel (9:16)</option><option>Carousel</option><option>Email Newsletter</option><option>Google Search Ad</option></select></div>'
-    + '</div>'
-    + '<button class="btn btn-teal" id="gen-btn" style="width:100%;justify-content:center;padding:12px;letter-spacing:.5px;font-size:13px" onclick="generateCopy()">'
-    + '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="black" stroke-width="2"><polygon points="6.5,1 12,4.5 12,8.5 6.5,12 1,8.5 1,4.5"/><circle cx="6.5" cy="6.5" r="2"/></svg>'
-    + ' Gerar com Claude'
-    + '</button>'
-    + '</div>'
-    /* RIGHT: PREVIEW + TIPS */
-    + '<div>'
-    + '<div class="card mb12">'
-    + '<div class="card-title">Processo de Geração</div>'
-    + '<div style="display:flex;flex-direction:column;gap:8px">'
-    + ['Brief recebido — produto, audiência, tom', 'Claude analisa campanhas de alta performance', 'Gera headline, caption, CTA e hook', 'Sugere plataformas e hashtags optimizadas', 'Conteúdo pronto para publicar ou editar'].map(function(step, i) {
-        var done = mktCreateData.generated && i < 5;
-        return '<div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--s3);border-radius:var(--r1)">'
-          + '<div style="width:20px;height:20px;border-radius:50%;background:' + (done ? 'var(--teal)' : 'var(--s4)') + ';border:1px solid ' + (done ? 'var(--teal)' : 'var(--b2)') + ';display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:' + (done ? '#000' : 'var(--t3)') + ';flex-shrink:0">' + (done ? '✓' : (i+1)) + '</div>'
-          + '<span style="font-size:12px;color:' + (done ? 'var(--t1)' : 'var(--t2)') + '">' + step + '</span></div>';
-      }).join('')
-    + '</div></div>'
-    + '<div class="card">'
-    + '<div class="card-title">Melhores Práticas</div>'
-    + [
-        ['Hook','Os primeiros 3 segundos / palavras determinam 80% do engagement.'],
-        ['CTA','Verbos de acção: "Descubra", "Experimente", "Comece já".'],
-        ['Audiência','Quanto mais específico o brief, melhor o output da IA.'],
-        ['A/B Testing','Gera 2-3 variantes e testa em audiences pequenas.'],
-      ].map(function(tip) {
-        return '<div style="padding:8px 0;border-bottom:1px solid var(--b1)">'
-          + '<div style="font-size:11px;font-weight:600;color:var(--teal);margin-bottom:2px">' + tip[0] + '</div>'
-          + '<div style="font-size:11px;color:var(--t2);line-height:1.5">' + tip[1] + '</div></div>';
-      }).join('')
-    + '</div>'
-    + '</div>'
-    + '</div>' /* close g2 */
-    + genHtml;
+  el.innerHTML = '<div class="sec-hd"><div><div class="sec-title">Creative Studio</div>'
+    + '<div class="sec-sub">Geração de imagem e vídeo com IA · Revisão · Aprovação</div></div>'
+    + '<div style="display:flex;gap:7px" id="studio-hd-actions"></div></div>'
+    + tabHtml
+    + bodyHtml;
 
-  var html = html;
-  el.innerHTML = html;
+  updateStudioHeader();
 }
 
-function setTomBtn(btn) {
-  var grp = document.getElementById('tom-grp');
-  if (!grp) return;
-  grp.querySelectorAll('button').forEach(function(b){ b.classList.remove('on'); b.style.background=''; b.style.color=''; });
-  btn.classList.add('on'); btn.style.background='var(--s4)'; btn.style.color='var(--t1)';
-  mktCreateData.tom = btn.textContent;
+function studioTabBtn(id, lbl) {
+  var on = studioTab === id;
+  return '<button class="studio-tab-btn' + (on ? ' on' : '') + '" onclick="studioTab=\'' + id + '\';renderMktCriar($(\'content\'))">' + lbl + '</button>';
 }
 
-async function generateCopy() {
-  if (generatingCopy) return;
-  generatingCopy = true;
-  var btn = $('gen-btn');
-  if (btn) { btn.disabled = true; btn.innerHTML = '<span class="pulsing">Claude está a gerar…</span>'; }
+function updateStudioHeader() {
+  var el = document.getElementById('studio-hd-actions');
+  if (!el) return;
+  if (studioTab === 'generate') {
+    el.innerHTML = '<button class="btn btn-ghost btn-sm" onclick="studioTab=\'library\';renderMktCriar($(\'content\'))">Ver biblioteca</button>'
+      + '<button class="btn btn-teal btn-sm" id="gen-btn" onclick="generateCopy()">Gerar com Claude</button>';
+  } else if (studioTab === 'review') {
+    el.innerHTML = '<button class="btn btn-ok btn-sm" onclick="approveAll()">Aprovar seleccionados</button>';
+  } else {
+    el.innerHTML = '<button class="btn btn-ghost btn-sm" onclick="studioViewMode=studioViewMode===\'grid\'?\'list\':\'grid\';renderMktCriar($(\'content\'))">Toggle view</button>'
+      + '<button class="btn btn-teal btn-sm" onclick="studioTab=\'generate\';renderMktCriar($(\'content\'))">+ Gerar assets</button>';
+  }
+}
 
-  var nome     = ($('c-nome')  || {}).value  || 'Campanha STRATA';
-  var produto  = ($('c-prod')  || {}).value  || 'STRATA Revenue OS';
-  var audiencia= ($('c-aud')   || {}).value  || 'PMEs portuguesas';
-  var brief    = ($('c-brief') || {}).value  || 'Plataforma B2B SaaS';
-  var tom      = mktCreateData.tom || 'Audacioso';
-  var fmt      = ($('c-fmt')   || {}).value  || 'Feed Post';
-  var plats    = [];
-  document.querySelectorAll('#content .btn.on').forEach(function(b){
-    var t = b.textContent.trim();
-    if (['Instagram','LinkedIn','TikTok','Facebook','Google Ads','Email'].indexOf(t) > -1) plats.push(t);
+/* ─── GENERATE TAB ─── */
+function renderStudioGenerate() {
+  /* engine selector */
+  var enginesHtml = '<div class="studio-engines">';
+  Object.keys(ENGINE_META).forEach(function(k) {
+    var e = ENGINE_META[k];
+    var on = studioEngine === k;
+    enginesHtml += '<button class="engine-btn' + (on ? ' on' : '') + '" onclick="studioEngine=\'' + k + '\';renderMktCriar($(\'content\'))">'
+      + '<span class="engine-icon">' + e.icon + '</span>'
+      + '<div><div class="engine-name">' + e.label + '</div>'
+      + '<div class="engine-desc">' + e.desc + '</div></div>'
+      + '<span class="bdg ' + e.tag + ' engine-type-bdg">' + e.type + '</span>'
+      + '</button>';
   });
-  if (plats.length === 0) plats = ['Instagram','LinkedIn'];
+  enginesHtml += '</div>';
+
+  /* aspect ratios */
+  var aspectHtml = '<div class="aspect-row">';
+  ASPECT_PRESETS.forEach(function(a) {
+    var on = studioAspect === a.id;
+    var boxW = Math.round(26 * a.w / Math.max(a.w, a.h));
+    var boxH = Math.round(26 * a.h / Math.max(a.w, a.h));
+    aspectHtml += '<button class="aspect-btn' + (on ? ' on' : '') + '" onclick="studioAspect=\'' + a.id + '\';renderMktCriar($(\'content\'))" title="' + a.use + '">'
+      + '<div style="width:' + boxW + 'px;height:' + boxH + 'px;border:1.5px solid currentColor;border-radius:2px"></div>'
+      + '<span>' + a.label + '</span>'
+      + '</button>';
+  });
+  aspectHtml += '</div>';
+
+  /* style presets */
+  var styleHtml = '<div class="style-grid">';
+  STYLE_PRESETS.forEach(function(s) {
+    var on = studioStyle === s.id;
+    var cols = s.cols.split(',');
+    styleHtml += '<button class="style-btn' + (on ? ' on' : '') + '" onclick="studioStyle=\'' + s.id + '\';renderMktCriar($(\'content\'))">'
+      + '<div class="style-thumb" style="background:linear-gradient(135deg,' + cols[0] + ',' + cols[1] + ')"></div>'
+      + '<span>' + s.label + '</span></button>';
+  });
+  styleHtml += '</div>';
+
+  /* ai copy suggestion */
+  var copyHint = mktCreateData.generated
+    ? '<div class="studio-hint"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5.5,1 10,4 10,8 5.5,10.5 1,8 1,4"/><circle cx="5.5" cy="5.5" r="1.5"/></svg>Sugestão de prompt da IA activa — <button onclick="applyAiPrompt()" style="background:none;border:none;color:var(--teal);cursor:pointer;font-size:10px;font-weight:600;padding:0">Aplicar ao gerador →</button></div>'
+    : '';
+
+  /* main layout */
+  return '<div class="studio-layout">'
+    /* ── LEFT PANEL ── */
+    + '<div class="studio-left">'
+    + '<div class="studio-section-title">Motor de Geração</div>'
+    + enginesHtml
+    + '<div class="studio-section-title" style="margin-top:16px">Prompt</div>'
+    + copyHint
+    + '<div class="studio-prompt-wrap">'
+    + '<textarea id="studio-prompt" class="studio-textarea" placeholder="Descreve a imagem que queres gerar… quanto mais detalhe, melhor o resultado." oninput="studioPrompt=this.value">' + studioPrompt + '</textarea>'
+    + '<button class="studio-enhance-btn" onclick="enhancePrompt()" title="Melhorar prompt com Claude">'
+    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5.5,1 10,4 10,8 5.5,10.5 1,4"/><circle cx="5.5" cy="5.5" r="1.5"/></svg> Melhorar com IA</button>'
+    + '</div>'
+    + '<div class="studio-section-title" style="margin-top:14px">Prompt negativo</div>'
+    + '<textarea id="studio-neg-prompt" class="studio-textarea" style="min-height:52px" placeholder="O que não queres na imagem… (ex: texto, blur, distorção)" oninput="studioNegPrompt=this.value">' + studioNegPrompt + '</textarea>'
+    + '<div class="studio-section-title" style="margin-top:14px">Aspect Ratio</div>'
+    + aspectHtml
+    + '<div class="studio-section-title" style="margin-top:14px">Estilo</div>'
+    + styleHtml
+    + '<div class="studio-section-title" style="margin-top:14px">Qualidade & Quantidade</div>'
+    + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">'
+    + '<div class="fld"><label>Qualidade</label>'
+    + '<select class="inp" style="font-size:11px" onchange="studioQuality=this.value">'
+    + ['draft','standard','high','ultra'].map(function(q){ return '<option value="' + q + '"' + (studioQuality===q?' selected':'') + '>' + {draft:'Draft (rápido)',standard:'Standard',high:'High Quality',ultra:'Ultra HD'}[q] + '</option>'; }).join('')
+    + '</select></div>'
+    + '<div class="fld"><label>Quantidade</label>'
+    + '<select class="inp" style="font-size:11px"><option>1 imagem</option><option>2 imagens</option><option selected>4 imagens</option></select></div>'
+    + '</div>'
+    + '<div class="studio-generate-area">'
+    + '<button class="studio-gen-btn" id="studio-gen-btn" onclick="simulateGenerate()">'
+    + '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7,1 13,4.5 13,9.5 7,13 1,9.5 1,4.5"/><circle cx="7" cy="7" r="2.5"/></svg>'
+    + ' Gerar com ' + ENGINE_META[studioEngine].label
+    + '</button>'
+    + '<div style="font-size:9px;color:var(--t3);text-align:center;margin-top:6px">~' + {flux:'8s',dalle3:'12s',midj:'25s',sdxl:'6s',ideogram:'10s',runway:'45s',sora:'90s'}[studioEngine] + ' por geração</div>'
+    + '</div>'
+    + '</div>'
+    /* ── RIGHT PANEL ── */
+    + '<div class="studio-right">'
+    + renderStudioCanvas()
+    + '</div>'
+    + '</div>';
+}
+
+function renderStudioCanvas() {
+  var recent = STUDIO_ASSETS.slice().reverse().slice(0, 8);
+
+  var html = '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">'
+    + '<div style="font-size:11px;font-weight:600;color:var(--t1)">Resultados recentes</div>'
+    + '<div style="display:flex;gap:5px">'
+    + '<button class="btn btn-ghost btn-xs" onclick="studioTab=\'library\';renderMktCriar($(\'content\'))">Ver tudo (' + STUDIO_ASSETS.length + ')</button>'
+    + '</div></div>'
+    + '<div class="studio-canvas" id="studio-canvas">';
+
+  if (studioGenerating) {
+    html += renderGeneratingPlaceholders();
+  } else {
+    var cols = [[], [], []];
+    recent.forEach(function(a, i) { cols[i % 3].push(a); });
+    html += '<div class="canvas-masonry">';
+    cols.forEach(function(col) {
+      html += '<div class="canvas-col">';
+      col.forEach(function(a) { html += renderAssetThumb(a, true); });
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function renderAssetThumb(a, inCanvas) {
+  var aspect = a.aspect || '1:1';
+  var parts = aspect.split(':');
+  var ratio = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
+  var bg = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+  var eng = ENGINE_META[a.engine] || {};
+
+  return '<div class="asset-thumb-wrap ' + (a.isVideo ? 'is-video' : '') + '" onclick="openAssetReview(' + a.id + ')">'
+    + '<div class="asset-thumb-img" style="padding-bottom:' + ratio + '%;background:' + bg + '">'
+    + '<div class="asset-thumb-inner">'
+    + (a.isVideo
+        ? '<div class="asset-video-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polygon points="8,6 16,10 8,14" fill="currentColor"/><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div>'
+        : '<div class="asset-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 26 22" fill="none" opacity=".3"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg></div>')
+    + '</div>'
+    + '<div class="asset-thumb-overlay">'
+    + '<div style="display:flex;gap:5px;flex-wrap:wrap">'
+    + statusBdg(a.status)
+    + '<span class="bdg ' + (eng.tag||'bdg-gr') + '" style="font-size:8px">' + (eng.label||a.engine) + '</span>'
+    + '</div>'
+    + '<div style="display:flex;gap:4px;margin-top:6px">'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();toggleLike(' + a.id + ')" title="Like">'
+    + (a.liked ? '<svg width="11" height="11" viewBox="0 0 11 11" fill="#F04F5A" stroke="#F04F5A" stroke-width="1"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>'
+    : '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>')
+    + '</button>'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();openAssetReview(' + a.id + ')" title="Rever">'
+    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4.5"/><path d="M5.5 3.5v2.5l2 1"/></svg>'
+    + '</button>'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'approved\')" title="Aprovar">'
+    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1.5 5.5l3 3 5-5"/></svg>'
+    + '</button>'
+    + '</div></div>'
+    + '</div>'
+    + (a.comments && a.comments.length ? '<div class="asset-comment-count"><svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h7v5H3.5L1 7.5V6H1V1z"/></svg>' + a.comments.length + '</div>' : '')
+    + '</div>';
+}
+
+function renderGeneratingPlaceholders() {
+  var html = '<div class="canvas-masonry"><div class="canvas-col">';
+  for (var i = 0; i < 4; i++) {
+    html += '<div class="asset-thumb-wrap">'
+      + '<div class="asset-thumb-img generating-pulse" style="padding-bottom:' + [100,133,75,100][i] + '%">'
+      + '<div class="asset-thumb-inner"><div class="generating-text">Gerando com ' + ENGINE_META[studioEngine].label + '…</div></div></div></div>';
+    if (i === 1) html += '</div><div class="canvas-col">';
+    if (i === 2) html += '</div><div class="canvas-col">';
+  }
+  return html + '</div></div>';
+}
+
+/* ─── REVIEW TAB ─── */
+function renderStudioReview() {
+  var inReview   = STUDIO_ASSETS.filter(function(a){ return a.status === 'in_review'; });
+  var drafts     = STUDIO_ASSETS.filter(function(a){ return a.status === 'draft'; });
+  var approved   = STUDIO_ASSETS.filter(function(a){ return a.status === 'approved'; });
+  var published  = STUDIO_ASSETS.filter(function(a){ return a.status === 'published'; });
+
+  /* if reviewing a single asset */
+  if (studioReviewAsset !== null) {
+    var a = STUDIO_ASSETS.filter(function(x){ return x.id === studioReviewAsset; })[0];
+    if (a) return renderAssetDetailReview(a);
+  }
+
+  var html = '<div class="review-board">';
+
+  var columns = [
+    { id:'draft',     label:'Rascunho',   color:'var(--t3)', assets: drafts },
+    { id:'in_review', label:'Em Revisão', color:'var(--amber)', assets: inReview },
+    { id:'approved',  label:'Aprovado',   color:'var(--green)', assets: approved },
+    { id:'published', label:'Publicado',  color:'var(--teal)',  assets: published },
+  ];
+
+  columns.forEach(function(col) {
+    html += '<div class="review-col">'
+      + '<div class="review-col-head" style="border-top-color:' + col.color + '">'
+      + '<span class="review-col-title" style="color:' + col.color + '">' + col.label + '</span>'
+      + '<span class="review-col-count">' + col.assets.length + '</span>'
+      + '</div>'
+      + '<div class="review-col-body">';
+
+    if (col.assets.length === 0) {
+      html += '<div style="padding:20px 12px;text-align:center;color:var(--t3);font-size:11px">Sem assets</div>';
+    }
+
+    col.assets.forEach(function(a) {
+      var bg = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+      var eng = ENGINE_META[a.engine] || {};
+      html += '<div class="review-card" onclick="studioReviewAsset=' + a.id + ';renderMktCriar($(\'content\'))">'
+        + '<div style="height:90px;background:' + bg + ';border-radius:var(--r1);margin-bottom:8px;position:relative;display:flex;align-items:center;justify-content:center">'
+        + (a.isVideo ? '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><polygon points="10,8 18,12 10,16" fill="var(--pink)"/><circle cx="12" cy="12" r="11" stroke="var(--pink)" stroke-width="1.5" fill="none"/></svg>'
+                     : '<svg width="24" height="24" viewBox="0 0 26 22" fill="none" opacity=".4"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/></svg>')
+        + (a.liked ? '<div style="position:absolute;top:5px;right:5px;color:var(--red);font-size:10px">♥</div>' : '')
+        + '</div>'
+        + '<div style="font-size:10px;color:var(--t2);line-height:1.4;margin-bottom:6px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">' + a.prompt + '</div>'
+        + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
+        + '<span class="bdg ' + (eng.tag||'bdg-gr') + '" style="font-size:8px">' + (eng.label||a.engine) + '</span>'
+        + '<span style="font-size:9px;color:var(--t3)">' + a.aspect + '</span>'
+        + '</div>'
+        + (a.comments.length > 0 ? '<div style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--t2);padding:5px 0;border-top:1px solid var(--b1)"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h8v6H3.5L1 9V7H1V1z"/></svg>' + a.comments.length + ' comentário(s)</div>' : '')
+        + '<div style="display:flex;gap:4px;margin-top:6px">'
+        + (col.id === 'in_review' ? '<button class="btn btn-ok btn-xs" style="flex:1;justify-content:center" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'approved\')">Aprovar</button><button class="btn btn-danger btn-xs" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'draft\')">Rejeitar</button>' : '')
+        + (col.id === 'draft' ? '<button class="btn btn-warn btn-xs" style="flex:1;justify-content:center" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'in_review\')">Enviar para revisão</button>' : '')
+        + (col.id === 'approved' ? '<button class="btn btn-teal btn-xs" style="flex:1;justify-content:center" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'published\')">Publicar</button>' : '')
+        + '</div></div>';
+    });
+
+    html += '</div></div>';
+  });
+
+  html += '</div>';
+  return html;
+}
+
+function renderAssetDetailReview(a) {
+  var bg  = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+  var eng = ENGINE_META[a.engine] || {};
+  var aspect = a.aspect || '1:1';
+  var parts = aspect.split(':');
+  var ratio = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
+
+  return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">'
+    + '<button class="btn btn-ghost btn-xs" onclick="studioReviewAsset=null;renderMktCriar($(\'content\'))">← Revisão</button>'
+    + '<div style="font-family:var(--fh);font-size:16px;font-weight:700;letter-spacing:.5px">Revisão de Asset</div>'
+    + '<div style="margin-left:auto;display:flex;gap:6px">'
+    + '<button class="btn btn-danger btn-sm" onclick="changeAssetStatus(' + a.id + ',\'draft\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Rejeitar</button>'
+    + '<button class="btn btn-warn btn-sm" onclick="changeAssetStatus(' + a.id + ',\'in_review\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Em revisão</button>'
+    + '<button class="btn btn-ok btn-sm" onclick="changeAssetStatus(' + a.id + ',\'approved\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Aprovar</button>'
+    + '<button class="btn btn-teal btn-sm" onclick="changeAssetStatus(' + a.id + ',\'published\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Publicar</button>'
+    + '</div></div>'
+    + '<div class="g2" style="align-items:start">'
+    /* Asset preview */
+    + '<div>'
+    + '<div style="background:' + bg + ';border-radius:var(--r3);overflow:hidden;position:relative;padding-bottom:' + ratio + '%">'
+    + '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">'
+    + (a.isVideo
+      ? '<div style="text-align:center"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><polygon points="19,15 35,24 19,33" fill="var(--pink)"/><circle cx="24" cy="24" r="22" stroke="var(--pink)" stroke-width="2" fill="none"/></svg><div style="font-size:11px;color:var(--pink);margin-top:8px">Video Preview</div></div>'
+      : '<svg width="48" height="48" viewBox="0 0 26 22" fill="none" opacity=".25"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg>')
+    + '</div></div>'
+    + '<div class="card" style="margin-top:12px">'
+    + '<div class="card-title">Metadata</div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Motor</span><span class="bdg ' + eng.tag + '">' + eng.label + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Tipo</span><span style="font-size:11px;color:var(--t1)">' + (a.isVideo ? 'Vídeo' : 'Imagem') + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Aspect Ratio</span><span style="font-size:11px;color:var(--t1)">' + a.aspect + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estilo</span><span style="font-size:11px;color:var(--t1)">' + (STYLE_PRESETS.filter(function(s){return s.id===a.style;})[0]||{label:a.style}).label + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estado</span>' + statusBdg(a.status) + '</div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Criado</span><span style="font-size:11px;color:var(--t1)">' + a.created + '</span></div>'
+    + '<div style="padding:8px 0"><span style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px">Prompt</span>'
+    + '<div style="font-size:11px;color:var(--t2);line-height:1.6;margin-top:4px">' + a.prompt + '</div></div>'
+    + '<div style="display:flex;gap:6px;margin-top:10px">'
+    + '<button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center">Descarregar</button>'
+    + '<button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center">Usar em campanha</button>'
+    + '</div></div></div>'
+    /* Comments panel */
+    + '<div>'
+    + '<div class="card">'
+    + '<div class="card-title">Comentários &amp; Feedback (' + a.comments.length + ')</div>'
+    + (a.comments.length === 0
+      ? '<div style="padding:16px 0;text-align:center;color:var(--t3);font-size:12px">Sem comentários ainda</div>'
+      : a.comments.map(function(cm) {
+          var initials = cm.user.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
+          return '<div class="comment-item">'
+            + '<div class="comment-av">' + initials + '</div>'
+            + '<div style="flex:1"><div style="display:flex;align-items:baseline;gap:7px;margin-bottom:3px">'
+            + '<span style="font-size:12px;font-weight:500;color:var(--t1)">' + cm.user + '</span>'
+            + '<span style="font-size:10px;color:var(--t3)">' + cm.ts + '</span></div>'
+            + '<div style="font-size:12px;color:var(--t2);line-height:1.5">' + cm.text + '</div>'
+            + '</div></div>';
+        }).join(''))
+    + '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--b1)">'
+    + '<textarea class="inp" id="new-comment" rows="2" placeholder="Adicionar comentário, feedback ou anotação…" style="margin-bottom:8px"></textarea>'
+    + '<div style="display:flex;gap:6px">'
+    + '<button class="btn btn-teal btn-sm" onclick="addComment(' + a.id + ')">Comentar</button>'
+    + '<button class="btn btn-ghost btn-sm">Adicionar anotação</button>'
+    + '</div></div></div>'
+    /* Versions / history */
+    + '<div class="card" style="margin-top:12px"><div class="card-title">Variações &amp; Histórico</div>'
+    + '<div style="display:flex;flex-direction:column;gap:6px">'
+    + ['Variação A — prompt original','Variação B — estilo ajustado','Variação C — aspect ratio diferente'].map(function(v, i) {
+        return '<div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--s3);border-radius:var(--r1)">'
+          + '<div style="width:36px;height:36px;border-radius:var(--r1);background:' + ASSET_GRADIENTS[(a.idx+i+1)%ASSET_GRADIENTS.length] + ';flex-shrink:0"></div>'
+          + '<div style="flex:1"><div style="font-size:11px;color:var(--t1)">' + v + '</div><div style="font-size:10px;color:var(--t3)">' + a.engine + ' · ' + a.aspect + '</div></div>'
+          + (i === 0 ? '<span class="bdg bdg-t" style="font-size:8px">Actual</span>' : '<button class="btn btn-ghost btn-xs">Restaurar</button>')
+          + '</div>';
+      }).join('')
+    + '</div></div></div></div>';
+}
+
+/* ─── LIBRARY TAB ─── */
+function renderStudioLibrary() {
+  var filterStatus = 'all';
+  var byStatus = {};
+  STUDIO_ASSETS.forEach(function(a){ if (!byStatus[a.status]) byStatus[a.status] = 0; byStatus[a.status]++; });
+
+  var html = '<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap">'
+    + '<div class="tab-bar" style="margin-bottom:0">'
+    + ['all','draft','in_review','approved','published'].map(function(s){
+        var cnt = s === 'all' ? STUDIO_ASSETS.length : (byStatus[s]||0);
+        return '<button class="tab-btn' + (s==='all'?' on':'') + '" onclick="filterLibrary(\'' + s + '\')">' + {all:'Todos',draft:'Rascunho',in_review:'Em revisão',approved:'Aprovados',published:'Publicados'}[s] + (cnt > 0 ? ' (' + cnt + ')' : '') + '</button>';
+      }).join('')
+    + '</div>'
+    + '<div style="margin-left:auto;display:flex;gap:6px">'
+    + '<select class="inp" style="width:130px;font-size:11px"><option>Todos os motores</option>' + Object.keys(ENGINE_META).map(function(k){return '<option>' + ENGINE_META[k].label + '</option>';}).join('') + '</select>'
+    + '<select class="inp" style="width:120px;font-size:11px"><option>Todos os tipos</option><option>Imagens</option><option>Vídeos</option></select>'
+    + '</div></div>';
+
+  /* masonry grid */
+  if (studioViewMode === 'grid') {
+    var cols = [[], [], [], []];
+    STUDIO_ASSETS.forEach(function(a, i){ cols[i % 4].push(a); });
+    html += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">';
+    cols.forEach(function(col){
+      html += '<div style="display:flex;flex-direction:column;gap:8px">';
+      col.forEach(function(a){ html += renderAssetThumb(a, false); });
+      html += '</div>';
+    });
+    html += '</div>';
+  } else {
+    /* list view */
+    html += '<div class="card"><div class="tbl-wrap"><table><thead><tr><th>Preview</th><th>Motor</th><th>Prompt</th><th>Aspecto</th><th>Estado</th><th>Data</th><th>Comentários</th><th></th></tr></thead><tbody>';
+    STUDIO_ASSETS.forEach(function(a) {
+      var eng = ENGINE_META[a.engine] || {};
+      var bg = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+      html += '<tr onclick="openAssetReview(' + a.id + ')" style="cursor:pointer">'
+        + '<td><div style="width:48px;height:36px;border-radius:4px;background:' + bg + '"></div></td>'
+        + '<td><span class="bdg ' + (eng.tag||'bdg-gr') + '" style="font-size:8px">' + (eng.label||a.engine) + '</span></td>'
+        + '<td style="max-width:200px"><div style="font-size:11px;color:var(--t2);overflow:hidden;white-space:nowrap;text-overflow:ellipsis">' + a.prompt + '</div></td>'
+        + '<td style="font-size:11px">' + a.aspect + '</td>'
+        + '<td>' + statusBdg(a.status) + '</td>'
+        + '<td style="font-size:11px;color:var(--t2)">' + a.created + '</td>'
+        + '<td style="font-size:11px">' + (a.comments.length || '—') + '</td>'
+        + '<td><button class="btn btn-ghost btn-xs" onclick="event.stopPropagation();studioReviewAsset=' + a.id + ';studioTab=\'review\';renderMktCriar($(\'content\'))">Rever</button></td>'
+        + '</tr>';
+    });
+    html += '</tbody></table></div></div>';
+  }
+  return html;
+}
+
+/* ─── ACTIONS ─── */
+function simulateGenerate() {
+  var btn = document.getElementById('studio-gen-btn');
+  if (!btn || studioGenerating) return;
+  studioGenerating = true;
+  var canvas = document.getElementById('studio-canvas');
+  if (canvas) canvas.innerHTML = renderGeneratingPlaceholders();
+  btn.disabled = true;
+  btn.innerHTML = '<span class="pulsing">Gerando com ' + ENGINE_META[studioEngine].label + '…</span>';
+
+  var duration = { flux:2000, dalle3:2500, midj:3000, sdxl:1800, ideogram:2200, runway:4000, sora:5000 }[studioEngine] || 2500;
+
+  setTimeout(function() {
+    var newIds = [STUDIO_ASSETS.length+1, STUDIO_ASSETS.length+2, STUDIO_ASSETS.length+3, STUDIO_ASSETS.length+4];
+    var stylePreset = STYLE_PRESETS.filter(function(s){return s.id===studioStyle;})[0] || STYLE_PRESETS[0];
+    var prompt = studioPrompt || ('STRATA Revenue OS — ' + stylePreset.label + ' · Professional B2B');
+    newIds.slice(0, studioEngine === 'runway' || studioEngine === 'sora' ? 1 : 4).forEach(function(newId, i) {
+      STUDIO_ASSETS.push({
+        id:newId, engine:studioEngine, prompt:prompt, aspect:studioAspect, style:studioStyle,
+        status:'draft', comments:[], created:today, liked:false, idx:newId, isVideo:studioEngine==='runway'||studioEngine==='sora'
+      });
+    });
+    studioGenerating = false;
+    studioTab = 'review';
+    renderMktCriar(document.getElementById('content'));
+  }, duration);
+}
+
+function toggleLike(id) {
+  var a = STUDIO_ASSETS.filter(function(x){return x.id===id;})[0];
+  if (a) { a.liked = !a.liked; renderMktCriar(document.getElementById('content')); }
+}
+
+function openAssetReview(id) {
+  studioReviewAsset = id;
+  studioTab = 'review';
+  renderMktCriar(document.getElementById('content'));
+}
+
+function changeAssetStatus(id, newStatus) {
+  var a = STUDIO_ASSETS.filter(function(x){return x.id===id;})[0];
+  if (a) { a.status = newStatus; renderMktCriar(document.getElementById('content')); }
+}
+
+function addComment(id) {
+  var a = STUDIO_ASSETS.filter(function(x){return x.id===id;})[0];
+  var inp = document.getElementById('new-comment');
+  if (!a || !inp || !inp.value.trim()) return;
+  a.comments.push({ user:'Ana Costa', text:inp.value.trim(), ts:'Agora' });
+  renderMktCriar(document.getElementById('content'));
+}
+
+function approveAll() {
+  STUDIO_ASSETS.filter(function(a){return a.status==='in_review';}).forEach(function(a){a.status='approved';});
+  renderMktCriar(document.getElementById('content'));
+}
+
+function filterLibrary(status) {
+  renderMktCriar(document.getElementById('content'));
+}
+
+function applyAiPrompt() {
+  if (mktCreateData.generated) {
+    studioPrompt = mktCreateData.generated.headline + '. ' + (mktCreateData.generated.hook || '') + ' Professional B2B marketing visual.';
+  }
+  studioTab = 'generate';
+  renderMktCriar(document.getElementById('content'));
+}
+
+async function enhancePrompt() {
+  var inp = document.getElementById('studio-prompt');
+  if (!inp || !inp.value.trim()) return;
+  var btn = document.querySelector('.studio-enhance-btn');
+  if (btn) { btn.disabled = true; btn.innerHTML = '<span class="pulsing">Melhorando…</span>'; }
 
   try {
     var res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 800,
-        messages: [{
-          role: 'user',
-          content: 'You are a world-class B2B marketing copywriter. Create high-converting ad copy for this campaign.\n\n'
-            + 'Campaign: ' + nome + '\n'
-            + 'Product: ' + produto + '\n'
-            + 'Audience: ' + audiencia + '\n'
-            + 'Brief: ' + brief + '\n'
-            + 'Tone: ' + tom + '\n'
-            + 'Format: ' + fmt + '\n'
-            + 'Platforms: ' + plats.join(', ') + '\n\n'
-            + 'Reply ONLY with valid JSON, no markdown:\n'
-            + '{"headline":"","caption":"","cta":"","hook":"","hashtags":"","plataformas":[]}'
-        }]
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-6', max_tokens:300,
+        messages:[{ role:'user', content:'You are an expert AI image prompt engineer. Improve this prompt for ' + ENGINE_META[studioEngine].label + '. Make it more detailed, vivid, and optimized for the ' + studioStyle + ' style. Return ONLY the improved prompt, nothing else.\n\nOriginal: ' + inp.value }]
       })
     });
-    if (!res.ok) { var e = await res.json().catch(function(){return {};}); throw new Error(e.error ? e.error.message : 'API ' + res.status); }
     var data = await res.json();
-    var raw  = (data.content || []).map(function(x){ return x.text || ''; }).join('').replace(/```json|```/g,'').trim();
-    var match = raw.match(/\{[\s\S]+\}/);
-    var parsed = match ? JSON.parse(match[0]) : JSON.parse(raw);
-    parsed.plataformas = parsed.plataformas || plats;
-    mktCreateData.generated = parsed;
-  } catch(err) {
-    mktCreateData.generated = {
-      headline: nome + ' — Transforme a sua empresa',
-      caption: '**' + produto + '** é a plataforma que une marketing, CRM e receita numa só ferramenta.\n\nMais de 500 PMEs já descobriram como fechar mais deals, automatizar faturação e tomar melhores decisões.\n\nSem contractos longos. Setup em 10 minutos.',
-      cta: 'Experimente grátis',
-      hook: 'Chega de ferramentas dispersas.',
-      hashtags: '#B2B #SaaS #CRM #Marketing #Revenue #PME #Startup',
-      plataformas: plats,
-      _error: err.message
-    };
+    var improved = ((data.content||[])[0]||{}).text || '';
+    if (improved) { inp.value = improved; studioPrompt = improved; }
+  } catch(e) {
+    console.error('Enhance prompt error:', e);
   }
 
-  generatingCopy = false;
-  renderMktCriar($('content'));
+  if (btn) { btn.disabled = false; btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5.5,1 10,4 10,8 5.5,10.5 1,4"/><circle cx="5.5" cy="5.5" r="1.5"/></svg> Melhorar com IA'; }
 }
-
-function criarCampanhaFromGen() {
-  var newCamp = {
-    id: CAMPAIGNS.length + 1, nome: mktCreateData.nome || 'Nova Campanha IA',
-    canal: ['Instagram','LinkedIn'], estado:'draft', leads:0, clicks:0, impressoes:0,
-    cpl:0, cac:0, budget:2000, spent:0, conv_rate:0,
-    inicio: today, fim:'2026-07-01', cor:'#9B6BF2'
-  };
-  CAMPAIGNS.push(newCamp);
-  mktCreateData = {};
-  goto('mkt-campanhas');
-}
-
-/* ═══════════════════════════════════════════════
-   MARKETING — ANALYTICS & FUNIL
-   */
 function renderMktAnalytics(el) {
   /* ── helpers ── */
   function tabBtn(id, lbl) {
