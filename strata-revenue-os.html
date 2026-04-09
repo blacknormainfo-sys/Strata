@@ -518,7 +518,7 @@ function goto(page) {
 }
 
 function handleMainBtn() {
-  if      (pg === 'mkt-criar')     generateCopy();
+  if      (pg === 'mkt-criar')     generateImages();
   else if (pg === 'mkt-campanhas') goto('mkt-criar');
   else if (pg === 'mkt-dash')      goto('mkt-criar');
   else if (pg === 'rev-dash')      goto('rev-deals');
@@ -542,6 +542,7 @@ var PAGE_RENDERS = {
 
 function render() {
   var el = $('content');
+  if (!el) return;
   el.classList.remove('fade-in');
   void el.offsetWidth;
   el.classList.add('fade-in');
@@ -942,7 +943,7 @@ function updateStudioHeader() {
   if (!el) return;
   if (studioTab === 'generate') {
     el.innerHTML = '<button class="btn btn-ghost btn-sm" onclick="studioTab=\'library\';renderMktCriar($(\'content\'))">Ver biblioteca</button>'
-      + '<button class="btn btn-teal btn-sm" id="gen-btn" onclick="generateCopy()">Gerar com Claude</button>';
+      + '<button class="btn btn-teal btn-sm" id="gen-btn" onclick="generateImages()">Gerar Imagens</button>';
   } else if (studioTab === 'review') {
     el.innerHTML = '<button class="btn btn-ok btn-sm" onclick="approveAll()">Aprovar seleccionados</button>';
   } else {
@@ -1025,7 +1026,7 @@ function renderStudioGenerate() {
     + '<select class="inp" style="font-size:11px"><option>1 imagem</option><option>2 imagens</option><option selected>4 imagens</option></select></div>'
     + '</div>'
     + '<div class="studio-generate-area">'
-    + '<button class="studio-gen-btn" id="studio-gen-btn" onclick="simulateGenerate()">'
+    + '<button class="studio-gen-btn" id="studio-gen-btn" onclick="generateImages()">'
     + '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7,1 13,4.5 13,9.5 7,13 1,9.5 1,4.5"/><circle cx="7" cy="7" r="2.5"/></svg>'
     + ' Gerar com ' + ENGINE_META[studioEngine].label
     + '</button>'
@@ -1064,42 +1065,6 @@ function renderStudioCanvas() {
   }
   html += '</div>';
   return html;
-}
-
-function renderAssetThumb(a, inCanvas) {
-  var aspect = a.aspect || '1:1';
-  var parts = aspect.split(':');
-  var ratio = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
-  var bg = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
-  var eng = ENGINE_META[a.engine] || {};
-
-  return '<div class="asset-thumb-wrap ' + (a.isVideo ? 'is-video' : '') + '" onclick="openAssetReview(' + a.id + ')">'
-    + '<div class="asset-thumb-img" style="padding-bottom:' + ratio + '%;background:' + bg + '">'
-    + '<div class="asset-thumb-inner">'
-    + (a.isVideo
-        ? '<div class="asset-video-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polygon points="8,6 16,10 8,14" fill="currentColor"/><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div>'
-        : '<div class="asset-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 26 22" fill="none" opacity=".3"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg></div>')
-    + '</div>'
-    + '<div class="asset-thumb-overlay">'
-    + '<div style="display:flex;gap:5px;flex-wrap:wrap">'
-    + statusBdg(a.status)
-    + '<span class="bdg ' + (eng.tag||'bdg-gr') + '" style="font-size:8px">' + (eng.label||a.engine) + '</span>'
-    + '</div>'
-    + '<div style="display:flex;gap:4px;margin-top:6px">'
-    + '<button class="asset-action-btn" onclick="event.stopPropagation();toggleLike(' + a.id + ')" title="Like">'
-    + (a.liked ? '<svg width="11" height="11" viewBox="0 0 11 11" fill="#F04F5A" stroke="#F04F5A" stroke-width="1"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>'
-    : '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>')
-    + '</button>'
-    + '<button class="asset-action-btn" onclick="event.stopPropagation();openAssetReview(' + a.id + ')" title="Rever">'
-    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4.5"/><path d="M5.5 3.5v2.5l2 1"/></svg>'
-    + '</button>'
-    + '<button class="asset-action-btn" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'approved\')" title="Aprovar">'
-    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1.5 5.5l3 3 5-5"/></svg>'
-    + '</button>'
-    + '</div></div>'
-    + '</div>'
-    + (a.comments && a.comments.length ? '<div class="asset-comment-count"><svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h7v5H3.5L1 7.5V6H1V1z"/></svg>' + a.comments.length + '</div>' : '')
-    + '</div>';
 }
 
 function renderGeneratingPlaceholders() {
@@ -1177,81 +1142,6 @@ function renderStudioReview() {
   return html;
 }
 
-function renderAssetDetailReview(a) {
-  var bg  = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
-  var eng = ENGINE_META[a.engine] || {};
-  var aspect = a.aspect || '1:1';
-  var parts = aspect.split(':');
-  var ratio = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
-
-  return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">'
-    + '<button class="btn btn-ghost btn-xs" onclick="studioReviewAsset=null;renderMktCriar($(\'content\'))">← Revisão</button>'
-    + '<div style="font-family:var(--fh);font-size:16px;font-weight:700;letter-spacing:.5px">Revisão de Asset</div>'
-    + '<div style="margin-left:auto;display:flex;gap:6px">'
-    + '<button class="btn btn-danger btn-sm" onclick="changeAssetStatus(' + a.id + ',\'draft\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Rejeitar</button>'
-    + '<button class="btn btn-warn btn-sm" onclick="changeAssetStatus(' + a.id + ',\'in_review\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Em revisão</button>'
-    + '<button class="btn btn-ok btn-sm" onclick="changeAssetStatus(' + a.id + ',\'approved\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Aprovar</button>'
-    + '<button class="btn btn-teal btn-sm" onclick="changeAssetStatus(' + a.id + ',\'published\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Publicar</button>'
-    + '</div></div>'
-    + '<div class="g2" style="align-items:start">'
-    /* Asset preview */
-    + '<div>'
-    + '<div style="background:' + bg + ';border-radius:var(--r3);overflow:hidden;position:relative;padding-bottom:' + ratio + '%">'
-    + '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">'
-    + (a.isVideo
-      ? '<div style="text-align:center"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><polygon points="19,15 35,24 19,33" fill="var(--pink)"/><circle cx="24" cy="24" r="22" stroke="var(--pink)" stroke-width="2" fill="none"/></svg><div style="font-size:11px;color:var(--pink);margin-top:8px">Video Preview</div></div>'
-      : '<svg width="48" height="48" viewBox="0 0 26 22" fill="none" opacity=".25"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg>')
-    + '</div></div>'
-    + '<div class="card" style="margin-top:12px">'
-    + '<div class="card-title">Metadata</div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Motor</span><span class="bdg ' + eng.tag + '">' + eng.label + '</span></div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Tipo</span><span style="font-size:11px;color:var(--t1)">' + (a.isVideo ? 'Vídeo' : 'Imagem') + '</span></div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Aspect Ratio</span><span style="font-size:11px;color:var(--t1)">' + a.aspect + '</span></div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estilo</span><span style="font-size:11px;color:var(--t1)">' + (STYLE_PRESETS.filter(function(s){return s.id===a.style;})[0]||{label:a.style}).label + '</span></div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estado</span>' + statusBdg(a.status) + '</div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Criado</span><span style="font-size:11px;color:var(--t1)">' + a.created + '</span></div>'
-    + '<div style="padding:8px 0"><span style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px">Prompt</span>'
-    + '<div style="font-size:11px;color:var(--t2);line-height:1.6;margin-top:4px">' + a.prompt + '</div></div>'
-    + '<div style="display:flex;gap:6px;margin-top:10px">'
-    + '<button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center">Descarregar</button>'
-    + '<button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center">Usar em campanha</button>'
-    + '</div></div></div>'
-    /* Comments panel */
-    + '<div>'
-    + '<div class="card">'
-    + '<div class="card-title">Comentários &amp; Feedback (' + a.comments.length + ')</div>'
-    + (a.comments.length === 0
-      ? '<div style="padding:16px 0;text-align:center;color:var(--t3);font-size:12px">Sem comentários ainda</div>'
-      : a.comments.map(function(cm) {
-          var initials = cm.user.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
-          return '<div class="comment-item">'
-            + '<div class="comment-av">' + initials + '</div>'
-            + '<div style="flex:1"><div style="display:flex;align-items:baseline;gap:7px;margin-bottom:3px">'
-            + '<span style="font-size:12px;font-weight:500;color:var(--t1)">' + cm.user + '</span>'
-            + '<span style="font-size:10px;color:var(--t3)">' + cm.ts + '</span></div>'
-            + '<div style="font-size:12px;color:var(--t2);line-height:1.5">' + cm.text + '</div>'
-            + '</div></div>';
-        }).join(''))
-    + '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--b1)">'
-    + '<textarea class="inp" id="new-comment" rows="2" placeholder="Adicionar comentário, feedback ou anotação…" style="margin-bottom:8px"></textarea>'
-    + '<div style="display:flex;gap:6px">'
-    + '<button class="btn btn-teal btn-sm" onclick="addComment(' + a.id + ')">Comentar</button>'
-    + '<button class="btn btn-ghost btn-sm">Adicionar anotação</button>'
-    + '</div></div></div>'
-    /* Versions / history */
-    + '<div class="card" style="margin-top:12px"><div class="card-title">Variações &amp; Histórico</div>'
-    + '<div style="display:flex;flex-direction:column;gap:6px">'
-    + ['Variação A — prompt original','Variação B — estilo ajustado','Variação C — aspect ratio diferente'].map(function(v, i) {
-        return '<div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--s3);border-radius:var(--r1)">'
-          + '<div style="width:36px;height:36px;border-radius:var(--r1);background:' + ASSET_GRADIENTS[(a.idx+i+1)%ASSET_GRADIENTS.length] + ';flex-shrink:0"></div>'
-          + '<div style="flex:1"><div style="font-size:11px;color:var(--t1)">' + v + '</div><div style="font-size:10px;color:var(--t3)">' + a.engine + ' · ' + a.aspect + '</div></div>'
-          + (i === 0 ? '<span class="bdg bdg-t" style="font-size:8px">Actual</span>' : '<button class="btn btn-ghost btn-xs">Restaurar</button>')
-          + '</div>';
-      }).join('')
-    + '</div></div></div></div>';
-}
-
-/* ─── LIBRARY TAB ─── */
 function renderStudioLibrary() {
   var filterStatus = 'all';
   var byStatus = {};
@@ -1303,33 +1193,6 @@ function renderStudioLibrary() {
 }
 
 /* ─── ACTIONS ─── */
-function simulateGenerate() {
-  var btn = document.getElementById('studio-gen-btn');
-  if (!btn || studioGenerating) return;
-  studioGenerating = true;
-  var canvas = document.getElementById('studio-canvas');
-  if (canvas) canvas.innerHTML = renderGeneratingPlaceholders();
-  btn.disabled = true;
-  btn.innerHTML = '<span class="pulsing">Gerando com ' + ENGINE_META[studioEngine].label + '…</span>';
-
-  var duration = { flux:2000, dalle3:2500, midj:3000, sdxl:1800, ideogram:2200, runway:4000, sora:5000 }[studioEngine] || 2500;
-
-  setTimeout(function() {
-    var newIds = [STUDIO_ASSETS.length+1, STUDIO_ASSETS.length+2, STUDIO_ASSETS.length+3, STUDIO_ASSETS.length+4];
-    var stylePreset = STYLE_PRESETS.filter(function(s){return s.id===studioStyle;})[0] || STYLE_PRESETS[0];
-    var prompt = studioPrompt || ('STRATA Revenue OS — ' + stylePreset.label + ' · Professional B2B');
-    newIds.slice(0, studioEngine === 'runway' || studioEngine === 'sora' ? 1 : 4).forEach(function(newId, i) {
-      STUDIO_ASSETS.push({
-        id:newId, engine:studioEngine, prompt:prompt, aspect:studioAspect, style:studioStyle,
-        status:'draft', comments:[], created:today, liked:false, idx:newId, isVideo:studioEngine==='runway'||studioEngine==='sora'
-      });
-    });
-    studioGenerating = false;
-    studioTab = 'review';
-    renderMktCriar(document.getElementById('content'));
-  }, duration);
-}
-
 function toggleLike(id) {
   var a = STUDIO_ASSETS.filter(function(x){return x.id===id;})[0];
   if (a) { a.liked = !a.liked; renderMktCriar(document.getElementById('content')); }
@@ -2197,6 +2060,275 @@ function renderRevForecast(el) {
    INIT
    ═══════════════════════════════════════════════ */
 goto('mkt-dash');
+
+
+/* ── Pollinations image dimensions per aspect ratio ── */
+var ASPECT_DIMS = {
+  '1:1':  [1024, 1024],
+  '16:9': [1280, 720],
+  '4:5':  [832,  1040],
+  '9:16': [720,  1280],
+  '3:2':  [1152, 768],
+  '2:3':  [768,  1152],
+};
+
+/* ── Map studio engine names to Pollinations model param ── */
+var ENGINE_POLLIN_MODEL = {
+  flux:     'flux',
+  dalle3:   'flux-realism',
+  midj:     'flux',
+  sdxl:     'turbo',
+  ideogram: 'flux',
+  runway:   null,
+  sora:     null,
+};
+
+/* ── Style suffix appended to prompt ── */
+var STYLE_SUFFIX = {
+  photographic: ', photorealistic, professional photography, high detail',
+  cinematic:    ', cinematic lighting, movie still, anamorphic lens, dramatic',
+  digital_art:  ', digital artwork, concept art, vibrant colors, detailed',
+  typography:   ', clean typography, bold text, modern graphic design',
+  product:      ', product photography, studio lighting, clean background',
+  sci_fi:       ', sci-fi, futuristic, neon lights, cyberpunk aesthetic',
+  minimalist:   ', minimalist design, clean lines, negative space, elegant',
+  abstract:     ', abstract art, geometric shapes, colorful, artistic',
+};
+
+function buildPollinURL(prompt, engine, aspect, style, seed) {
+  var model  = ENGINE_POLLIN_MODEL[engine] || 'flux';
+  var dims   = ASPECT_DIMS[aspect] || [1024, 1024];
+  var suffix = STYLE_SUFFIX[style] || '';
+  var full   = (prompt || 'professional B2B marketing visual') + suffix;
+  var enc    = encodeURIComponent(full);
+  return 'https://image.pollinations.ai/prompt/' + enc
+    + '?model=' + model
+    + '&width=' + dims[0]
+    + '&height=' + dims[1]
+    + '&seed=' + seed
+    + '&nologo=true'
+    + '&enhance=false';
+}
+
+async function generateImages() {
+  var btn = document.getElementById('studio-gen-btn');
+  if (!btn || studioGenerating) return;
+
+  var prompt = studioPrompt.trim();
+  if (!prompt) {
+    var ta = document.getElementById('studio-prompt');
+    if (ta) { ta.style.borderColor = 'var(--red)'; ta.focus(); setTimeout(function(){ ta.style.borderColor = ''; }, 2000); }
+    return;
+  }
+
+  /* Video engines — not supported via browser directly */
+  if (studioEngine === 'runway' || studioEngine === 'sora') {
+    var canvas = document.getElementById('studio-canvas');
+    if (canvas) canvas.innerHTML = '<div style="text-align:center;padding:40px 20px;background:var(--s2);border-radius:var(--r3)">'
+      + '<div style="font-size:32px;margin-bottom:12px">▷</div>'
+      + '<div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--pink);margin-bottom:8px">' + ENGINE_META[studioEngine].label + '</div>'
+      + '<div style="font-size:12px;color:var(--t2);line-height:1.6;max-width:360px;margin:0 auto">A geração de vídeo requer um backend dedicado. Para usar ' + ENGINE_META[studioEngine].label + ', integra a API oficial através de um servidor proxy.<br><br>Selecciona um motor de <strong>imagem</strong> para gerar agora.</div>'
+      + '</div>';
+    return;
+  }
+
+  studioGenerating = true;
+  var canvas = document.getElementById('studio-canvas');
+  if (canvas) canvas.innerHTML = '<div class="canvas-masonry">'
+    + '<div class="canvas-col">' + renderLoadingCard() + renderLoadingCard() + '</div>'
+    + '<div class="canvas-col">' + renderLoadingCard() + renderLoadingCard() + '</div>'
+    + '<div class="canvas-col">' + renderLoadingCard() + '</div>'
+    + '</div>';
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="pulsing">A gerar com ' + ENGINE_META[studioEngine].label + '…</span>';
+
+  var COUNT  = 4;
+  var dims   = ASPECT_DIMS[studioAspect] || [1024, 1024];
+  var results= [];
+  var errors = 0;
+
+  /* Generate 4 images with different seeds in parallel */
+  var seeds = [];
+  for (var i = 0; i < COUNT; i++) seeds.push(Math.floor(Math.random() * 999999));
+
+  var promises = seeds.map(function(seed, i) {
+    var url = buildPollinURL(prompt, studioEngine, studioAspect, studioStyle, seed);
+    return new Promise(function(resolve) {
+      var img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload  = function() { resolve({ seed:seed, url:url, ok:true, w:img.naturalWidth, h:img.naturalHeight }); };
+      img.onerror = function() { resolve({ seed:seed, url:url, ok:false }); };
+      img.src = url;
+    });
+  });
+
+  var done = await Promise.all(promises);
+  var succeeded = done.filter(function(r){ return r.ok; });
+  var failed    = done.filter(function(r){ return !r.ok; });
+
+  if (succeeded.length === 0) {
+    /* All failed — show error */
+    if (canvas) canvas.innerHTML = '<div style="text-align:center;padding:36px;background:var(--s2);border-radius:var(--r3)">'
+      + '<div style="font-size:28px;margin-bottom:10px">⚠</div>'
+      + '<div style="font-size:13px;font-weight:600;color:var(--red);margin-bottom:6px">Não foi possível gerar as imagens</div>'
+      + '<div style="font-size:11px;color:var(--t2)">Verifica a ligação à internet. O serviço Pollinations.ai pode estar temporariamente indisponível.</div>'
+      + '</div>';
+  } else {
+    /* Add to STUDIO_ASSETS */
+    succeeded.forEach(function(r) {
+      var newId = STUDIO_ASSETS.length + 1;
+      STUDIO_ASSETS.push({
+        id: newId, engine: studioEngine, prompt: prompt,
+        aspect: studioAspect, style: studioStyle,
+        status: 'draft', comments: [], created: today,
+        liked: false, idx: newId,
+        imageUrl: r.url, seed: r.seed,
+        isVideo: false
+      });
+    });
+    studioGenerating = false;
+    studioTab = 'review';
+    renderMktCriar(document.getElementById('content'));
+    return;
+  }
+
+  studioGenerating = false;
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7,1 13,4.5 13,9.5 7,13 1,9.5 1,4.5"/><circle cx="7" cy="7" r="2.5"/></svg> Gerar com ' + ENGINE_META[studioEngine].label;
+}
+
+/* Keep simulateGenerate as alias for backward compat */
+function simulateGenerate() { generateImages(); }
+
+function renderLoadingCard() {
+  return '<div class="asset-thumb-wrap"><div class="asset-thumb-img generating-pulse" style="padding-bottom:100%">'
+    + '<div class="asset-thumb-inner"><div class="generating-text">Gerando…</div></div></div></div>';
+}
+
+function renderAssetThumb(a, inCanvas) {
+  var aspect = a.aspect || '1:1';
+  var parts  = aspect.split(':');
+  var ratio  = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
+  var bg     = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+  var eng    = ENGINE_META[a.engine] || {};
+
+  var innerContent;
+  if (a.imageUrl) {
+    innerContent = '<img src="' + a.imageUrl + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" loading="lazy" onerror="this.style.display=\'none\'">';
+  } else if (a.isVideo) {
+    innerContent = '<div class="asset-thumb-inner"><div class="asset-video-icon">'
+      + '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polygon points="8,6 16,10 8,14" fill="var(--pink)"/><circle cx="10" cy="10" r="9" stroke="var(--pink)" stroke-width="1.5" fill="none"/></svg>'
+      + '</div></div>';
+  } else {
+    innerContent = '<div class="asset-thumb-inner"><div class="asset-thumb-placeholder">'
+      + '<svg width="28" height="28" viewBox="0 0 26 22" fill="none" opacity=".25"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg>'
+      + '</div></div>';
+  }
+
+  return '<div class="asset-thumb-wrap ' + (a.isVideo ? 'is-video' : '') + '" onclick="openAssetReview(' + a.id + ')">'
+    + '<div class="asset-thumb-img" style="padding-bottom:' + ratio + '%;background:' + bg + ';position:relative">'
+    + innerContent
+    + '<div class="asset-thumb-overlay">'
+    + '<div style="display:flex;gap:5px;flex-wrap:wrap">'
+    + statusBdg(a.status)
+    + '<span class="bdg ' + (eng.tag||'bdg-gr') + '" style="font-size:8px">' + (eng.label||a.engine) + '</span>'
+    + '</div>'
+    + '<div style="display:flex;gap:4px;margin-top:6px">'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();toggleLike(' + a.id + ')" title="Like">'
+    + (a.liked ? '<svg width="11" height="11" viewBox="0 0 11 11" fill="#F04F5A" stroke="#F04F5A" stroke-width="1"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>'
+    : '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>')
+    + '</button>'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();openAssetReview(' + a.id + ')" title="Rever">'
+    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4.5"/><path d="M5.5 3.5v2.5l2 1"/></svg>'
+    + '</button>'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'approved\')" title="Aprovar">'
+    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1.5 5.5l3 3 5-5"/></svg>'
+    + '</button>'
+    + '</div></div>'
+    + '</div>'
+    + (a.comments && a.comments.length ? '<div class="asset-comment-count"><svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h7v5H3.5L1 7.5V6H1V1z"/></svg>' + a.comments.length + '</div>' : '')
+    + '</div>';
+}
+
+function renderAssetDetailReview(a) {
+  var bg  = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+  var eng = ENGINE_META[a.engine] || {};
+  var aspect = a.aspect || '1:1';
+  var parts = aspect.split(':');
+  var ratio = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
+
+  var previewInner = a.imageUrl
+    ? '<img src="' + a.imageUrl + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--r2)" loading="lazy">'
+    : (a.isVideo
+        ? '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><polygon points="19,15 35,24 19,33" fill="var(--pink)"/><circle cx="24" cy="24" r="22" stroke="var(--pink)" stroke-width="2" fill="none"/></svg></div>'
+        : '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg width="48" height="48" viewBox="0 0 26 22" fill="none" opacity=".2"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg></div>');
+
+  return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">'
+    + '<button class="btn btn-ghost btn-xs" onclick="studioReviewAsset=null;renderMktCriar($(\'content\'))">← Revisão</button>'
+    + '<div style="font-family:var(--fh);font-size:16px;font-weight:700;letter-spacing:.5px">Revisão de Asset</div>'
+    + '<div style="margin-left:auto;display:flex;gap:6px">'
+    + '<button class="btn btn-danger btn-sm" onclick="changeAssetStatus(' + a.id + ',\'draft\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Rejeitar</button>'
+    + '<button class="btn btn-warn btn-sm" onclick="changeAssetStatus(' + a.id + ',\'in_review\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Em revisão</button>'
+    + '<button class="btn btn-ok btn-sm" onclick="changeAssetStatus(' + a.id + ',\'approved\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Aprovar</button>'
+    + '<button class="btn btn-teal btn-sm" onclick="changeAssetStatus(' + a.id + ',\'published\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Publicar</button>'
+    + '</div></div>'
+    + '<div class="g2" style="align-items:start">'
+    + '<div>'
+    + '<div style="position:relative;padding-bottom:' + ratio + '%;background:' + bg + ';border-radius:var(--r3);overflow:hidden">'
+    + previewInner
+    + '</div>'
+    + '<div class="card" style="margin-top:12px">'
+    + '<div class="card-title">Metadata</div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Motor</span><span class="bdg ' + eng.tag + '">' + eng.label + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Tipo</span><span style="font-size:11px;color:var(--t1)">' + (a.isVideo ? 'Vídeo' : 'Imagem') + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Aspect Ratio</span><span style="font-size:11px;color:var(--t1)">' + a.aspect + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estilo</span><span style="font-size:11px;color:var(--t1)">' + (STYLE_PRESETS.filter(function(s){return s.id===a.style;})[0]||{label:a.style}).label + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estado</span>' + statusBdg(a.status) + '</div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Seed</span><span style="font-size:10px;color:var(--t3);font-family:monospace">' + (a.seed || '—') + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Criado</span><span style="font-size:11px;color:var(--t1)">' + a.created + '</span></div>'
+    + '<div style="padding:8px 0"><span style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px">Prompt</span>'
+    + '<div style="font-size:11px;color:var(--t2);line-height:1.6;margin-top:4px">' + a.prompt + '</div></div>'
+    + '<div style="display:flex;gap:6px;margin-top:10px">'
+    + (a.imageUrl ? '<a class="btn btn-ghost btn-sm" href="' + a.imageUrl + '" target="_blank" download style="flex:1;justify-content:center">Descarregar</a>' : '')
+    + '<button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center">Usar em campanha</button>'
+    + '</div></div></div>'
+    + '<div>'
+    + '<div class="card">'
+    + '<div class="card-title">Comentários &amp; Feedback (' + a.comments.length + ')</div>'
+    + (a.comments.length === 0
+      ? '<div style="padding:16px 0;text-align:center;color:var(--t3);font-size:12px">Sem comentários ainda</div>'
+      : a.comments.map(function(cm) {
+          var initials = cm.user.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
+          return '<div class="comment-item"><div class="comment-av">' + initials + '</div>'
+            + '<div style="flex:1"><div style="display:flex;align-items:baseline;gap:7px;margin-bottom:3px">'
+            + '<span style="font-size:12px;font-weight:500;color:var(--t1)">' + cm.user + '</span>'
+            + '<span style="font-size:10px;color:var(--t3)">' + cm.ts + '</span></div>'
+            + '<div style="font-size:12px;color:var(--t2);line-height:1.5">' + cm.text + '</div></div></div>';
+        }).join(''))
+    + '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--b1)">'
+    + '<textarea class="inp" id="new-comment" rows="2" placeholder="Adicionar comentário…" style="margin-bottom:8px"></textarea>'
+    + '<div style="display:flex;gap:6px">'
+    + '<button class="btn btn-teal btn-sm" onclick="addComment(' + a.id + ')">Comentar</button>'
+    + '</div></div></div>'
+    + (a.imageUrl ? '<div class="card" style="margin-top:12px"><div class="card-title">Gerar Variação</div>'
+      + '<div style="font-size:11px;color:var(--t2);margin-bottom:10px">Gera uma nova variação com o mesmo prompt mas seed diferente.</div>'
+      + '<button class="btn btn-ghost btn-sm" onclick="generateVariation(' + a.id + ')">Gerar variação →</button></div>' : '')
+    + '</div></div>';
+}
+
+function generateVariation(assetId) {
+  var a = STUDIO_ASSETS.filter(function(x){return x.id===assetId;})[0];
+  if (!a) return;
+  studioPrompt  = a.prompt;
+  studioEngine  = a.engine;
+  studioAspect  = a.aspect;
+  studioStyle   = a.style;
+  studioReviewAsset = null;
+  studioTab = 'generate';
+  renderMktCriar(document.getElementById('content'));
+  setTimeout(function(){ generateImages(); }, 100);
+}
 </script>
 
 </head>
@@ -2463,7 +2595,7 @@ function goto(page) {
 }
 
 function handleMainBtn() {
-  if      (pg === 'mkt-criar')     generateCopy();
+  if      (pg === 'mkt-criar')     generateImages();
   else if (pg === 'mkt-campanhas') goto('mkt-criar');
   else if (pg === 'mkt-dash')      goto('mkt-criar');
   else if (pg === 'rev-dash')      goto('rev-deals');
@@ -2487,6 +2619,7 @@ var PAGE_RENDERS = {
 
 function render() {
   var el = $('content');
+  if (!el) return;
   el.classList.remove('fade-in');
   void el.offsetWidth;
   el.classList.add('fade-in');
@@ -2887,7 +3020,7 @@ function updateStudioHeader() {
   if (!el) return;
   if (studioTab === 'generate') {
     el.innerHTML = '<button class="btn btn-ghost btn-sm" onclick="studioTab=\'library\';renderMktCriar($(\'content\'))">Ver biblioteca</button>'
-      + '<button class="btn btn-teal btn-sm" id="gen-btn" onclick="generateCopy()">Gerar com Claude</button>';
+      + '<button class="btn btn-teal btn-sm" id="gen-btn" onclick="generateImages()">Gerar Imagens</button>';
   } else if (studioTab === 'review') {
     el.innerHTML = '<button class="btn btn-ok btn-sm" onclick="approveAll()">Aprovar seleccionados</button>';
   } else {
@@ -2970,7 +3103,7 @@ function renderStudioGenerate() {
     + '<select class="inp" style="font-size:11px"><option>1 imagem</option><option>2 imagens</option><option selected>4 imagens</option></select></div>'
     + '</div>'
     + '<div class="studio-generate-area">'
-    + '<button class="studio-gen-btn" id="studio-gen-btn" onclick="simulateGenerate()">'
+    + '<button class="studio-gen-btn" id="studio-gen-btn" onclick="generateImages()">'
     + '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7,1 13,4.5 13,9.5 7,13 1,9.5 1,4.5"/><circle cx="7" cy="7" r="2.5"/></svg>'
     + ' Gerar com ' + ENGINE_META[studioEngine].label
     + '</button>'
@@ -3009,42 +3142,6 @@ function renderStudioCanvas() {
   }
   html += '</div>';
   return html;
-}
-
-function renderAssetThumb(a, inCanvas) {
-  var aspect = a.aspect || '1:1';
-  var parts = aspect.split(':');
-  var ratio = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
-  var bg = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
-  var eng = ENGINE_META[a.engine] || {};
-
-  return '<div class="asset-thumb-wrap ' + (a.isVideo ? 'is-video' : '') + '" onclick="openAssetReview(' + a.id + ')">'
-    + '<div class="asset-thumb-img" style="padding-bottom:' + ratio + '%;background:' + bg + '">'
-    + '<div class="asset-thumb-inner">'
-    + (a.isVideo
-        ? '<div class="asset-video-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polygon points="8,6 16,10 8,14" fill="currentColor"/><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div>'
-        : '<div class="asset-thumb-placeholder"><svg width="28" height="28" viewBox="0 0 26 22" fill="none" opacity=".3"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg></div>')
-    + '</div>'
-    + '<div class="asset-thumb-overlay">'
-    + '<div style="display:flex;gap:5px;flex-wrap:wrap">'
-    + statusBdg(a.status)
-    + '<span class="bdg ' + (eng.tag||'bdg-gr') + '" style="font-size:8px">' + (eng.label||a.engine) + '</span>'
-    + '</div>'
-    + '<div style="display:flex;gap:4px;margin-top:6px">'
-    + '<button class="asset-action-btn" onclick="event.stopPropagation();toggleLike(' + a.id + ')" title="Like">'
-    + (a.liked ? '<svg width="11" height="11" viewBox="0 0 11 11" fill="#F04F5A" stroke="#F04F5A" stroke-width="1"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>'
-    : '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>')
-    + '</button>'
-    + '<button class="asset-action-btn" onclick="event.stopPropagation();openAssetReview(' + a.id + ')" title="Rever">'
-    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4.5"/><path d="M5.5 3.5v2.5l2 1"/></svg>'
-    + '</button>'
-    + '<button class="asset-action-btn" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'approved\')" title="Aprovar">'
-    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1.5 5.5l3 3 5-5"/></svg>'
-    + '</button>'
-    + '</div></div>'
-    + '</div>'
-    + (a.comments && a.comments.length ? '<div class="asset-comment-count"><svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h7v5H3.5L1 7.5V6H1V1z"/></svg>' + a.comments.length + '</div>' : '')
-    + '</div>';
 }
 
 function renderGeneratingPlaceholders() {
@@ -3122,81 +3219,6 @@ function renderStudioReview() {
   return html;
 }
 
-function renderAssetDetailReview(a) {
-  var bg  = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
-  var eng = ENGINE_META[a.engine] || {};
-  var aspect = a.aspect || '1:1';
-  var parts = aspect.split(':');
-  var ratio = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
-
-  return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">'
-    + '<button class="btn btn-ghost btn-xs" onclick="studioReviewAsset=null;renderMktCriar($(\'content\'))">← Revisão</button>'
-    + '<div style="font-family:var(--fh);font-size:16px;font-weight:700;letter-spacing:.5px">Revisão de Asset</div>'
-    + '<div style="margin-left:auto;display:flex;gap:6px">'
-    + '<button class="btn btn-danger btn-sm" onclick="changeAssetStatus(' + a.id + ',\'draft\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Rejeitar</button>'
-    + '<button class="btn btn-warn btn-sm" onclick="changeAssetStatus(' + a.id + ',\'in_review\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Em revisão</button>'
-    + '<button class="btn btn-ok btn-sm" onclick="changeAssetStatus(' + a.id + ',\'approved\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Aprovar</button>'
-    + '<button class="btn btn-teal btn-sm" onclick="changeAssetStatus(' + a.id + ',\'published\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Publicar</button>'
-    + '</div></div>'
-    + '<div class="g2" style="align-items:start">'
-    /* Asset preview */
-    + '<div>'
-    + '<div style="background:' + bg + ';border-radius:var(--r3);overflow:hidden;position:relative;padding-bottom:' + ratio + '%">'
-    + '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">'
-    + (a.isVideo
-      ? '<div style="text-align:center"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><polygon points="19,15 35,24 19,33" fill="var(--pink)"/><circle cx="24" cy="24" r="22" stroke="var(--pink)" stroke-width="2" fill="none"/></svg><div style="font-size:11px;color:var(--pink);margin-top:8px">Video Preview</div></div>'
-      : '<svg width="48" height="48" viewBox="0 0 26 22" fill="none" opacity=".25"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg>')
-    + '</div></div>'
-    + '<div class="card" style="margin-top:12px">'
-    + '<div class="card-title">Metadata</div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Motor</span><span class="bdg ' + eng.tag + '">' + eng.label + '</span></div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Tipo</span><span style="font-size:11px;color:var(--t1)">' + (a.isVideo ? 'Vídeo' : 'Imagem') + '</span></div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Aspect Ratio</span><span style="font-size:11px;color:var(--t1)">' + a.aspect + '</span></div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estilo</span><span style="font-size:11px;color:var(--t1)">' + (STYLE_PRESETS.filter(function(s){return s.id===a.style;})[0]||{label:a.style}).label + '</span></div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estado</span>' + statusBdg(a.status) + '</div>'
-    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Criado</span><span style="font-size:11px;color:var(--t1)">' + a.created + '</span></div>'
-    + '<div style="padding:8px 0"><span style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px">Prompt</span>'
-    + '<div style="font-size:11px;color:var(--t2);line-height:1.6;margin-top:4px">' + a.prompt + '</div></div>'
-    + '<div style="display:flex;gap:6px;margin-top:10px">'
-    + '<button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center">Descarregar</button>'
-    + '<button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center">Usar em campanha</button>'
-    + '</div></div></div>'
-    /* Comments panel */
-    + '<div>'
-    + '<div class="card">'
-    + '<div class="card-title">Comentários &amp; Feedback (' + a.comments.length + ')</div>'
-    + (a.comments.length === 0
-      ? '<div style="padding:16px 0;text-align:center;color:var(--t3);font-size:12px">Sem comentários ainda</div>'
-      : a.comments.map(function(cm) {
-          var initials = cm.user.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
-          return '<div class="comment-item">'
-            + '<div class="comment-av">' + initials + '</div>'
-            + '<div style="flex:1"><div style="display:flex;align-items:baseline;gap:7px;margin-bottom:3px">'
-            + '<span style="font-size:12px;font-weight:500;color:var(--t1)">' + cm.user + '</span>'
-            + '<span style="font-size:10px;color:var(--t3)">' + cm.ts + '</span></div>'
-            + '<div style="font-size:12px;color:var(--t2);line-height:1.5">' + cm.text + '</div>'
-            + '</div></div>';
-        }).join(''))
-    + '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--b1)">'
-    + '<textarea class="inp" id="new-comment" rows="2" placeholder="Adicionar comentário, feedback ou anotação…" style="margin-bottom:8px"></textarea>'
-    + '<div style="display:flex;gap:6px">'
-    + '<button class="btn btn-teal btn-sm" onclick="addComment(' + a.id + ')">Comentar</button>'
-    + '<button class="btn btn-ghost btn-sm">Adicionar anotação</button>'
-    + '</div></div></div>'
-    /* Versions / history */
-    + '<div class="card" style="margin-top:12px"><div class="card-title">Variações &amp; Histórico</div>'
-    + '<div style="display:flex;flex-direction:column;gap:6px">'
-    + ['Variação A — prompt original','Variação B — estilo ajustado','Variação C — aspect ratio diferente'].map(function(v, i) {
-        return '<div style="display:flex;align-items:center;gap:10px;padding:8px;background:var(--s3);border-radius:var(--r1)">'
-          + '<div style="width:36px;height:36px;border-radius:var(--r1);background:' + ASSET_GRADIENTS[(a.idx+i+1)%ASSET_GRADIENTS.length] + ';flex-shrink:0"></div>'
-          + '<div style="flex:1"><div style="font-size:11px;color:var(--t1)">' + v + '</div><div style="font-size:10px;color:var(--t3)">' + a.engine + ' · ' + a.aspect + '</div></div>'
-          + (i === 0 ? '<span class="bdg bdg-t" style="font-size:8px">Actual</span>' : '<button class="btn btn-ghost btn-xs">Restaurar</button>')
-          + '</div>';
-      }).join('')
-    + '</div></div></div></div>';
-}
-
-/* ─── LIBRARY TAB ─── */
 function renderStudioLibrary() {
   var filterStatus = 'all';
   var byStatus = {};
@@ -3248,33 +3270,6 @@ function renderStudioLibrary() {
 }
 
 /* ─── ACTIONS ─── */
-function simulateGenerate() {
-  var btn = document.getElementById('studio-gen-btn');
-  if (!btn || studioGenerating) return;
-  studioGenerating = true;
-  var canvas = document.getElementById('studio-canvas');
-  if (canvas) canvas.innerHTML = renderGeneratingPlaceholders();
-  btn.disabled = true;
-  btn.innerHTML = '<span class="pulsing">Gerando com ' + ENGINE_META[studioEngine].label + '…</span>';
-
-  var duration = { flux:2000, dalle3:2500, midj:3000, sdxl:1800, ideogram:2200, runway:4000, sora:5000 }[studioEngine] || 2500;
-
-  setTimeout(function() {
-    var newIds = [STUDIO_ASSETS.length+1, STUDIO_ASSETS.length+2, STUDIO_ASSETS.length+3, STUDIO_ASSETS.length+4];
-    var stylePreset = STYLE_PRESETS.filter(function(s){return s.id===studioStyle;})[0] || STYLE_PRESETS[0];
-    var prompt = studioPrompt || ('STRATA Revenue OS — ' + stylePreset.label + ' · Professional B2B');
-    newIds.slice(0, studioEngine === 'runway' || studioEngine === 'sora' ? 1 : 4).forEach(function(newId, i) {
-      STUDIO_ASSETS.push({
-        id:newId, engine:studioEngine, prompt:prompt, aspect:studioAspect, style:studioStyle,
-        status:'draft', comments:[], created:today, liked:false, idx:newId, isVideo:studioEngine==='runway'||studioEngine==='sora'
-      });
-    });
-    studioGenerating = false;
-    studioTab = 'review';
-    renderMktCriar(document.getElementById('content'));
-  }, duration);
-}
-
 function toggleLike(id) {
   var a = STUDIO_ASSETS.filter(function(x){return x.id===id;})[0];
   if (a) { a.liked = !a.liked; renderMktCriar(document.getElementById('content')); }
@@ -4142,6 +4137,275 @@ function renderRevForecast(el) {
    INIT
    ═══════════════════════════════════════════════ */
 goto('mkt-dash');
+
+
+/* ── Pollinations image dimensions per aspect ratio ── */
+var ASPECT_DIMS = {
+  '1:1':  [1024, 1024],
+  '16:9': [1280, 720],
+  '4:5':  [832,  1040],
+  '9:16': [720,  1280],
+  '3:2':  [1152, 768],
+  '2:3':  [768,  1152],
+};
+
+/* ── Map studio engine names to Pollinations model param ── */
+var ENGINE_POLLIN_MODEL = {
+  flux:     'flux',
+  dalle3:   'flux-realism',
+  midj:     'flux',
+  sdxl:     'turbo',
+  ideogram: 'flux',
+  runway:   null,
+  sora:     null,
+};
+
+/* ── Style suffix appended to prompt ── */
+var STYLE_SUFFIX = {
+  photographic: ', photorealistic, professional photography, high detail',
+  cinematic:    ', cinematic lighting, movie still, anamorphic lens, dramatic',
+  digital_art:  ', digital artwork, concept art, vibrant colors, detailed',
+  typography:   ', clean typography, bold text, modern graphic design',
+  product:      ', product photography, studio lighting, clean background',
+  sci_fi:       ', sci-fi, futuristic, neon lights, cyberpunk aesthetic',
+  minimalist:   ', minimalist design, clean lines, negative space, elegant',
+  abstract:     ', abstract art, geometric shapes, colorful, artistic',
+};
+
+function buildPollinURL(prompt, engine, aspect, style, seed) {
+  var model  = ENGINE_POLLIN_MODEL[engine] || 'flux';
+  var dims   = ASPECT_DIMS[aspect] || [1024, 1024];
+  var suffix = STYLE_SUFFIX[style] || '';
+  var full   = (prompt || 'professional B2B marketing visual') + suffix;
+  var enc    = encodeURIComponent(full);
+  return 'https://image.pollinations.ai/prompt/' + enc
+    + '?model=' + model
+    + '&width=' + dims[0]
+    + '&height=' + dims[1]
+    + '&seed=' + seed
+    + '&nologo=true'
+    + '&enhance=false';
+}
+
+async function generateImages() {
+  var btn = document.getElementById('studio-gen-btn');
+  if (!btn || studioGenerating) return;
+
+  var prompt = studioPrompt.trim();
+  if (!prompt) {
+    var ta = document.getElementById('studio-prompt');
+    if (ta) { ta.style.borderColor = 'var(--red)'; ta.focus(); setTimeout(function(){ ta.style.borderColor = ''; }, 2000); }
+    return;
+  }
+
+  /* Video engines — not supported via browser directly */
+  if (studioEngine === 'runway' || studioEngine === 'sora') {
+    var canvas = document.getElementById('studio-canvas');
+    if (canvas) canvas.innerHTML = '<div style="text-align:center;padding:40px 20px;background:var(--s2);border-radius:var(--r3)">'
+      + '<div style="font-size:32px;margin-bottom:12px">▷</div>'
+      + '<div style="font-family:var(--fh);font-size:16px;font-weight:700;color:var(--pink);margin-bottom:8px">' + ENGINE_META[studioEngine].label + '</div>'
+      + '<div style="font-size:12px;color:var(--t2);line-height:1.6;max-width:360px;margin:0 auto">A geração de vídeo requer um backend dedicado. Para usar ' + ENGINE_META[studioEngine].label + ', integra a API oficial através de um servidor proxy.<br><br>Selecciona um motor de <strong>imagem</strong> para gerar agora.</div>'
+      + '</div>';
+    return;
+  }
+
+  studioGenerating = true;
+  var canvas = document.getElementById('studio-canvas');
+  if (canvas) canvas.innerHTML = '<div class="canvas-masonry">'
+    + '<div class="canvas-col">' + renderLoadingCard() + renderLoadingCard() + '</div>'
+    + '<div class="canvas-col">' + renderLoadingCard() + renderLoadingCard() + '</div>'
+    + '<div class="canvas-col">' + renderLoadingCard() + '</div>'
+    + '</div>';
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="pulsing">A gerar com ' + ENGINE_META[studioEngine].label + '…</span>';
+
+  var COUNT  = 4;
+  var dims   = ASPECT_DIMS[studioAspect] || [1024, 1024];
+  var results= [];
+  var errors = 0;
+
+  /* Generate 4 images with different seeds in parallel */
+  var seeds = [];
+  for (var i = 0; i < COUNT; i++) seeds.push(Math.floor(Math.random() * 999999));
+
+  var promises = seeds.map(function(seed, i) {
+    var url = buildPollinURL(prompt, studioEngine, studioAspect, studioStyle, seed);
+    return new Promise(function(resolve) {
+      var img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload  = function() { resolve({ seed:seed, url:url, ok:true, w:img.naturalWidth, h:img.naturalHeight }); };
+      img.onerror = function() { resolve({ seed:seed, url:url, ok:false }); };
+      img.src = url;
+    });
+  });
+
+  var done = await Promise.all(promises);
+  var succeeded = done.filter(function(r){ return r.ok; });
+  var failed    = done.filter(function(r){ return !r.ok; });
+
+  if (succeeded.length === 0) {
+    /* All failed — show error */
+    if (canvas) canvas.innerHTML = '<div style="text-align:center;padding:36px;background:var(--s2);border-radius:var(--r3)">'
+      + '<div style="font-size:28px;margin-bottom:10px">⚠</div>'
+      + '<div style="font-size:13px;font-weight:600;color:var(--red);margin-bottom:6px">Não foi possível gerar as imagens</div>'
+      + '<div style="font-size:11px;color:var(--t2)">Verifica a ligação à internet. O serviço Pollinations.ai pode estar temporariamente indisponível.</div>'
+      + '</div>';
+  } else {
+    /* Add to STUDIO_ASSETS */
+    succeeded.forEach(function(r) {
+      var newId = STUDIO_ASSETS.length + 1;
+      STUDIO_ASSETS.push({
+        id: newId, engine: studioEngine, prompt: prompt,
+        aspect: studioAspect, style: studioStyle,
+        status: 'draft', comments: [], created: today,
+        liked: false, idx: newId,
+        imageUrl: r.url, seed: r.seed,
+        isVideo: false
+      });
+    });
+    studioGenerating = false;
+    studioTab = 'review';
+    renderMktCriar(document.getElementById('content'));
+    return;
+  }
+
+  studioGenerating = false;
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7,1 13,4.5 13,9.5 7,13 1,9.5 1,4.5"/><circle cx="7" cy="7" r="2.5"/></svg> Gerar com ' + ENGINE_META[studioEngine].label;
+}
+
+/* Keep simulateGenerate as alias for backward compat */
+function simulateGenerate() { generateImages(); }
+
+function renderLoadingCard() {
+  return '<div class="asset-thumb-wrap"><div class="asset-thumb-img generating-pulse" style="padding-bottom:100%">'
+    + '<div class="asset-thumb-inner"><div class="generating-text">Gerando…</div></div></div></div>';
+}
+
+function renderAssetThumb(a, inCanvas) {
+  var aspect = a.aspect || '1:1';
+  var parts  = aspect.split(':');
+  var ratio  = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
+  var bg     = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+  var eng    = ENGINE_META[a.engine] || {};
+
+  var innerContent;
+  if (a.imageUrl) {
+    innerContent = '<img src="' + a.imageUrl + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" loading="lazy" onerror="this.style.display=\'none\'">';
+  } else if (a.isVideo) {
+    innerContent = '<div class="asset-thumb-inner"><div class="asset-video-icon">'
+      + '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polygon points="8,6 16,10 8,14" fill="var(--pink)"/><circle cx="10" cy="10" r="9" stroke="var(--pink)" stroke-width="1.5" fill="none"/></svg>'
+      + '</div></div>';
+  } else {
+    innerContent = '<div class="asset-thumb-inner"><div class="asset-thumb-placeholder">'
+      + '<svg width="28" height="28" viewBox="0 0 26 22" fill="none" opacity=".25"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg>'
+      + '</div></div>';
+  }
+
+  return '<div class="asset-thumb-wrap ' + (a.isVideo ? 'is-video' : '') + '" onclick="openAssetReview(' + a.id + ')">'
+    + '<div class="asset-thumb-img" style="padding-bottom:' + ratio + '%;background:' + bg + ';position:relative">'
+    + innerContent
+    + '<div class="asset-thumb-overlay">'
+    + '<div style="display:flex;gap:5px;flex-wrap:wrap">'
+    + statusBdg(a.status)
+    + '<span class="bdg ' + (eng.tag||'bdg-gr') + '" style="font-size:8px">' + (eng.label||a.engine) + '</span>'
+    + '</div>'
+    + '<div style="display:flex;gap:4px;margin-top:6px">'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();toggleLike(' + a.id + ')" title="Like">'
+    + (a.liked ? '<svg width="11" height="11" viewBox="0 0 11 11" fill="#F04F5A" stroke="#F04F5A" stroke-width="1"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>'
+    : '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 9.5S1 6.5 1 3.5C1 2.1 2.1 1 3.5 1c.8 0 1.5.4 2 1 .5-.6 1.2-1 2-1C8.9 1 10 2.1 10 3.5c0 3-4.5 6-4.5 6z"/></svg>')
+    + '</button>'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();openAssetReview(' + a.id + ')" title="Rever">'
+    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="5.5" r="4.5"/><path d="M5.5 3.5v2.5l2 1"/></svg>'
+    + '</button>'
+    + '<button class="asset-action-btn" onclick="event.stopPropagation();changeAssetStatus(' + a.id + ',\'approved\')" title="Aprovar">'
+    + '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1.5 5.5l3 3 5-5"/></svg>'
+    + '</button>'
+    + '</div></div>'
+    + '</div>'
+    + (a.comments && a.comments.length ? '<div class="asset-comment-count"><svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h7v5H3.5L1 7.5V6H1V1z"/></svg>' + a.comments.length + '</div>' : '')
+    + '</div>';
+}
+
+function renderAssetDetailReview(a) {
+  var bg  = ASSET_GRADIENTS[a.idx % ASSET_GRADIENTS.length];
+  var eng = ENGINE_META[a.engine] || {};
+  var aspect = a.aspect || '1:1';
+  var parts = aspect.split(':');
+  var ratio = (parseInt(parts[1]) / parseInt(parts[0]) * 100).toFixed(1);
+
+  var previewInner = a.imageUrl
+    ? '<img src="' + a.imageUrl + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:var(--r2)" loading="lazy">'
+    : (a.isVideo
+        ? '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg width="48" height="48" viewBox="0 0 48 48" fill="none"><polygon points="19,15 35,24 19,33" fill="var(--pink)"/><circle cx="24" cy="24" r="22" stroke="var(--pink)" stroke-width="2" fill="none"/></svg></div>'
+        : '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><svg width="48" height="48" viewBox="0 0 26 22" fill="none" opacity=".2"><path d="M2 16L13 11L24 16" stroke="#00D4B0" stroke-width="2.5" stroke-linecap="round"/><path d="M2 11L13 6L24 11" stroke="#C0C8D4" stroke-width="2" stroke-linecap="round"/><path d="M2 6L13 1L24 6" stroke="#EEF0F4" stroke-width="1.5" stroke-linecap="round"/></svg></div>');
+
+  return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">'
+    + '<button class="btn btn-ghost btn-xs" onclick="studioReviewAsset=null;renderMktCriar($(\'content\'))">← Revisão</button>'
+    + '<div style="font-family:var(--fh);font-size:16px;font-weight:700;letter-spacing:.5px">Revisão de Asset</div>'
+    + '<div style="margin-left:auto;display:flex;gap:6px">'
+    + '<button class="btn btn-danger btn-sm" onclick="changeAssetStatus(' + a.id + ',\'draft\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Rejeitar</button>'
+    + '<button class="btn btn-warn btn-sm" onclick="changeAssetStatus(' + a.id + ',\'in_review\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Em revisão</button>'
+    + '<button class="btn btn-ok btn-sm" onclick="changeAssetStatus(' + a.id + ',\'approved\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Aprovar</button>'
+    + '<button class="btn btn-teal btn-sm" onclick="changeAssetStatus(' + a.id + ',\'published\');studioReviewAsset=null;renderMktCriar($(\'content\'))">Publicar</button>'
+    + '</div></div>'
+    + '<div class="g2" style="align-items:start">'
+    + '<div>'
+    + '<div style="position:relative;padding-bottom:' + ratio + '%;background:' + bg + ';border-radius:var(--r3);overflow:hidden">'
+    + previewInner
+    + '</div>'
+    + '<div class="card" style="margin-top:12px">'
+    + '<div class="card-title">Metadata</div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Motor</span><span class="bdg ' + eng.tag + '">' + eng.label + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Tipo</span><span style="font-size:11px;color:var(--t1)">' + (a.isVideo ? 'Vídeo' : 'Imagem') + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Aspect Ratio</span><span style="font-size:11px;color:var(--t1)">' + a.aspect + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estilo</span><span style="font-size:11px;color:var(--t1)">' + (STYLE_PRESETS.filter(function(s){return s.id===a.style;})[0]||{label:a.style}).label + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Estado</span>' + statusBdg(a.status) + '</div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Seed</span><span style="font-size:10px;color:var(--t3);font-family:monospace">' + (a.seed || '—') + '</span></div>'
+    + '<div class="srow"><span style="font-size:11px;color:var(--t2)">Criado</span><span style="font-size:11px;color:var(--t1)">' + a.created + '</span></div>'
+    + '<div style="padding:8px 0"><span style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px">Prompt</span>'
+    + '<div style="font-size:11px;color:var(--t2);line-height:1.6;margin-top:4px">' + a.prompt + '</div></div>'
+    + '<div style="display:flex;gap:6px;margin-top:10px">'
+    + (a.imageUrl ? '<a class="btn btn-ghost btn-sm" href="' + a.imageUrl + '" target="_blank" download style="flex:1;justify-content:center">Descarregar</a>' : '')
+    + '<button class="btn btn-ghost btn-sm" style="flex:1;justify-content:center">Usar em campanha</button>'
+    + '</div></div></div>'
+    + '<div>'
+    + '<div class="card">'
+    + '<div class="card-title">Comentários &amp; Feedback (' + a.comments.length + ')</div>'
+    + (a.comments.length === 0
+      ? '<div style="padding:16px 0;text-align:center;color:var(--t3);font-size:12px">Sem comentários ainda</div>'
+      : a.comments.map(function(cm) {
+          var initials = cm.user.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
+          return '<div class="comment-item"><div class="comment-av">' + initials + '</div>'
+            + '<div style="flex:1"><div style="display:flex;align-items:baseline;gap:7px;margin-bottom:3px">'
+            + '<span style="font-size:12px;font-weight:500;color:var(--t1)">' + cm.user + '</span>'
+            + '<span style="font-size:10px;color:var(--t3)">' + cm.ts + '</span></div>'
+            + '<div style="font-size:12px;color:var(--t2);line-height:1.5">' + cm.text + '</div></div></div>';
+        }).join(''))
+    + '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--b1)">'
+    + '<textarea class="inp" id="new-comment" rows="2" placeholder="Adicionar comentário…" style="margin-bottom:8px"></textarea>'
+    + '<div style="display:flex;gap:6px">'
+    + '<button class="btn btn-teal btn-sm" onclick="addComment(' + a.id + ')">Comentar</button>'
+    + '</div></div></div>'
+    + (a.imageUrl ? '<div class="card" style="margin-top:12px"><div class="card-title">Gerar Variação</div>'
+      + '<div style="font-size:11px;color:var(--t2);margin-bottom:10px">Gera uma nova variação com o mesmo prompt mas seed diferente.</div>'
+      + '<button class="btn btn-ghost btn-sm" onclick="generateVariation(' + a.id + ')">Gerar variação →</button></div>' : '')
+    + '</div></div>';
+}
+
+function generateVariation(assetId) {
+  var a = STUDIO_ASSETS.filter(function(x){return x.id===assetId;})[0];
+  if (!a) return;
+  studioPrompt  = a.prompt;
+  studioEngine  = a.engine;
+  studioAspect  = a.aspect;
+  studioStyle   = a.style;
+  studioReviewAsset = null;
+  studioTab = 'generate';
+  renderMktCriar(document.getElementById('content'));
+  setTimeout(function(){ generateImages(); }, 100);
+}
 </script>
 </body>
 </html>
